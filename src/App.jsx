@@ -1,9 +1,11 @@
 
 
+import Navbar from "./components/Navbar";
+
 function App() {
   return (
-    <div >
-      <h1>DASHBOARD</h1>
+    <div className="d-flex">
+      <Navbar />
     </div>
   );
 }
