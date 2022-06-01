@@ -1,11 +1,10 @@
-
-#navComponent{
+#navComponent {
     height: 100vh;
     display: flex;
     align-items: center;
 }
 
-#navbarSide{
+#navbarSide {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -13,18 +12,18 @@
     padding-top: 40%;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
-    box-shadow: 10px 10px 40px  rgba(74,113,156, 0.5);
+    box-shadow: 10px 10px 40px rgba(74, 113, 156, 0.5);
 }
 
-#navbarMainTabs{
+#navbarMainTabs {
     display: flex;
     flex-direction: column;
     height: 60%;
     justify-content: flex-start;
-    
+
 }
 
-.navbarBtn{
+.navbarBtn {
     margin: 1rem 1rem;
     background: transparent;
     border: none;
@@ -34,17 +33,24 @@
     display: flex;
     align-items: center;
 }
-.navbarBtn img{
+
+.navbarBtn img {
     height: 20px;
     width: 30px;
     margin-right: 5px;
 }
 
-.activeNavbarBtn{
+.activeNavbarBtn {
     color: #4A719C;
 }
 
-navbarFooter{
-
+#navbarFooter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+#blerryLogo {
+    height: 100px;
+    margin-bottom: 20px;
+}

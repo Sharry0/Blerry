@@ -12,6 +12,7 @@ export default function Navbar() {
     return (
         <div id="navComponent">
             <div id="navbarSide">
+                {/* ______ upper half buttons on the navbar ________________________ */}
                 <div id="navbarMainTabs">
                     <button className="navbarBtn">
                         <img src={dashboardIcon} alt="dashboard icon" />
@@ -34,7 +35,11 @@ export default function Navbar() {
                         <span>Market</span>
                     </button>
                 </div>
-                <div id="navFooter">
+                {/* ______ lower half buttons & logo on the navbar ________________________ */}
+                <div id="navbarFooter">
+                    <div>
+                        <img src={blerryLogo} alt="blerry logo" id="blerryLogo" />
+                    </div>
                     <button className="navbarBtn">
                         <img src={settingsIcon} alt="settings icon" />
                         <span>Settings</span>
