@@ -41,7 +41,7 @@
 }
 
 .activeNavbarBtn {
-    color: #4A719C;
+    filter: invert(42%) sepia(19%) saturate(1083%) hue-rotate(171deg) brightness(96%) contrast(90%);
 }
 
 #navbarFooter {
