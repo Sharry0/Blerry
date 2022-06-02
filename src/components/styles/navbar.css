@@ -2,6 +2,7 @@
     height: 100vh;
     display: flex;
     align-items: center;
+    
 }
 
 #navbarSide {
@@ -24,7 +25,7 @@
 }
 
 .navbarBtn {
-    margin: 1rem 1rem;
+    padding: 1rem 1rem;
     background: transparent;
     border: none;
     color: #333944;
@@ -42,6 +43,17 @@
 
 .activeNavbarBtn {
     filter: invert(42%) sepia(19%) saturate(1083%) hue-rotate(171deg) brightness(96%) contrast(90%);
+}
+
+.activeNavbarBtn::before{
+    position: absolute;
+    left: 0;
+    height: 2.8rem;
+    width: 0.4rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    background-color: #000;
+    content: "";
 }
 
 #navbarFooter {

@@ -19,8 +19,8 @@ export default function Navbar() {
     const [activityIsActive, setActivityActive] = useState(false);
     const [marketIsActive, setMarketActive] = useState(false);
 
-    const handleNavBtnClick = (btnName) =>{
-        const setOtherStatsFalse = (funcOne, funcTwo, funcThree, funcFour)=>{
+    const handleNavBtnClick = (btnName) => {
+        const setOtherStatsFalse = (funcOne, funcTwo, funcThree, funcFour) => {
             funcOne(false);
             funcTwo(false);
             funcThree(false);
@@ -41,11 +41,13 @@ export default function Navbar() {
                 break;
             case "activity":
                 setActivityActive(true);
-                setOtherStatsFalse(setDashboardActive ,setWalletActive, setRankingsActive, setMarketActive);
+                setOtherStatsFalse(setDashboardActive, setWalletActive, setRankingsActive, setMarketActive);
                 break;
             case "market":
                 setMarketActive(true);
                 setOtherStatsFalse(setDashboardActive, setWalletActive, setRankingsActive, setActivityActive);
+                break;
+            default:
                 break;
         }
     }
@@ -55,23 +57,23 @@ export default function Navbar() {
             <div id="navbarSide">
                 {/* ______ upper half buttons on the navbar ________________________ */}
                 <div id="navbarMainTabs">
-                    <button className={`navbarBtn ${ dashboardIsActive ? "activeNavbarBtn" : ""}`} onClick={()=> handleNavBtnClick("dashboard")} >
+                    <button className={`navbarBtn ${dashboardIsActive ? "activeNavbarBtn" : ""}`} onClick={() => handleNavBtnClick("dashboard")} >
                         <img src={dashboardIcon} alt="dashboard icon" />
                         <span>Dashboard</span>
                     </button>
-                    <button className={`navbarBtn ${ walletIsActive ? "activeNavbarBtn" : ""}`} onClick={()=> handleNavBtnClick("wallet")} >
+                    <button className={`navbarBtn ${walletIsActive ? "activeNavbarBtn" : ""}`} onClick={() => handleNavBtnClick("wallet")} >
                         <img src={walletIcon} alt="wallet icon" />
                         <span>My Wallet</span>
                     </button>
-                    <button className={`navbarBtn ${ rankingsIsActive ? "activeNavbarBtn" : ""}`} onClick={()=> handleNavBtnClick("rankings")} >
+                    <button className={`navbarBtn ${rankingsIsActive ? "activeNavbarBtn" : ""}`} onClick={() => handleNavBtnClick("rankings")} >
                         <img src={rankingsIcon} alt="rankings icon" />
                         <span>Rankings</span>
                     </button>
-                    <button className={`navbarBtn ${ activityIsActive ? "activeNavbarBtn" : ""}`} onClick={()=> handleNavBtnClick("activity")} >
+                    <button className={`navbarBtn ${activityIsActive ? "activeNavbarBtn" : ""}`} onClick={() => handleNavBtnClick("activity")} >
                         <img src={activityIcon} alt="activity icon" />
                         <span>Activity</span>
                     </button>
-                    <button className={`navbarBtn ${ marketIsActive ? "activeNavbarBtn" : ""}`} onClick={()=> handleNavBtnClick("market")} >
+                    <button className={`navbarBtn  ${marketIsActive ? "activeNavbarBtn" : ""}`} disabled onClick={() => handleNavBtnClick("market")} >
                         <img src={marketIcon} alt="market Icon" />
                         <span>Market</span>
                     </button>
