@@ -1,11 +1,15 @@
 
-
+import "./app.css"
 import Navbar from "./components/Navbar";
+import Searchbar from "./components/Searchbar";
 
 function App() {
   return (
-    <div className="d-flex">
+    <div id="appComponent">
       <Navbar />
+      <main id="main">
+        <Searchbar />
+      </main>
     </div>
   );
 }
