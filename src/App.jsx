@@ -9,6 +9,7 @@ function App() {
       <Navbar />
       <main id="main">
         <Searchbar />
+        
       </main>
     </div>
   );

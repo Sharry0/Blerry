@@ -1,11 +1,9 @@
-
-#appComponent{
+#appComponent {
     display: flex;
 }
 
-#main{
+#main {
     height: 100vh;
     width: 100vw;
     padding: 2rem;
 }
-

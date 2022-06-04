@@ -1,7 +1,8 @@
 
-import "./styles/searchbar.css"
-import React, { useState } from 'react'
-import axios from "axios"
+import "./styles/searchbar.css";
+import React, { useState } from 'react';
+import searchIcon from "../images/icons/search_icon.svg"
+import axios from "axios";
 
 export default function Searchbar() {
     const [searchInput, setSearchInput] = useState("");
@@ -19,8 +20,15 @@ export default function Searchbar() {
     return (
         <div id='searchComponent' >
 
-            <form onSubmit={handleSearchSubmit}>
-                <input type="text" id="searchInput" value={searchInput} onChange={handleSearchInput} />
+            <form onSubmit={handleSearchSubmit} id="searchForm" >
+                <input
+                    id="searchInput"
+                    type="text"
+                    value={searchInput}
+                    onChange={handleSearchInput}
+                    placeholder="Search for anything..."
+                />
+                <img src={searchIcon} alt="search icon" id="searchIcon" />
             </form>
 
 
