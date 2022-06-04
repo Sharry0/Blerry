@@ -2,7 +2,7 @@
 import "./styles/searchbar.css";
 import React, { useState } from 'react';
 import searchIcon from "../images/icons/search_icon.svg"
-import axios from "axios";
+
 
 export default function Searchbar() {
     const [searchInput, setSearchInput] = useState("");
