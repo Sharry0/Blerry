@@ -3,6 +3,7 @@ import "./app.css"
 import Navbar from "./components/Navbar";
 import Searchbar from "./components/Searchbar";
 import Dashboard from "./components/Dashboard";
+import Activity from "./components/Activity";
 import Rankings from "./components/Rankings";
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
       <Navbar />
       <main id="main">
         <Searchbar />
-        <Rankings />
+        <Activity />
+        {/* <Rankings /> */}
         {/* <Dashboard /> */}
 
 
