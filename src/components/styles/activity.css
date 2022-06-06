@@ -1,5 +1,28 @@
+#eventsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    max-height: 80vh;
+}
 
+#eventsContainer::-webkit-scrollbar {
+    width: 15px;
+    border-radius: 2rem;
+    box-shadow: 
+    inset -5px -5px 3px rgba(74, 114, 156, 0.2),
+    inset 5px 5px 5px rgba(74, 114, 156, 0.2);
+}
 
-#activityComponent{
-    
+#eventsContainer::-webkit-scrollbar-thumb {
+    border-radius: 2rem;
+    box-shadow: 
+    inset -5px -5px 5px rgba(74, 114, 156, 0.2),
+    inset 5px 5px 5px rgba(74, 114, 156, 0.2);
+}
+
+.event {
+    width: 300px;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
 }

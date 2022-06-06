@@ -1,7 +1,9 @@
 
-
+import "../components/styles/activity.css"
 import axios from "axios";
 import { useState, useEffect } from "react"
+
+import noImage from "../images/no_image.png"
 
 export default function Activity() {
 
@@ -9,7 +11,7 @@ export default function Activity() {
     const [nextCursor, setNextCursor] = useState(null);
     const [previousCursor, setPreviousCursor] = useState(null);
 
-    const limit = 20;
+    const limit = 50;
     const eventType = "successful";
     const occuredBefore = "1654330968" // Unix timestamp 04.06.22 10:22 Uhr
     const occuredAfter = "1654330968" // Unix timestamp 04.06.22 10:22 Uhr
@@ -19,10 +21,11 @@ export default function Activity() {
         const getEventsData = async () => {
             // await axios.get(`https://testnets-api.opensea.io/api/v1/events?event_type=${eventType}&only_opensea=false&offset=${offset}&limit=${limit}&occurred_before=${occuredBefore}&occurred_after=${occuredAfter}`)
             await axios.get(`https://testnets-api.opensea.io/api/v1/events?event_type=${eventType}&only_opensea=false&limit=${limit}`)
-            .then(res=> {
-                setActivityData(res?.data?.order)
-                console.log(res)})
-            .catch(err => console.log("ERRORR",err))
+                .then(res => {
+                    setActivityData(res?.data?.asset_events)
+                    console.log(res.data.asset_events)
+                })
+                .catch(err => console.log("ERRORR", err))
         }
         // getEventsData();
 
@@ -31,12 +34,17 @@ export default function Activity() {
 
     return (
         <div id="activityComponent">
-            {
-                activityData&&activityData.map(trade => {
-                        
-                })
-            }
-
+            <h3>activit</h3>
+            <div id="eventsContainer">
+                {
+                    activityData && activityData.map(event => (
+                        <div className="event card" key={event.id} >
+                            <img src={event.asset.image_thumbnail_url ? event.asset.image_thumbnail_url : noImage} alt="" style={{ height: "100px", width: "100px" }} />
+                            <p>{event.asset.permalink}</p>
+                        </div>
+                    ))
+                }
+            </div>
 
         </div>
     )
