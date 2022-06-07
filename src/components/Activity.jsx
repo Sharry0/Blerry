@@ -11,7 +11,7 @@ export default function Activity() {
     const [nextCursor, setNextCursor] = useState(null);
     const [previousCursor, setPreviousCursor] = useState(null);
 
-    const limit = 50;
+    const limit = 200;
     const eventType = "successful";
     const occuredBefore = "1654330968" // Unix timestamp 04.06.22 10:22 Uhr
     const occuredAfter = "1654330968" // Unix timestamp 04.06.22 10:22 Uhr
@@ -23,11 +23,11 @@ export default function Activity() {
             await axios.get(`https://testnets-api.opensea.io/api/v1/events?event_type=${eventType}&only_opensea=false&limit=${limit}`)
                 .then(res => {
                     setActivityData(res?.data?.asset_events)
-                    console.log(res.data.asset_events)
+                    // console.log(res.data.asset_events)
                 })
                 .catch(err => console.log("ERRORR", err))
         }
-        // getEventsData();
+        getEventsData();
 
     }, [])
 
@@ -39,8 +39,37 @@ export default function Activity() {
                 {
                     activityData && activityData.map(event => (
                         <div className="event card" key={event.id} >
-                            <img src={event.asset.image_thumbnail_url ? event.asset.image_thumbnail_url : noImage} alt="" style={{ height: "100px", width: "100px" }} />
-                            <p>{event.asset.permalink}</p>
+                            <div id="imgContainer">
+                                {/* __________ Image section of the cards ___________________ */}
+                                {
+                                    event?.asset?.image_preview_url ?
+                                        <img
+                                            src={event?.asset?.image_preview_url}
+                                            alt="NFT"
+                                            style={{ maxHeight: "150px", maxWidth: "150px" }}
+                                        />
+                                        : event.asset_bundle ?
+                                            <div>
+                                                <img
+                                                    src={event.asset_bundle.assets[0].image_preview_url ? event.asset_bundle.assets[0].image_preview_url : noImage}
+                                                    alt="NFT"
+                                                    style={{ maxHeight: "75px", maxWidth: "75px", margin: "5px" }}
+                                                />
+                                                <img
+                                                    src={event.asset_bundle.assets[1].image_preview_url ? event.asset_bundle.assets[0].image_preview_url : noImage}
+                                                    alt="NFT"
+                                                    style={{ maxHeight: "75px", maxWidth: "75px", margin: "5px" }}
+                                                />
+                                            </div>
+                                            :
+                                            <img src={noImage} alt="No pic available" style={{ maxHeight: "150px", maxWidth: "150px" }} />
+                                }
+                            </div>
+                            {
+                                event?.asset?.permalink ? <a href={event?.asset?.permalink}> Link to opensea</a>
+                                    : event?.asset_bundle?.permalink && <a href={event?.asset_bundle?.permalink}> Link to opensea</a>
+                            }
+
                         </div>
                     ))
                 }
