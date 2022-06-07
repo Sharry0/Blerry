@@ -8,16 +8,16 @@
 #eventsContainer::-webkit-scrollbar {
     width: 15px;
     border-radius: 2rem;
-    box-shadow: 
-    inset -5px -5px 3px rgba(74, 114, 156, 0.2),
-    inset 5px 5px 5px rgba(74, 114, 156, 0.2);
+    box-shadow:
+        inset -5px -5px 3px rgba(74, 114, 156, 0.2),
+        inset 5px 5px 5px rgba(74, 114, 156, 0.2);
 }
 
 #eventsContainer::-webkit-scrollbar-thumb {
     border-radius: 2rem;
-    box-shadow: 
-    inset -5px -5px 5px rgba(74, 114, 156, 0.2),
-    inset 5px 5px 5px rgba(74, 114, 156, 0.2);
+    box-shadow:
+        inset -5px -5px 5px rgba(74, 114, 156, 0.2),
+        inset 5px 5px 5px rgba(74, 114, 156, 0.2);
 }
 
 .event {
@@ -25,11 +25,44 @@
     margin: 1rem;
     display: flex;
     flex-direction: column;
+    box-shadow:
+        10px 10px 40px rgba(74, 113, 156, 0.3),
+        inset -5px -5px 5px rgba(74, 114, 156, 0.5),
+        inset 5px 5px 5px rgba(74, 114, 156, 0.3);
 }
 
-#imgContainer{
-    max-width: 300px;
+#imgSection {
+    width: 300px;
+    height: 200px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
 
+}
+
+#imgOutline {
+    width: 165px;
+    height: 165px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    /* box-shadow: 
+    10px 10px 40px rgba(74, 113, 156, 0.4), 
+    inset -5px -5px 5px rgba(74, 114, 156, 0.5),
+    inset 5px 5px 5px rgba(74, 114, 156, 0.3); */
+}
+
+.img {
+    height: 150px;
+    width: 150px;
+    object-fit: contain;
+    border-radius: 5px;
+
+}
+
+.imgBundle {
+    max-height: 75px;
+    max-width: 75px;
 }

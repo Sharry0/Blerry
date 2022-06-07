@@ -39,31 +39,33 @@ export default function Activity() {
                 {
                     activityData && activityData.map(event => (
                         <div className="event card" key={event.id} >
-                            <div id="imgContainer">
-                                {/* __________ Image section of the cards ___________________ */}
-                                {
-                                    event?.asset?.image_preview_url ?
-                                        <img
-                                            src={event?.asset?.image_preview_url}
-                                            alt="NFT"
-                                            style={{ maxHeight: "150px", maxWidth: "150px" }}
-                                        />
-                                        : event.asset_bundle ?
-                                            <div>
-                                                <img
-                                                    src={event.asset_bundle.assets[0].image_preview_url ? event.asset_bundle.assets[0].image_preview_url : noImage}
-                                                    alt="NFT"
-                                                    style={{ maxHeight: "75px", maxWidth: "75px", margin: "5px" }}
-                                                />
-                                                <img
-                                                    src={event.asset_bundle.assets[1].image_preview_url ? event.asset_bundle.assets[0].image_preview_url : noImage}
-                                                    alt="NFT"
-                                                    style={{ maxHeight: "75px", maxWidth: "75px", margin: "5px" }}
-                                                />
-                                            </div>
-                                            :
-                                            <img src={noImage} alt="No pic available" style={{ maxHeight: "150px", maxWidth: "150px" }} />
-                                }
+                            <div id="imgSection">
+                                <div id="imgOutline">
+                                    {/* __________ Image section of the cards ___________________ */}
+                                    {
+                                        event?.asset?.image_preview_url ?
+                                            <img
+                                                src={event?.asset?.image_preview_url}
+                                                alt="NFT"
+                                                className="img"
+                                            />
+                                            : event.asset_bundle ?
+                                                <div>
+                                                    <img
+                                                        src={event.asset_bundle.assets[0].image_preview_url ? event.asset_bundle.assets[0].image_preview_url : noImage}
+                                                        alt="NFT"
+                                                        className="imgBundle"
+                                                    />
+                                                    <img
+                                                        src={event.asset_bundle.assets[1].image_preview_url ? event.asset_bundle.assets[0].image_preview_url : noImage}
+                                                        alt="NFT"
+                                                        className="imgBundle"
+                                                    />
+                                                </div>
+                                                :
+                                                <img src={noImage} alt="No pic available" className="img" />
+                                    }
+                                </div>
                             </div>
                             {
                                 event?.asset?.permalink ? <a href={event?.asset?.permalink}> Link to opensea</a>
