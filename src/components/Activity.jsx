@@ -34,7 +34,6 @@ export default function Activity() {
 
     return (
         <div id="activityComponent">
-            <h3>activit</h3>
             <div id="eventsContainer">
                 {
                     activityData && activityData.map(event => (
