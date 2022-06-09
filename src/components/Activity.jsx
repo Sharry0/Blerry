@@ -13,13 +13,13 @@ export default function Activity() {
 
     const limit = 20;
     const eventType = "successful";
-    const occuredBefore = "1654330968" // Unix timestamp 04.06.22 10:22 Uhr
-    const occuredAfter = "1654330968" // Unix timestamp 04.06.22 10:22 Uhr
+    const occuredBefore = "1654330968"; // Unix timestamp 04.06.22 10:22 Uhr
+    const occuredAfter = "1654330968"; // Unix timestamp 04.06.22 10:22 Uhr
 
     useEffect(() => {
         getEventsData();
         console.log("effect running")
-    }, [])
+    }, []);
 
     const getEventsData = async (cursor = false) => {
         // await axios.get(`https://testnets-api.opensea.io/api/v1/events?event_type=${eventType}&only_opensea=false&offset=${offset}&limit=${limit}&occurred_before=${occuredBefore}&occurred_after=${occuredAfter}`)
@@ -31,12 +31,9 @@ export default function Activity() {
                 setPreviousCursor(res?.data?.previous)
                 setNextCursor(res?.data?.next)
                 // console.log(res.data)
-
             })
             .catch(err => console.log("ERRORR", err))
-    }
-
-
+    };
 
     return (
         <div id="activityComponent">
@@ -93,27 +90,23 @@ export default function Activity() {
             </div>
             <div id="pageBtns">
                 {/* __________ Previous button ______________________________________ */}
-
                 <button
-                    disabled={previousCursor !== null ? false : true}
+                    disabled={previousCursor === null ? true : false}
                     onClick={() => getEventsData(previousCursor)}
-                    className="pageButton"
+                    className="pageButton "
                 >
                     prev
                 </button>
-
                 {/* __________ Next button ______________________________________ */}
-
                 <button
-                    disabled={nextCursor !== null ? false : true}
+                    disabled={nextCursor === null ? true : false}
                     onClick={() => getEventsData(nextCursor)}
-                    className="pageButton"
+                    className="pageButton "
                 >
                     next
                 </button>
-
             </div>
 
         </div>
     )
-}
+};

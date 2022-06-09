@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import "./styles/navbar.css";
 // _____ Images & Icons __________________________________________
@@ -14,90 +14,46 @@ import settingsIcon from "../images/icons/settings_icon.svg"
 
 export default function Navbar() {
 
-    const [dashboardIsActive, setDashboardActive] = useState(true);
-    const [walletIsActive, setWalletActive] = useState(false);
-    const [rankingsIsActive, setRankingsActive] = useState(false);
-    const [activityIsActive, setActivityActive] = useState(false);
-    const [marketIsActive, setMarketActive] = useState(false);
-
-    const handleNavBtnClick = (btnName) => {
-        const setOtherStatsFalse = (funcOne, funcTwo, funcThree, funcFour) => {
-            funcOne(false);
-            funcTwo(false);
-            funcThree(false);
-            funcFour(false);
-        }
-        switch (btnName) {
-            case "dashboard":
-                setDashboardActive(true);
-                setOtherStatsFalse(setWalletActive, setRankingsActive, setActivityActive, setMarketActive);
-                break;
-            case "wallet":
-                setWalletActive(true);
-                setOtherStatsFalse(setDashboardActive, setRankingsActive, setActivityActive, setMarketActive);
-                break;
-            case "rankings":
-                setRankingsActive(true);
-                setOtherStatsFalse(setDashboardActive, setWalletActive, setActivityActive, setMarketActive);
-                break;
-            case "activity":
-                setActivityActive(true);
-                setOtherStatsFalse(setDashboardActive, setWalletActive, setRankingsActive, setMarketActive);
-                break;
-            case "market":
-                setMarketActive(true);
-                setOtherStatsFalse(setDashboardActive, setWalletActive, setRankingsActive, setActivityActive);
-                break;
-            default:
-                break;
-        }
-    }
-
     return (
         <div id="navComponent">
             <div id="navbarSide">
                 {/* ______ upper half buttons on the navbar ________________________ */}
                 <nav id="navbarMainTabs">
-                    <Link
+                    <NavLink
                     to="/"
-                    className={`navbarBtn ${dashboardIsActive && "activeNavbarBtn"}`} 
-                    onClick={() => handleNavBtnClick("dashboard")} 
+                    className={({isActive})=> isActive ? `navbarBtn activeNavbarBtn`: `navbarBtn`} 
                     >
                         <img src={dashboardIcon} alt="dashboard icon" />
                         <span>Dashboard</span>
-                    </Link>
-                    <Link
+                    </NavLink>
+                    <NavLink
                     to="/wallet"
-                    className={`navbarBtn ${walletIsActive && "activeNavbarBtn"}`} 
-                    onClick={() => handleNavBtnClick("wallet")} 
+                    className={({isActive})=> isActive ? `navbarBtn activeNavbarBtn`: `navbarBtn`} 
                     >
                         <img src={walletIcon} alt="wallet icon" />
                         <span>My Wallet</span>
-                    </Link>
-                    <Link
+                    </NavLink>
+                    <NavLink
                     to="/rankings"
-                    className={`navbarBtn ${rankingsIsActive && "activeNavbarBtn"}`} 
-                    onClick={() => handleNavBtnClick("rankings")} 
+                    className={({isActive})=> isActive ? `navbarBtn activeNavbarBtn`: `navbarBtn`} 
                     >
                         <img src={rankingsIcon} alt="rankings icon" />
                         <span>Rankings</span>
-                    </Link>
-                    <Link
+                    </NavLink>
+                    <NavLink
                     to="/activity"
-                    className={`navbarBtn ${activityIsActive && "activeNavbarBtn"}`} 
-                    onClick={() => handleNavBtnClick("activity")} 
+                    className={({isActive})=> isActive ? `navbarBtn activeNavbarBtn`: `navbarBtn`} 
                     >
                         <img src={activityIcon} alt="activity icon" />
                         <span>Activity</span>
-                    </Link>
-                    <Link 
+                    </NavLink>
+                    <NavLink 
                     to="/market"
-                    className={`navbarBtn  ${marketIsActive && "activeNavbarBtn"}`} 
-                    onClick={() => handleNavBtnClick("market")} 
+                    className={({isActive})=> isActive ? `navbarBtn activeNavbarBtn`: `navbarBtn`} 
                     >
                         <img src={marketIcon} alt="market Icon" />
                         <span>Market</span>
-                    </Link>
+                    </NavLink>
                 </nav>
                 {/* ______ lower half buttons & logo on the navbar ________________________ */}
                 <div id="navbarFooter">
