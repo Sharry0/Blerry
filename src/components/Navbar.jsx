@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./styles/navbar.css";
 // _____ Images & Icons __________________________________________
@@ -56,28 +57,48 @@ export default function Navbar() {
         <div id="navComponent">
             <div id="navbarSide">
                 {/* ______ upper half buttons on the navbar ________________________ */}
-                <div id="navbarMainTabs">
-                    <button className={`navbarBtn ${dashboardIsActive ? "activeNavbarBtn" : ""}`} onClick={() => handleNavBtnClick("dashboard")} >
+                <nav id="navbarMainTabs">
+                    <Link
+                    to="/"
+                    className={`navbarBtn ${dashboardIsActive && "activeNavbarBtn"}`} 
+                    onClick={() => handleNavBtnClick("dashboard")} 
+                    >
                         <img src={dashboardIcon} alt="dashboard icon" />
                         <span>Dashboard</span>
-                    </button>
-                    <button className={`navbarBtn ${walletIsActive ? "activeNavbarBtn" : ""}`} onClick={() => handleNavBtnClick("wallet")} >
+                    </Link>
+                    <Link
+                    to="/wallet"
+                    className={`navbarBtn ${walletIsActive && "activeNavbarBtn"}`} 
+                    onClick={() => handleNavBtnClick("wallet")} 
+                    >
                         <img src={walletIcon} alt="wallet icon" />
                         <span>My Wallet</span>
-                    </button>
-                    <button className={`navbarBtn ${rankingsIsActive ? "activeNavbarBtn" : ""}`} onClick={() => handleNavBtnClick("rankings")} >
+                    </Link>
+                    <Link
+                    to="/rankings"
+                    className={`navbarBtn ${rankingsIsActive && "activeNavbarBtn"}`} 
+                    onClick={() => handleNavBtnClick("rankings")} 
+                    >
                         <img src={rankingsIcon} alt="rankings icon" />
                         <span>Rankings</span>
-                    </button>
-                    <button className={`navbarBtn ${activityIsActive ? "activeNavbarBtn" : ""}`} onClick={() => handleNavBtnClick("activity")} >
+                    </Link>
+                    <Link
+                    to="/activity"
+                    className={`navbarBtn ${activityIsActive && "activeNavbarBtn"}`} 
+                    onClick={() => handleNavBtnClick("activity")} 
+                    >
                         <img src={activityIcon} alt="activity icon" />
                         <span>Activity</span>
-                    </button>
-                    <button className={`navbarBtn  ${marketIsActive ? "activeNavbarBtn" : ""}`} disabled onClick={() => handleNavBtnClick("market")} >
+                    </Link>
+                    <Link 
+                    to="/market"
+                    className={`navbarBtn  ${marketIsActive && "activeNavbarBtn"}`} 
+                    onClick={() => handleNavBtnClick("market")} 
+                    >
                         <img src={marketIcon} alt="market Icon" />
                         <span>Market</span>
-                    </button>
-                </div>
+                    </Link>
+                </nav>
                 {/* ______ lower half buttons & logo on the navbar ________________________ */}
                 <div id="navbarFooter">
                     <div>

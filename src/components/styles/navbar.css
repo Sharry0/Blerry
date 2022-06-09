@@ -36,6 +36,11 @@
     align-self: flex-start;
     display: flex;
     align-items: center;
+    text-decoration: none;
+}
+
+.navbarBtn:hover{
+    color: #333944;
 }
 
 .navbarBtn img {

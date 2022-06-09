@@ -1,5 +1,8 @@
 
 import "./app.css"
+import { Routes, Route } from "react-router-dom";
+
+// _____ Components ___________________________
 import Navbar from "./components/Navbar";
 import Searchbar from "./components/Searchbar";
 import Dashboard from "./components/Dashboard";
@@ -17,7 +20,10 @@ function App() {
       <Navbar />
       <main id="main">
         <Searchbar />
-        <Activity />
+        <Routes>
+          <Route path="/activity" element={<Activity />} />
+          <Route />
+        </Routes>
         {/* <Rankings /> */}
         {/* <Dashboard /> */}
 
