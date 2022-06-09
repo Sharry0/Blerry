@@ -35,15 +35,17 @@ export default function Activity() {
             })
             .catch(err => console.log("ERRORR", err))
     }
-    
+
 
 
     return (
         <div id="activityComponent">
+            {/* __________ Container of all events ______________________________________________ */}
             <div id="eventsContainer">
                 {
                     activityData && activityData.map(event => (
                         <div className="event card" key={event.id} >
+                            {/* __________ Container of a single event (NFT) ____________________ */}
                             <div id="imgSection">
                                 <div id="imgOutline">
                                     {/* __________ Image section of the cards ___________________ */}
@@ -57,12 +59,20 @@ export default function Activity() {
                                             : event.asset_bundle ?
                                                 <div>
                                                     <img
-                                                        src={event.asset_bundle.assets[0].image_preview_url ? event.asset_bundle.assets[0].image_preview_url : noImage}
+                                                        src={
+                                                            event.asset_bundle.assets[0].image_preview_url ?
+                                                                event.asset_bundle.assets[0].image_preview_url
+                                                                : noImage
+                                                        }
                                                         alt="NFT"
                                                         className="imgBundle"
                                                     />
                                                     <img
-                                                        src={event.asset_bundle.assets[1].image_preview_url ? event.asset_bundle.assets[0].image_preview_url : noImage}
+                                                        src={
+                                                            event.asset_bundle.assets[1].image_preview_url ?
+                                                                event.asset_bundle.assets[0].image_preview_url
+                                                                : noImage
+                                                        }
                                                         alt="NFT"
                                                         className="imgBundle"
                                                     />
@@ -82,8 +92,26 @@ export default function Activity() {
                 }
             </div>
             <div id="pageBtns">
-               {previousCursor && <button onClick={()=> getEventsData(previousCursor)}>prev</button>}
-               {nextCursor && <button onClick={()=> getEventsData(nextCursor)}>next</button>}
+                {/* __________ Previous button ______________________________________ */}
+
+                <button
+                    disabled={previousCursor !== null ? false : true}
+                    onClick={() => getEventsData(previousCursor)}
+                    className="pageButton"
+                >
+                    prev
+                </button>
+
+                {/* __________ Next button ______________________________________ */}
+
+                <button
+                    disabled={nextCursor !== null ? false : true}
+                    onClick={() => getEventsData(nextCursor)}
+                    className="pageButton"
+                >
+                    next
+                </button>
+
             </div>
 
         </div>
