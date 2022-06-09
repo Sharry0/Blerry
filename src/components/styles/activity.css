@@ -1,3 +1,9 @@
+
+#activityComponent{
+    display: flex;
+    flex-direction: column;
+}
+
 #eventsContainer {
     display: flex;
     flex-wrap: wrap;
@@ -59,10 +65,15 @@
     max-width: 150px;
     object-fit: contain;
     border-radius: 5px;
-
 }
 
 .imgBundle {
     max-height: 75px;
     max-width: 75px;
+}
+
+#pageBtns{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
 }
