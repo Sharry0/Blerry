@@ -10,7 +10,6 @@ export default function Activity() {
     const [activityData, setActivityData] = useState(null);
     const [nextCursor, setNextCursor] = useState(null);
     const [previousCursor, setPreviousCursor] = useState(null);
-    const [runEffect, setRunEffect] = useState(false);
 
     const limit = 20;
     const eventType = "successful";
@@ -19,8 +18,8 @@ export default function Activity() {
 
     useEffect(() => {
         getEventsData();
-        setRunEffect(runEffect)
-    }, [runEffect])
+        console.log("effect running")
+    }, [])
 
     const getEventsData = async (cursor = false) => {
         // await axios.get(`https://testnets-api.opensea.io/api/v1/events?event_type=${eventType}&only_opensea=false&offset=${offset}&limit=${limit}&occurred_before=${occuredBefore}&occurred_after=${occuredAfter}`)
@@ -32,7 +31,7 @@ export default function Activity() {
                 setPreviousCursor(res?.data?.previous)
                 setNextCursor(res?.data?.next)
                 // console.log(res.data)
-                console.log("effect running")
+
             })
             .catch(err => console.log("ERRORR", err))
     }
@@ -83,8 +82,8 @@ export default function Activity() {
                 }
             </div>
             <div id="pageBtns">
-                <button onClick={()=> getEventsData(previousCursor)}>prev</button>
-                <button onClick={()=> getEventsData(nextCursor)}>next</button>
+               {previousCursor && <button onClick={()=> getEventsData(previousCursor)}>prev</button>}
+               {nextCursor && <button onClick={()=> getEventsData(nextCursor)}>next</button>}
             </div>
 
         </div>
