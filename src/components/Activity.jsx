@@ -2,6 +2,7 @@
 import "../components/styles/activity.css"
 import axios from "axios";
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom";
 
 import noImage from "../images/no_image.png"
 
@@ -79,11 +80,14 @@ export default function Activity() {
                                     }
                                 </div>
                             </div>
+                            <p>From: {event.seller.address.slice(2, 6)}...{event.seller.address.slice(10)}</p>
+                            <p>Price: {event.payment_token?.eth_price}</p>
+                            <p>To: {event.winner_account.address.slice(2, 6)}...{event.winner_account.address.slice(10)}</p>
+
                             {
                                 event?.asset?.permalink ? <a href={event?.asset?.permalink}> Link to opensea</a>
                                     : event?.asset_bundle?.permalink && <a href={event?.asset_bundle?.permalink}> Link to opensea</a>
                             }
-
                         </div>
                     ))
                 }
