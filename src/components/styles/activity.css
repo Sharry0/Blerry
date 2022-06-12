@@ -44,8 +44,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid red; */
-
 }
 
 #imgOutline {
@@ -72,6 +70,21 @@
     max-height: 75px;
     max-width: 75px;
 }
+
+#infoSection{
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.openseaLink{
+    
+}
+
+
 
 #pageBtns{
     margin-top: 1rem;
