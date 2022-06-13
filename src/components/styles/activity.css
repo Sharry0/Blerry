@@ -77,11 +77,20 @@
     font-weight: bold;
     display: flex;
     flex-direction: column;
-    
 }
 
-.openseaLink{
-    
+.infoRows{
+    margin-bottom: 0.5rem;
+}
+
+#priceSection{
+    display: flex;
+    align-items: center;
+}
+
+#priceSymbol{
+    height: 25px;
+    margin-left: 0.3rem;
 }
 
 

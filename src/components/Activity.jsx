@@ -2,6 +2,8 @@
 import "../components/styles/activity.css"
 import axios from "axios";
 import { useState, useEffect } from "react"
+import WethIcon from "../images/icons/WETH_icon.svg"
+import EthIcon from "../images/icons/ETH_icon.svg"
 import { Link } from "react-router-dom";
 
 import noImage from "../images/no_image.png"
@@ -55,27 +57,28 @@ export default function Activity() {
 
     const getTransactionTime = (sellTime) => {
 
-        const rtf = new Intl.RelativeTimeFormat("en", {numeric: "always"});
+        const rtf = new Intl.RelativeTimeFormat("en", { numeric: "always" });
         const sellTimeInMillisec = Date.parse(sellTime + "Z");
         const timeNow = Date.now();
         const timeAgo = timeNow - sellTimeInMillisec;
+
         // if timeAgo is smaller than 1 min
-        if (timeAgo < 60000) return rtf.format(-(Math.floor(timeAgo / 1000)), "second");; 
+        if (timeAgo < 60000) return rtf.format(-(Math.floor(timeAgo / 1000)), "second");;
 
         // if timeAgo is smaller than 1 hour
-        if(timeAgo < 3600000) return rtf.format(-(Math.floor(timeAgo / 60000)), "minute");
+        if (timeAgo < 3600000) return rtf.format(-(Math.floor(timeAgo / 60000)), "minute");
 
         // if timeAgo is smaller than 1 day
-        if(timeAgo < 86400000) return rtf.format(-(Math.floor(timeAgo / 3600000)), "hour");;
+        if (timeAgo < 86400000) return rtf.format(-(Math.floor(timeAgo / 3600000)), "hour");;
 
         // if timeAgo is smaller than 1 month
-        if(timeAgo < 2628000000) return rtf.format(-(Math.floor(timeAgo / 86400000)), "day");
+        if (timeAgo < 2628000000) return rtf.format(-(Math.floor(timeAgo / 86400000)), "day");
 
         // if timeAgo is smaller than 1 year
-        if(timeAgo < 31526000000) return rtf.format(-(Math.floor(timeAgo / 2628000000)), "month");
+        if (timeAgo < 31526000000) return rtf.format(-(Math.floor(timeAgo / 2628000000)), "month");
 
         // if timeAgo is bigger than 1 year
-        if(timeAgo > 31526000000) return rtf.format(-(Math.floor(timeAgo / 31526000000)), "year");
+        if (timeAgo > 31526000000) return rtf.format(-(Math.floor(timeAgo / 31526000000)), "year");
     };
 
     return (
@@ -124,10 +127,13 @@ export default function Activity() {
                             </div>
                             <div id="infoSection">
 
-                                <p>From: {event.seller.address.slice(0, 6)}...{event.seller.address.slice(38)}</p>
-                                <p>Price: {convertToPrice(18, event.total_price)}</p>
-                                <p>To: {event.winner_account.address.slice(0, 6)}...{event.winner_account.address.slice(38)}</p>
-                                <p> {getTransactionTime(event.event_timestamp)} </p>
+                                <div className="infoRows">From: {event.seller.address.slice(0, 6)}...{event.seller.address.slice(38)}</div>
+                                <div className="infoRows" id="priceSection">
+                                    <span>Price: {convertToPrice(18, event.total_price)}</span>
+                                    <img src={event.payment_token.symbol === "WETH" ? WethIcon : EthIcon } alt="" id="priceSymbol" />
+                                </div>
+                                <div className="infoRows">To: {event.winner_account.address.slice(0, 6)}...{event.winner_account.address.slice(38)}</div>
+                                <div className="infoRows"> {getTransactionTime(event.event_timestamp)} </div>
                                 {
                                     event?.asset?.permalink ? <a href={event?.asset?.permalink} className="openseaLink"> Link to opensea</a>
                                         : event?.asset_bundle?.permalink && <a href={event?.asset_bundle?.permalink} className="openseaLink"> Link to opensea</a>
