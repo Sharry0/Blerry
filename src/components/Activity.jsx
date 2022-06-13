@@ -44,6 +44,7 @@ export default function Activity() {
         if (totalPrice === "0") return "0";
 
         if (totalPrice.length < 19) {
+            if (totalPrice.length < 16) return "< 0.001"
             const convertNum = totalPrice.padStart(18, 0);
             const beforeDecimal = "0";
             return parseFloat(beforeDecimal.concat(".", convertNum));
@@ -52,6 +53,8 @@ export default function Activity() {
         if (totalPrice.length >= 19) {
             const beforeDecimal = totalPrice.slice(0, totalPrice.length - decimal);
             const afterDecimal = totalPrice.slice(totalPrice.length - decimal);
+            const afterDecimalFloat = parseFloat("0."+afterDecimal);
+            if(afterDecimalFloat.toString().length > 5) return parseFloat(beforeDecimal + "." + afterDecimal).toPrecision(5)
             return parseFloat(beforeDecimal + "." + afterDecimal);
         };
     };
@@ -131,7 +134,7 @@ export default function Activity() {
                                 <div className="infoRows">From: {event.seller.address.slice(0, 6)}...{event.seller.address.slice(38)}</div>
                                 <div className="infoRows" id="priceSection">
                                     <span>Price: {convertToPrice(18, event.total_price)}</span>
-                                    <img src={event.payment_token.symbol === "WETH" ? WethIcon : EthIcon} alt="price symbol" id="priceSymbol" />
+                                    <img src={event.payment_token?.symbol === "WETH" ? WethIcon : EthIcon} alt="price symbol" id="priceSymbol" />
                                 </div>
                                 <div className="infoRows">To: {event.winner_account.address.slice(0, 6)}...{event.winner_account.address.slice(38)}</div>
                                 <div className="infoRows"> {getTransactionTime(event.event_timestamp)} </div>
