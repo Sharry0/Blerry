@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from "react"
 import WethIcon from "../images/icons/WETH_icon.svg"
 import EthIcon from "../images/icons/ETH_icon.svg"
+import OpenseaDark from "../images/OpenseaDark.svg"
 import { Link } from "react-router-dom";
 
 import noImage from "../images/no_image.png"
@@ -130,13 +131,19 @@ export default function Activity() {
                                 <div className="infoRows">From: {event.seller.address.slice(0, 6)}...{event.seller.address.slice(38)}</div>
                                 <div className="infoRows" id="priceSection">
                                     <span>Price: {convertToPrice(18, event.total_price)}</span>
-                                    <img src={event.payment_token.symbol === "WETH" ? WethIcon : EthIcon } alt="" id="priceSymbol" />
+                                    <img src={event.payment_token.symbol === "WETH" ? WethIcon : EthIcon} alt="price symbol" id="priceSymbol" />
                                 </div>
                                 <div className="infoRows">To: {event.winner_account.address.slice(0, 6)}...{event.winner_account.address.slice(38)}</div>
                                 <div className="infoRows"> {getTransactionTime(event.event_timestamp)} </div>
                                 {
-                                    event?.asset?.permalink ? <a href={event?.asset?.permalink} className="openseaLink"> Link to opensea</a>
-                                        : event?.asset_bundle?.permalink && <a href={event?.asset_bundle?.permalink} className="openseaLink"> Link to opensea</a>
+                                    event?.asset?.permalink ?
+                                        <a href={event?.asset?.permalink} target="_blank" rel="noreferrer">
+                                            <img src={OpenseaDark} alt="Opensea Link" className="openseaLink" />
+                                        </a>
+                                        : event?.asset_bundle?.permalink && 
+                                        <a href={event?.asset_bundle?.permalink} target="_blank" rel="noreferrer">
+                                            <img src={OpenseaDark} alt="Opensea Link" className="openseaLink" />
+                                        </a>
                                 }
                             </div>
                         </div>
