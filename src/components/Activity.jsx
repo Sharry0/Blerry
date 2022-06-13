@@ -12,7 +12,7 @@ export default function Activity() {
     const [nextCursor, setNextCursor] = useState(null);
     const [previousCursor, setPreviousCursor] = useState(null);
 
-    const limit = 2;
+    const limit = 20;
     const eventType = "successful";
     const occuredBefore = "1654330968"; // Unix timestamp 04.06.22 10:22 Uhr
     const occuredAfter = "1654330968"; // Unix timestamp 04.06.22 10:22 Uhr
@@ -59,24 +59,23 @@ export default function Activity() {
         const sellTimeInMillisec = Date.parse(sellTime + "Z");
         const timeNow = Date.now();
         const timeAgo = timeNow - sellTimeInMillisec;
-
         // if timeAgo is smaller than 1 min
-        if (timeAgo < 60000) return rtf.format(Math.floor(timeAgo / -1000), "second");; 
+        if (timeAgo < 60000) return rtf.format(-(Math.floor(timeAgo / 1000)), "second");; 
 
         // if timeAgo is smaller than 1 hour
-        if(timeAgo < 3600000) return rtf.format(Math.floor(timeAgo / -60000), "minute");
+        if(timeAgo < 3600000) return rtf.format(-(Math.floor(timeAgo / 60000)), "minute");
 
         // if timeAgo is smaller than 1 day
-        if(timeAgo < 86400000) return rtf.format(Math.floor(timeAgo / -3600000), "hour");;
+        if(timeAgo < 86400000) return rtf.format(-(Math.floor(timeAgo / 3600000)), "hour");;
 
         // if timeAgo is smaller than 1 month
-        if(timeAgo < 2628000000) return rtf.format(Math.floor(timeAgo / -86400000), "day");
+        if(timeAgo < 2628000000) return rtf.format(-(Math.floor(timeAgo / 86400000)), "day");
 
         // if timeAgo is smaller than 1 year
-        if(timeAgo < 31526000000) return rtf.format(Math.floor(timeAgo / -2628000000), "month");
+        if(timeAgo < 31526000000) return rtf.format(-(Math.floor(timeAgo / 2628000000)), "month");
 
         // if timeAgo is bigger than 1 year
-        if(timeAgo > 31526000000) return rtf.format(Math.floor(timeAgo / -31526000000), "year");
+        if(timeAgo > 31526000000) return rtf.format(-(Math.floor(timeAgo / 31526000000)), "year");
     };
 
     return (
