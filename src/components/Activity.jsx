@@ -16,9 +16,10 @@ export default function Activity() {
     const [activityData, setActivityData] = useState(null);
     const [nextCursor, setNextCursor] = useState(null);
     const [previousCursor, setPreviousCursor] = useState(null);
+    const [eventType, setEventType] = useState("successful");
 
     const limit = 20;
-    const eventType = "created";
+    // const eventType = "created";
     const occuredBefore = "1654330968"; // Unix timestamp 04.06.22 10:22 Uhr
     const occuredAfter = "1654330968"; // Unix timestamp 04.06.22 10:22 Uhr
 
@@ -148,7 +149,7 @@ export default function Activity() {
                                 <div className="infoRows" id="priceSection">
                                     <span>
                                         Price: {
-                                            event.event_type === "succesful" ?
+                                            event.event_type === "successful" ?
                                                 convertToPrice(event?.payment_token?.decimals, event.total_price)
                                                 : event.event_type === "created" &&
                                                 convertToPrice(event?.payment_token?.decimals, event.starting_price)
@@ -158,7 +159,7 @@ export default function Activity() {
                                 </div>
                                 <div className="infoRows">
                                     To:
-                                    {event.event_type === "succesful" ?
+                                    {event.event_type === "successful" ?
                                         `${event.winner_account?.address.slice(0, 6)}...${event.winner_account?.address.slice(38)}`
                                         : event.event_type === "created" &&
                                         ` --- `
