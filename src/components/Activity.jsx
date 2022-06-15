@@ -1,7 +1,7 @@
 
 import "../components/styles/activity.css"
 import axios from "axios";
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import WethIcon from "../images/icons/WETH_icon.svg"
 import EthIcon from "../images/icons/ETH_icon.svg"
 import OpenseaDark from "../images/OpenseaDark.svg"
@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import noImage from "../images/no_image.png"
 
 export default function Activity() {
+
+    const topActivity = useRef(null)
 
     const [activityData, setActivityData] = useState(null);
     const [nextCursor, setNextCursor] = useState(null);
@@ -37,6 +39,7 @@ export default function Activity() {
                 // console.log(res.data)
             })
             .catch(err => console.log("ERRORR", err))
+            topActivity?.current?.scrollIntoView()
     };
 
     const convertToPrice = (decimal = 18, totalPrice) => {
@@ -90,8 +93,10 @@ export default function Activity() {
             {/* __________ Container of all events ______________________________________________ */}
             <div id="eventsContainer">
                 {
-                    activityData && activityData.map(event => (
-                        <div className="event card" key={event.id} >
+                    activityData && activityData.map((event, i) => (
+                        <div className="event card" key={event.id}  >
+                            {/* __________ create a div with a ref to scroll to after clicking next / prev btn _____*/}
+                            {i===0 && <div ref={topActivity}></div>}
                             {/* __________ Container of a single event (NFT) ____________________ */}
                             <div id="imgSection">
                                 <div id="imgOutline">
