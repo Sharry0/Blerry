@@ -92,12 +92,14 @@ export default function Activity() {
         if (timeAgo > 31526000000) return rtf.format(-(Math.floor(timeAgo / 31526000000)), "year");
     };
 
+    // ___ what filters you want to add? ==> EventType, occurredBefore & occurredAfter _____
+
     return (
         <div id="activityComponent">
             <div id="filters">
-                <button>event type</button>
-                <button>occurred before</button>
-                <button>occurred bafter</button>
+                <button className="filterBtn">event type</button>
+                <button className="filterBtn">occurred before</button>
+                <button className="filterBtn">occurred bafter</button>
             </div>
             {/* __________ Container of all events ______________________________________________ */}
             <div id="eventsContainer">
@@ -151,8 +153,9 @@ export default function Activity() {
                                         Price: {
                                             event.event_type === "successful" ?
                                                 convertToPrice(event?.payment_token?.decimals, event.total_price)
-                                                : event.event_type === "created" &&
+                                                : event.event_type === "created" ?
                                                 convertToPrice(event?.payment_token?.decimals, event.starting_price)
+                                                : "---"
                                         }
                                     </span>
                                     <img src={event.payment_token?.symbol === "WETH" ? WethIcon : EthIcon} alt="price symbol" id="priceSymbol" />
