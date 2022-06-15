@@ -18,7 +18,7 @@ export default function Activity() {
     const [previousCursor, setPreviousCursor] = useState(null);
 
     const limit = 20;
-    const eventType = "successful";
+    const eventType = "created";
     const occuredBefore = "1654330968"; // Unix timestamp 04.06.22 10:22 Uhr
     const occuredAfter = "1654330968"; // Unix timestamp 04.06.22 10:22 Uhr
 
@@ -30,7 +30,10 @@ export default function Activity() {
     const getEventsData = async (cursor = false) => {
         // await axios.get(`https://testnets-api.opensea.io/api/v1/events?event_type=${eventType}&only_opensea=false&offset=${offset}&limit=${limit}&occurred_before=${occuredBefore}&occurred_after=${occuredAfter}`)
         await axios.get(
-            `https://testnets-api.opensea.io/api/v1/events?event_type=${eventType}&only_opensea=false&limit=${limit}${cursor ? `&cursor=${cursor}` : ""}`
+            `https://testnets-api.opensea.io/api/v1/events?event_type=${eventType}&only_opensea=false&limit=${limit}
+            ${cursor ? `&cursor=${cursor}` : ""}
+
+            `
         )
             .then(res => {
                 setActivityData(res?.data?.asset_events)
@@ -39,25 +42,25 @@ export default function Activity() {
                 // console.log(res.data)
             })
             .catch(err => console.log("ERRORR", err))
-            topActivity?.current?.scrollIntoView()
+        topActivity?.current?.scrollIntoView()
     };
 
     const convertToPrice = (decimal = 18, totalPrice) => {
 
         if (totalPrice === "0") return "0";
 
-        if (totalPrice.length < 19) {
-            if (totalPrice.length < 16) return "< 0.001"
+        if (totalPrice?.length < 19) {
+            if (totalPrice?.length < 16) return "< 0.001"
             const convertNum = totalPrice.padStart(18, 0);
             const beforeDecimal = "0";
             return parseFloat(beforeDecimal.concat(".", convertNum));
         };
 
-        if (totalPrice.length >= 19) {
+        if (totalPrice?.length >= 19) {
             const beforeDecimal = totalPrice.slice(0, totalPrice.length - decimal);
             const afterDecimal = totalPrice.slice(totalPrice.length - decimal);
-            const afterDecimalFloat = parseFloat("0."+afterDecimal);
-            if(afterDecimalFloat.toString().length > 5) return parseFloat(beforeDecimal + "." + afterDecimal).toPrecision(5)
+            const afterDecimalFloat = parseFloat("0." + afterDecimal);
+            if (afterDecimalFloat.toString().length > 5) return parseFloat(beforeDecimal + "." + afterDecimal).toPrecision(5)
             return parseFloat(beforeDecimal + "." + afterDecimal);
         };
     };
@@ -90,13 +93,18 @@ export default function Activity() {
 
     return (
         <div id="activityComponent">
+            <div id="filters">
+                <button>event type</button>
+                <button>occurred before</button>
+                <button>occurred bafter</button>
+            </div>
             {/* __________ Container of all events ______________________________________________ */}
             <div id="eventsContainer">
+                <div ref={topActivity}></div>
                 {
                     activityData && activityData.map((event, i) => (
                         <div className="event card" key={event.id}  >
                             {/* __________ create a div with a ref to scroll to after clicking next / prev btn _____*/}
-                            {i===0 && <div ref={topActivity}></div>}
                             {/* __________ Container of a single event (NFT) ____________________ */}
                             <div id="imgSection">
                                 <div id="imgOutline">
@@ -138,17 +146,32 @@ export default function Activity() {
 
                                 <div className="infoRows">From: {event.seller.address.slice(0, 6)}...{event.seller.address.slice(38)}</div>
                                 <div className="infoRows" id="priceSection">
-                                    <span>Price: {convertToPrice(18, event.total_price)}</span>
+                                    <span>
+                                        Price: {
+                                            event.event_type === "succesful" ?
+                                                convertToPrice(event?.payment_token?.decimals, event.total_price)
+                                                : event.event_type === "created" &&
+                                                convertToPrice(event?.payment_token?.decimals, event.starting_price)
+                                        }
+                                    </span>
                                     <img src={event.payment_token?.symbol === "WETH" ? WethIcon : EthIcon} alt="price symbol" id="priceSymbol" />
                                 </div>
-                                <div className="infoRows">To: {event.winner_account.address.slice(0, 6)}...{event.winner_account.address.slice(38)}</div>
+                                <div className="infoRows">
+                                    To:
+                                    {event.event_type === "succesful" ?
+                                        `${event.winner_account?.address.slice(0, 6)}...${event.winner_account?.address.slice(38)}`
+                                        : event.event_type === "created" &&
+                                        ` --- `
+                                    }
+
+                                </div>
                                 <div className="infoRows"> {getTransactionTime(event.event_timestamp)} </div>
                                 {
                                     event?.asset?.permalink ?
                                         <a href={event?.asset?.permalink} target="_blank" rel="noreferrer">
                                             <img src={OpenseaDark} alt="Opensea Link" className="openseaLink" />
                                         </a>
-                                        : event?.asset_bundle?.permalink && 
+                                        : event?.asset_bundle?.permalink &&
                                         <a href={event?.asset_bundle?.permalink} target="_blank" rel="noreferrer">
                                             <img src={OpenseaDark} alt="Opensea Link" className="openseaLink" />
                                         </a>

@@ -4,6 +4,12 @@
     flex-direction: column;
 }
 
+#filters{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 0.5rem;
+}
+
 #eventsContainer {
     display: flex;
     flex-wrap: wrap;
