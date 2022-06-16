@@ -17,11 +17,10 @@ export default function Activity() {
     const [nextCursor, setNextCursor] = useState(null);
     const [previousCursor, setPreviousCursor] = useState(null);
     const [eventType, setEventType] = useState("successful");
+    const [beforeDate, setBeforeDate] = useState();
+    const [afterDate, setAfterDate] = useState();
 
     const limit = 20;
-    // const eventType = "created";
-    const occuredBefore = "1654330968"; // Unix timestamp 04.06.22 10:22 Uhr
-    const occuredAfter = "1654330968"; // Unix timestamp 04.06.22 10:22 Uhr
 
     useEffect(() => {
         getEventsData();
@@ -54,7 +53,9 @@ export default function Activity() {
             if (totalPrice?.length < 16) return "< 0.001"
             const convertNum = totalPrice.padStart(18, 0);
             const beforeDecimal = "0";
-            return parseFloat(beforeDecimal.concat(".", convertNum));
+            const price = parseFloat(beforeDecimal.concat(".", convertNum));
+            if(price.toString().length > 5) return price.toPrecision(1);
+            return price
         };
 
         if (totalPrice?.length >= 19) {
@@ -159,16 +160,19 @@ export default function Activity() {
                                 </div>
                             </div>
                             <div id="infoSection">
-
+                                {/* _______ NFT name  ______________________________________________________________ */}
                                 <div>
                                     {
-                                        event.asset.name ? 
-                                        (event.asset.name.length > 20 ? `${event.asset.name.slice(0, 20)}...` : event.asset.name)
-                                        : `#${event.asset.token_id}`
+                                        event.asset.name ?
+                                            (event.asset.name.length > 20 ? `${event.asset.name.slice(0, 20)}...` : event.asset.name)
+                                            : (event.asset.token_id.length > 20 ? `#${event.asset.token_id.slice(0, 20)}...` : `#${event.asset.token_id}`)
                                     }
                                 </div>
+                                {/* _______ NFT collection name  ______________________________________________________________ */}
                                 <div className="infoRows" id="collectionName">{event.asset.collection.name}</div>
+                                {/* _______ From wallet address  ______________________________________________________________ */}
                                 <div className="infoRows">From: {event?.seller?.address.slice(0, 6)}...{event?.seller?.address.slice(38)}</div>
+                                {/* _______ Price of the NFT  ______________________________________________________________ */}
                                 <div className="infoRows" id="priceSection">
                                     <span>
                                         Price: {
@@ -179,6 +183,7 @@ export default function Activity() {
                                                     : "---"
                                         }
                                     </span>
+                                    {/* _______ Price symbol of the NFT  ______________________________________________________________ */}
                                     <img src={event.payment_token?.symbol === "WETH" ? WethIcon : EthIcon} alt="price symbol" id="priceSymbol" />
                                 </div>
                                 <div className="infoRows">
@@ -190,7 +195,9 @@ export default function Activity() {
                                     }
 
                                 </div>
+                                {/* _______ Timestamp of when the NFT transaction happend  ___________________________________________ */}
                                 <div className="infoRows"> {getTransactionTime(event.event_timestamp)} </div>
+                                {/* _______ Link to the NFT on Opensea  ___________________________________________ */}
                                 {
                                     event?.asset?.permalink ?
                                         <a href={event?.asset?.permalink} target="_blank" rel="noreferrer">
