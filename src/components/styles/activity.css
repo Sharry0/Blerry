@@ -102,6 +102,11 @@
     margin-bottom: 0.5rem;
 }
 
+#collectionName{
+    font-size: 0.8rem;
+    color: rgb(74, 114, 156);
+}
+
 #priceSection{
     display: flex;
     align-items: center;

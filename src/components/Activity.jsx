@@ -97,9 +97,24 @@ export default function Activity() {
     return (
         <div id="activityComponent">
             <div id="filters">
-                <button className="filterBtn">event type</button>
-                <button className="filterBtn">occurred before</button>
-                <button className="filterBtn">occurred bafter</button>
+                <div className="filterDropdownBtn">
+                    <button className="filterBtn">event type</button>
+                    <div className="droptdownMenu">
+
+                    </div>
+                </div>
+                <div className="filterDropdownBtn">
+                    <button className="filterBtn">occurred before</button>
+                    <div className="droptdownMenu">
+
+                    </div>
+                </div>
+                <div className="filterDropdownBtn">
+                    <button className="filterBtn">occurred bafter</button>
+                    <div className="droptdownMenu">
+
+                    </div>
+                </div>
             </div>
             {/* __________ Container of all events ______________________________________________ */}
             <div id="eventsContainer">
@@ -147,6 +162,8 @@ export default function Activity() {
                             </div>
                             <div id="infoSection">
 
+                                <div> {event.asset.name ? event.asset.name : `#${event.asset.token_id}`}</div>
+                                <div className="infoRows" id="collectionName">{event.asset.collection.name}</div>
                                 <div className="infoRows">From: {event.seller.address.slice(0, 6)}...{event.seller.address.slice(38)}</div>
                                 <div className="infoRows" id="priceSection">
                                     <span>
@@ -154,8 +171,8 @@ export default function Activity() {
                                             event.event_type === "successful" ?
                                                 convertToPrice(event?.payment_token?.decimals, event.total_price)
                                                 : event.event_type === "created" ?
-                                                convertToPrice(event?.payment_token?.decimals, event.starting_price)
-                                                : "---"
+                                                    convertToPrice(event?.payment_token?.decimals, event.starting_price)
+                                                    : "---"
                                         }
                                     </span>
                                     <img src={event.payment_token?.symbol === "WETH" ? WethIcon : EthIcon} alt="price symbol" id="priceSymbol" />
