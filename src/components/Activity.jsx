@@ -99,28 +99,26 @@ export default function Activity() {
             <div id="filters">
                 <div className="filterDropdownBtn">
                     <button className="filterBtn">event type</button>
-                    <div className="droptdownMenu">
-
+                    <div className="dropdownMenu">
+                        <button>created</button>
+                        <button>successful</button>
+                        <button>cancelled</button>
+                        <button>transfer</button>
                     </div>
                 </div>
                 <div className="filterDropdownBtn">
                     <button className="filterBtn">occurred before</button>
-                    <div className="droptdownMenu">
+                    <div className="dropdownMenu">
 
                     </div>
                 </div>
-                <div className="filterDropdownBtn">
-                    <button className="filterBtn">occurred bafter</button>
-                    <div className="droptdownMenu">
 
-                    </div>
-                </div>
             </div>
             {/* __________ Container of all events ______________________________________________ */}
             <div id="eventsContainer">
                 <div ref={topActivity}></div>
                 {
-                    activityData && activityData.map((event, i) => (
+                    activityData && activityData.map(event => (
                         <div className="event card" key={event.id}  >
                             {/* __________ create a div with a ref to scroll to after clicking next / prev btn _____*/}
                             {/* __________ Container of a single event (NFT) ____________________ */}
@@ -162,9 +160,15 @@ export default function Activity() {
                             </div>
                             <div id="infoSection">
 
-                                <div> {event.asset.name ? event.asset.name : `#${event.asset.token_id}`}</div>
+                                <div>
+                                    {
+                                        event.asset.name ? 
+                                        (event.asset.name.length > 20 ? `${event.asset.name.slice(0, 20)}...` : event.asset.name)
+                                        : `#${event.asset.token_id}`
+                                    }
+                                </div>
                                 <div className="infoRows" id="collectionName">{event.asset.collection.name}</div>
-                                <div className="infoRows">From: {event.seller.address.slice(0, 6)}...{event.seller.address.slice(38)}</div>
+                                <div className="infoRows">From: {event?.seller?.address.slice(0, 6)}...{event?.seller?.address.slice(38)}</div>
                                 <div className="infoRows" id="priceSection">
                                     <span>
                                         Price: {

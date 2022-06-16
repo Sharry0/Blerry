@@ -1,22 +1,42 @@
-
-#activityComponent{
+#activityComponent {
     display: flex;
     flex-direction: column;
 }
 
-#filters{
+#filters {
     display: flex;
     justify-content: space-around;
     margin-bottom: 0.5rem;
+    width: 50%;
 }
 
-.filterBtn{
-    margin: 0 2rem;
+.filterBtn {
     font-weight: bold;
     color: #333944;
     background: none;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow:
+        10px 10px 20px rgba(74, 113, 156, 0.3),
+        inset -5px -5px 5px rgba(74, 114, 156, 0.4),
+        inset 5px 5px 5px rgba(74, 114, 156, 0.2);
+    position: relative;
+}
+
+.dropdownMenu{
+    position: absolute;
+    z-index: 20;
+    
+}
+
+.dropdownMenu button{
+    display: block;
+    margin: 0.1rem 0;
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-weight: bold;
+    border-radius: 8px;
     box-shadow:
         10px 10px 20px rgba(74, 113, 156, 0.3),
         inset -5px -5px 5px rgba(74, 114, 156, 0.4),
@@ -90,7 +110,7 @@
     max-width: 75px;
 }
 
-#infoSection{
+#infoSection {
     padding: 0 1rem;
     padding-bottom: 1rem;
     font-weight: bold;
@@ -98,39 +118,39 @@
     flex-direction: column;
 }
 
-.infoRows{
+.infoRows {
     margin-bottom: 0.5rem;
 }
 
-#collectionName{
+#collectionName {
     font-size: 0.8rem;
     color: rgb(74, 114, 156);
 }
 
-#priceSection{
+#priceSection {
     display: flex;
     align-items: center;
 }
 
-#priceSymbol{
+#priceSymbol {
     height: 25px;
     margin-left: 0.3rem;
 }
 
-.openseaLink{
+.openseaLink {
     height: 2rem;
     /* image-rendering: crisp-edges; */
     shape-rendering: crispEdges;
 }
 
-#pageBtns{
+#pageBtns {
     margin-top: 1rem;
     padding-right: 1rem;
     display: flex;
     justify-content: center;
 }
 
-.pageButton{
+.pageButton {
     margin: 0 2rem;
     font-weight: bold;
     color: #333944;
@@ -143,6 +163,6 @@
         inset 5px 5px 5px rgba(74, 114, 156, 0.2);
 }
 
-.pageButton:disabled{
+.pageButton:disabled {
     filter: invert(51%) sepia(95%) saturate(0%) hue-rotate(228deg) brightness(112%) contrast(88%);
 }
