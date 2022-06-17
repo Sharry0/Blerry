@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react"
 import WethIcon from "../images/icons/WETH_icon.svg"
 import EthIcon from "../images/icons/ETH_icon.svg"
 import OpenseaDark from "../images/OpenseaDark.svg"
+import useToggleState from "../hooks/useToggleState"
 import { Link } from "react-router-dom";
 
 import noImage from "../images/no_image.png"
@@ -13,10 +14,14 @@ export default function Activity() {
 
     const topActivity = useRef(null)
 
-    const [activityData, setActivityData] = useState(null);
+    const [activityData, setActivityData] = useState(null);   
     const [nextCursor, setNextCursor] = useState(null);
     const [previousCursor, setPreviousCursor] = useState(null);
-    const [eventType, setEventType] = useState("successful");
+    const [successIsActive, setSuccessIsActive] = useToggleState(true);
+    const [createIsActive, setcreateIsActive] = useToggleState(false);
+    const [cancelIsActive, setCancelIsActive] = useToggleState(false);
+    const [transferIsActive, setTransferIsActive] = useToggleState(true);
+    const [eventType, setEventType] = useState(["successful"]);
     const [beforeDate, setBeforeDate] = useState();
     const [afterDate, setAfterDate] = useState();
 
@@ -30,7 +35,7 @@ export default function Activity() {
     const getEventsData = async (cursor = false) => {
         // await axios.get(`https://testnets-api.opensea.io/api/v1/events?event_type=${eventType}&only_opensea=false&offset=${offset}&limit=${limit}&occurred_before=${occuredBefore}&occurred_after=${occuredAfter}`)
         await axios.get(
-            `https://testnets-api.opensea.io/api/v1/events?event_type=${eventType}&only_opensea=false&limit=${limit}
+            `https://testnets-api.opensea.io/api/v1/events?event_type=${eventType[0]}&only_opensea=false&limit=${limit}
             ${cursor ? `&cursor=${cursor}` : ""}
 
             `
