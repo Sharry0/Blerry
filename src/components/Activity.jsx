@@ -1,7 +1,7 @@
 
 import "../components/styles/activity.css"
 import axios from "axios";
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useReducer } from "react"
 import WethIcon from "../images/icons/WETH_icon.svg"
 import EthIcon from "../images/icons/ETH_icon.svg"
 import OpenseaDark from "../images/OpenseaDark.svg"
@@ -14,41 +14,50 @@ export default function Activity() {
 
     const topActivity = useRef(null)
 
+    const eventReducer = (state, action) => {
+        state.map(evt => {
+            if (evt.name === action.type) {
+                return evt.isActive = true
+            }
+            return evt.isActive = false
+        })
+        toggleRunEffect();
+        return state
+    }
+
     const [activityData, setActivityData] = useState(null);
     const [nextCursor, setNextCursor] = useState(null);
     const [previousCursor, setPreviousCursor] = useState(null);
-    const [successIsActive, setSuccessIsActive] = useState(true);
-    const [createIsActive, setCreateIsActive] = useState(false);
-    const [cancelIsActive, setCancelIsActive] = useState(false);
-    const [transferIsActive, setTransferIsActive] = useState(false);
-    const [eventType, setEventType] = useState([
+    const [runEffect, toggleRunEffect] = useToggleState(true);
+
+    const [eventType, dispatchEventType] = useReducer(eventReducer, [
         {
             name: "created",
-            isActive: createIsActive
+            isActive: false,
         },
         {
             name: "successful",
-            isActive: successIsActive
+            isActive: false,
         },
         {
             name: "cancelled",
-            isActive: cancelIsActive
+            isActive: false,
         },
         {
             name: "transfer",
-            isActive: transferIsActive
+            isActive: true,
         }
     ]);
     const [beforeDate, setBeforeDate] = useState();
     const [afterDate, setAfterDate] = useState();
 
-    const limit = 20;
+    const limit = 50;
+
 
     useEffect(() => {
         getEventsData();
-        // console.log(eventType.find(evt => evt.isActive).name)
         console.log("effect running")
-    }, []);
+    }, [runEffect]);
 
     const getEventsData = async (cursor = false) => {
         // await axios.get(`https://testnets-api.opensea.io/api/v1/events?event_type=${eventType}&only_opensea=false&offset=${offset}&limit=${limit}&occurred_before=${occuredBefore}&occurred_after=${occuredAfter}`)
@@ -124,10 +133,10 @@ export default function Activity() {
                 <div className="filterDropdownBtn">
                     <button className="filterBtn">event type</button>
                     <div className="dropdownMenu">
-                        <button>created</button>
-                        <button>successful</button>
-                        <button>cancelled</button>
-                        <button>transfer</button>
+                        <button onClick={() => dispatchEventType({ type: "created" })}>created</button>
+                        <button onClick={() => dispatchEventType({ type: "successful" })}>successful</button>
+                        <button onClick={() => dispatchEventType({ type: "cancelled" })}>cancelled</button>
+                        <button onClick={() => dispatchEventType({ type: "transfer" })}>transfer</button>
                     </div>
                 </div>
                 <div className="filterDropdownBtn">
@@ -194,7 +203,12 @@ export default function Activity() {
                                 {/* _______ NFT collection name  ______________________________________________________________ */}
                                 <div className="infoRows" id="collectionName">{event.asset.collection.name}</div>
                                 {/* _______ From wallet address  ______________________________________________________________ */}
-                                <div className="infoRows">From: {event?.seller?.address.slice(0, 6)}...{event?.seller?.address.slice(38)}</div>
+                                <div className="infoRows">From: {
+                                event.event_type === "transfer" ?
+                                    `${event?.transaction?.from_account?.address?.slice(0, 6)}...${event?.transaction?.from_account?.address?.slice(38)}`
+                                        :`${event?.seller?.address.slice(0, 6)}...${event?.seller?.address.slice(38)}`
+                                    }
+                                </div>
                                 {/* _______ Price of the NFT  ______________________________________________________________ */}
                                 <div className="infoRows" id="priceSection">
                                     <span>
@@ -204,6 +218,7 @@ export default function Activity() {
                                                 : event.event_type === "created" ?
                                                     convertToPrice(event?.payment_token?.decimals, event.starting_price)
                                                     : "---"
+                                                    
                                         }
                                     </span>
                                     {/* _______ Price symbol of the NFT  ______________________________________________________________ */}
@@ -213,6 +228,8 @@ export default function Activity() {
                                     To:
                                     {event.event_type === "successful" ?
                                         `${event.winner_account?.address.slice(0, 6)}...${event.winner_account?.address.slice(38)}`
+                                        :event.event_type === "transfer" ?
+                                        `${event?.transaction?.from_account?.address?.slice(0, 6)}...${event?.transaction?.from_account?.address?.slice(38)}`
                                         : event.event_type === "created" &&
                                         ` --- `
                                     }
