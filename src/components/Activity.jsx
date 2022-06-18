@@ -14,14 +14,31 @@ export default function Activity() {
 
     const topActivity = useRef(null)
 
-    const [activityData, setActivityData] = useState(null);   
+    const [activityData, setActivityData] = useState(null);
     const [nextCursor, setNextCursor] = useState(null);
     const [previousCursor, setPreviousCursor] = useState(null);
-    const [successIsActive, setSuccessIsActive] = useToggleState(true);
-    const [createIsActive, setcreateIsActive] = useToggleState(false);
-    const [cancelIsActive, setCancelIsActive] = useToggleState(false);
-    const [transferIsActive, setTransferIsActive] = useToggleState(true);
-    const [eventType, setEventType] = useState(["successful"]);
+    const [successIsActive, setSuccessIsActive] = useState(true);
+    const [createIsActive, setCreateIsActive] = useState(false);
+    const [cancelIsActive, setCancelIsActive] = useState(false);
+    const [transferIsActive, setTransferIsActive] = useState(false);
+    const [eventType, setEventType] = useState([
+        {
+            name: "created",
+            isActive: createIsActive
+        },
+        {
+            name: "successful",
+            isActive: successIsActive
+        },
+        {
+            name: "cancelled",
+            isActive: cancelIsActive
+        },
+        {
+            name: "transfer",
+            isActive: transferIsActive
+        }
+    ]);
     const [beforeDate, setBeforeDate] = useState();
     const [afterDate, setAfterDate] = useState();
 
@@ -29,13 +46,14 @@ export default function Activity() {
 
     useEffect(() => {
         getEventsData();
+        // console.log(eventType.find(evt => evt.isActive).name)
         console.log("effect running")
     }, []);
 
     const getEventsData = async (cursor = false) => {
         // await axios.get(`https://testnets-api.opensea.io/api/v1/events?event_type=${eventType}&only_opensea=false&offset=${offset}&limit=${limit}&occurred_before=${occuredBefore}&occurred_after=${occuredAfter}`)
         await axios.get(
-            `https://testnets-api.opensea.io/api/v1/events?event_type=${eventType[0]}&only_opensea=false&limit=${limit}
+            `https://testnets-api.opensea.io/api/v1/events?event_type=${eventType.find(evt => evt.isActive).name}&only_opensea=false&limit=${limit}
             ${cursor ? `&cursor=${cursor}` : ""}
 
             `
@@ -50,6 +68,7 @@ export default function Activity() {
         topActivity?.current?.scrollIntoView()
     };
 
+
     const convertToPrice = (decimal = 18, totalPrice) => {
 
         if (totalPrice === "0") return "0";
@@ -59,7 +78,7 @@ export default function Activity() {
             const convertNum = totalPrice.padStart(18, 0);
             const beforeDecimal = "0";
             const price = parseFloat(beforeDecimal.concat(".", convertNum));
-            if(price.toString().length > 5) return price.toPrecision(1);
+            if (price.toString().length > 5) return price.toPrecision(1);
             return price
         };
 
@@ -98,7 +117,6 @@ export default function Activity() {
         if (timeAgo > 31526000000) return rtf.format(-(Math.floor(timeAgo / 31526000000)), "year");
     };
 
-    // ___ what filters you want to add? ==> EventType, occurredBefore & occurredAfter _____
 
     return (
         <div id="activityComponent">
