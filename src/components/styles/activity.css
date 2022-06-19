@@ -35,7 +35,7 @@
 }
 
 .dropdownMenu button{
-    display: block;
+    display: none;
     margin: 0.1rem 0;
     width: 100%;
     background: transparent;
@@ -45,12 +45,13 @@
     color: #333944;
 }
 
-.showDropdownMenu{
+.showDropdownMenu button{
     display: block;
 }
 
+
 .filterBtnIsActive{
-    color: rgb(74, 114, 156);
+    color: rgb(74, 114, 156) !important;
 }
 
 #eventsContainer {

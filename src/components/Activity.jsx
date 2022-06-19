@@ -29,7 +29,7 @@ export default function Activity() {
     const [nextCursor, setNextCursor] = useState(null);
     const [previousCursor, setPreviousCursor] = useState(null);
     const [runEffect, toggleRunEffect] = useToggleState(true);
-
+    const [showEventMenu, toggleShowEventMenu] = useToggleState(false);
     const [eventType, dispatchEventType] = useReducer(eventReducer, [
         {
             name: "created",
@@ -52,7 +52,6 @@ export default function Activity() {
     const [afterDate, setAfterDate] = useState();
 
     const limit = 50;
-
 
     useEffect(() => {
         getEventsData();
@@ -131,12 +130,32 @@ export default function Activity() {
         <div id="activityComponent">
             <div id="filters">
                 <div className="filterDropdownBtn">
-                    <button className="filterBtn">event type</button>
-                    <div className="dropdownMenu">
-                        <button onClick={() => dispatchEventType({ type: "created" })}>created</button>
-                        <button onClick={() => dispatchEventType({ type: "successful" })}>successful</button>
-                        <button onClick={() => dispatchEventType({ type: "cancelled" })}>cancelled</button>
-                        <button onClick={() => dispatchEventType({ type: "transfer" })}>transfer</button>
+                    <button className="filterBtn" onClick={toggleShowEventMenu}>event type</button>
+                    <div className={`dropdownMenu ${showEventMenu && "showDropdownMenu"}`}>
+                        <button
+                            className={`${eventType[0].isActive ? "filterBtnIsActive" : ""}`}
+                            onClick={() => dispatchEventType({ type: "created" })}
+                        >
+                            created
+                        </button>
+                        <button
+                            className={`${eventType[1].isActive ? "filterBtnIsActive" : ""}`}
+                            onClick={() => dispatchEventType({ type: "successful" })}
+                        >
+                            successful
+                        </button>
+                        <button
+                            className={`${eventType[2].isActive ? "filterBtnIsActive" : ""}`}
+                            onClick={() => dispatchEventType({ type: "cancelled" })}
+                        >
+                            cancelled
+                        </button>
+                        <button
+                            className={`${eventType[3].isActive ? "filterBtnIsActive" : ""}`}
+                            onClick={() => dispatchEventType({ type: "transfer" })}
+                        >
+                            transfer
+                        </button>
                     </div>
                 </div>
                 <div className="filterDropdownBtn">
@@ -195,19 +214,19 @@ export default function Activity() {
                                 {/* _______ NFT name  ______________________________________________________________ */}
                                 <div>
                                     {
-                                        event.asset.name ?
+                                        event?.asset?.name ?
                                             (event.asset.name.length > 20 ? `${event.asset.name.slice(0, 20)}...` : event.asset.name)
-                                            : (event.asset.token_id.length > 20 ? `#${event.asset.token_id.slice(0, 20)}...` : `#${event.asset.token_id}`)
+                                            : (event?.asset?.token_id.length > 20 ? `#${event.asset.token_id.slice(0, 20)}...` : `#${event?.asset?.token_id}`)
                                     }
                                 </div>
                                 {/* _______ NFT collection name  ______________________________________________________________ */}
-                                <div className="infoRows" id="collectionName">{event.asset.collection.name}</div>
+                                <div className="infoRows" id="collectionName">{event?.asset?.collection?.name}</div>
                                 {/* _______ From wallet address  ______________________________________________________________ */}
                                 <div className="infoRows">From: {
-                                event.event_type === "transfer" ?
-                                    `${event?.transaction?.from_account?.address?.slice(0, 6)}...${event?.transaction?.from_account?.address?.slice(38)}`
-                                        :`${event?.seller?.address.slice(0, 6)}...${event?.seller?.address.slice(38)}`
-                                    }
+                                    event.event_type === "transfer" ?
+                                        `${event?.transaction?.from_account?.address?.slice(0, 6)}...${event?.transaction?.from_account?.address?.slice(38)}`
+                                        : `${event?.seller?.address.slice(0, 6)}...${event?.seller?.address.slice(38)}`
+                                }
                                 </div>
                                 {/* _______ Price of the NFT  ______________________________________________________________ */}
                                 <div className="infoRows" id="priceSection">
@@ -218,7 +237,7 @@ export default function Activity() {
                                                 : event.event_type === "created" ?
                                                     convertToPrice(event?.payment_token?.decimals, event.starting_price)
                                                     : "---"
-                                                    
+
                                         }
                                     </span>
                                     {/* _______ Price symbol of the NFT  ______________________________________________________________ */}
@@ -228,10 +247,10 @@ export default function Activity() {
                                     To:
                                     {event.event_type === "successful" ?
                                         `${event.winner_account?.address.slice(0, 6)}...${event.winner_account?.address.slice(38)}`
-                                        :event.event_type === "transfer" ?
-                                        `${event?.transaction?.from_account?.address?.slice(0, 6)}...${event?.transaction?.from_account?.address?.slice(38)}`
-                                        : event.event_type === "created" &&
-                                        ` --- `
+                                        : event.event_type === "transfer" ?
+                                            `${event?.transaction?.from_account?.address?.slice(0, 6)}...${event?.transaction?.from_account?.address?.slice(38)}`
+                                            : event.event_type === "created" &&
+                                            ` --- `
                                     }
 
                                 </div>
