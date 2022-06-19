@@ -216,7 +216,11 @@ export default function Activity() {
                                     {
                                         event?.asset?.name ?
                                             (event.asset.name.length > 20 ? `${event.asset.name.slice(0, 20)}...` : event.asset.name)
-                                            : (event?.asset?.token_id.length > 20 ? `#${event.asset.token_id.slice(0, 20)}...` : `#${event?.asset?.token_id}`)
+                                            : event?.asset?.token_id ? (event?.asset?.token_id.length > 20 ? `#${event.asset.token_id.slice(0, 20)}...` : `#${event?.asset?.token_id}`)
+                                            : event.asset_bundle.name && `${event.asset_bundle.name}`
+
+
+
                                     }
                                 </div>
                                 {/* _______ NFT collection name  ______________________________________________________________ */}
