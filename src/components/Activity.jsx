@@ -22,6 +22,7 @@ export default function Activity() {
             return evt.isActive = false
         })
         toggleRunEffect();
+        toggleShowEventMenu();
         return state
     }
 
@@ -37,7 +38,7 @@ export default function Activity() {
         },
         {
             name: "successful",
-            isActive: false,
+            isActive: true,
         },
         {
             name: "cancelled",
@@ -45,7 +46,7 @@ export default function Activity() {
         },
         {
             name: "transfer",
-            isActive: true,
+            isActive: false,
         }
     ]);
     const [beforeDate, setBeforeDate] = useState();
@@ -130,7 +131,7 @@ export default function Activity() {
         <div id="activityComponent">
             <div id="filters">
                 <div className="filterDropdownBtn">
-                    <button className="filterBtn" onClick={toggleShowEventMenu}>event type</button>
+                    <button className={`filterBtn ${showEventMenu && "filterBtnActive"}`} onClick={toggleShowEventMenu}>event type</button>
                     <div className={`dropdownMenu ${showEventMenu && "showDropdownMenu"}`}>
                         <button
                             className={`${eventType[0].isActive ? "filterBtnIsActive" : ""}`}
