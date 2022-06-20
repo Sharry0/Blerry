@@ -6,7 +6,6 @@ import WethIcon from "../images/icons/WETH_icon.svg"
 import EthIcon from "../images/icons/ETH_icon.svg"
 import OpenseaDark from "../images/OpenseaDark.svg"
 import useToggleState from "../hooks/useToggleState"
-import { Link } from "react-router-dom";
 
 import noImage from "../images/no_image.png"
 
@@ -31,6 +30,7 @@ export default function Activity() {
     const [previousCursor, setPreviousCursor] = useState(null);
     const [runEffect, toggleRunEffect] = useToggleState(true);
     const [showEventMenu, toggleShowEventMenu] = useToggleState(false);
+    const [showAfterDateMenu, toggleShowAfterDateMenu] = useToggleState(false);
     const [eventType, dispatchEventType] = useReducer(eventReducer, [
         {
             name: "created",
@@ -49,10 +49,10 @@ export default function Activity() {
             isActive: false,
         }
     ]);
-    const [beforeDate, setBeforeDate] = useState();
-    const [afterDate, setAfterDate] = useState();
+    const [afterDate, setAfterDate] = useState(null); //  3days, 7days, 14days, 1month, all
+    // const [beforeDate, setBeforeDate] = useState(null); // (maybe will implement later)
 
-    const limit = 50;
+    const limit = 50; // add options for user to choose 20, 50, 100 & 200
 
     useEffect(() => {
         getEventsData();
@@ -60,23 +60,20 @@ export default function Activity() {
     }, [runEffect]);
 
     const getEventsData = async (cursor = false) => {
-        // await axios.get(`https://testnets-api.opensea.io/api/v1/events?event_type=${eventType}&only_opensea=false&offset=${offset}&limit=${limit}&occurred_before=${occuredBefore}&occurred_after=${occuredAfter}`)
         await axios.get(
             `https://testnets-api.opensea.io/api/v1/events?event_type=${eventType.find(evt => evt.isActive).name}&only_opensea=false&limit=${limit}
+            ${afterDate ? `&occurred_after=${afterDate}` : ""}
             ${cursor ? `&cursor=${cursor}` : ""}
-
             `
         )
             .then(res => {
                 setActivityData(res?.data?.asset_events)
                 setPreviousCursor(res?.data?.previous)
                 setNextCursor(res?.data?.next)
-                // console.log(res.data)
             })
             .catch(err => console.log("ERRORR", err))
         topActivity?.current?.scrollIntoView()
     };
-
 
     const convertToPrice = (decimal = 18, totalPrice) => {
 
@@ -99,6 +96,26 @@ export default function Activity() {
             return parseFloat(beforeDecimal + "." + afterDecimal);
         };
     };
+
+    const getAfterDateUnixStamp = (timeAgo) => {
+        console.log(Date.now())
+        switch (timeAgo) {
+            case "3 days":
+                
+                break;
+        
+            default:
+                setAfterDate(null)
+        }
+        toggleShowAfterDateMenu();
+    }
+
+    // 1 sec    =  1.000 ms
+    // 1 min    =  60.000 ms
+    // 1 h      =  3.600.000 ms
+    // 1 day    =  86.400.000 ms
+    // 1 month  =  2.628.000.000 ms
+    // 1 year   =  31.536.000.000 ms
 
     const getTransactionTime = (sellTime) => {
 
@@ -131,41 +148,55 @@ export default function Activity() {
         <div id="activityComponent">
             <div id="filters">
                 <div className="filterDropdownBtn">
-                    <button className={`filterBtn ${showEventMenu && "filterBtnActive"}`} onClick={toggleShowEventMenu}>event type</button>
+                    <button
+                        className={`filterBtn ${showEventMenu && "filterBtnActive"}`}
+                        onClick={toggleShowEventMenu}
+                    >
+                        Event type
+                    </button>
                     <div className={`dropdownMenu ${showEventMenu && "showDropdownMenu"}`}>
                         <button
                             className={`${eventType[0].isActive ? "filterBtnIsActive" : ""}`}
                             onClick={() => dispatchEventType({ type: "created" })}
                         >
-                            created
+                            Listings
                         </button>
                         <button
                             className={`${eventType[1].isActive ? "filterBtnIsActive" : ""}`}
                             onClick={() => dispatchEventType({ type: "successful" })}
                         >
-                            successful
+                            Sales
                         </button>
                         <button
                             className={`${eventType[2].isActive ? "filterBtnIsActive" : ""}`}
                             onClick={() => dispatchEventType({ type: "cancelled" })}
                         >
-                            cancelled
+                            Cancelled
                         </button>
                         <button
                             className={`${eventType[3].isActive ? "filterBtnIsActive" : ""}`}
                             onClick={() => dispatchEventType({ type: "transfer" })}
                         >
-                            transfer
+                            Transfers
                         </button>
                     </div>
                 </div>
-                <div className="filterDropdownBtn">
-                    <button className="filterBtn">occurred before</button>
-                    <div className="dropdownMenu">
 
+                <div className="filterDropdownBtn">
+                    <button 
+                    className={`filterBtn ${showAfterDateMenu && "filterBtnActive"}`}
+                    onClick={toggleShowAfterDateMenu}
+                    >
+                        {afterDate? afterDate: "See all"}
+                        </button>
+                    <div className={`dropdownMenu ${showAfterDateMenu && "showDropdownMenu"}`}>
+                        <button onClick={()=> getAfterDateUnixStamp("3 days")} >Last 3 Days</button>
+                        <button onClick={()=> getAfterDateUnixStamp("7 days")} >Last 7 Days</button>
+                        <button onClick={()=> getAfterDateUnixStamp("14 days")} >Last 14 Days</button>
+                        <button onClick={()=> getAfterDateUnixStamp("30 days")} >Last 30 Days</button>
+                        <button onClick={()=> getAfterDateUnixStamp(null)} >See all</button>
                     </div>
                 </div>
-
             </div>
             {/* __________ Container of all events ______________________________________________ */}
             <div id="eventsContainer">
@@ -218,10 +249,7 @@ export default function Activity() {
                                         event?.asset?.name ?
                                             (event.asset.name.length > 20 ? `${event.asset.name.slice(0, 20)}...` : event.asset.name)
                                             : event?.asset?.token_id ? (event?.asset?.token_id.length > 20 ? `#${event.asset.token_id.slice(0, 20)}...` : `#${event?.asset?.token_id}`)
-                                            : event.asset_bundle.name && `${event.asset_bundle.name}`
-
-
-
+                                                : event.asset_bundle.name && `${event.asset_bundle.name}`
                                     }
                                 </div>
                                 {/* _______ NFT collection name  ______________________________________________________________ */}
