@@ -23,7 +23,34 @@ export default function Activity() {
         toggleRunEffect();
         toggleShowEventMenu();
         return state
-    }
+    };
+
+    const afterDateReducer = (state, action) => {
+        // ___ Days in ms ______________________
+        const threeDays = 259200000; //      259.200.000
+        const sevenDays = 604800000; //      604.800.000
+        const fourteenDays = 1209600000; //  1.209.600.000
+        const thirtyDays = 2592000000; //    2.592.000.000
+        const nowDate = Date.now();
+        switch (action.type) {
+            case "3 days":
+                console.log("3days")
+                break;
+            case "7 days":
+                console.log("7days")
+                break;
+            case "14 days":
+                console.log("14days")
+                break;
+            case "30 days":
+                console.log("30days")
+                break;
+            default:
+                console.log("see ale")
+                break;
+        }
+        return state
+    };
 
     const [activityData, setActivityData] = useState(null);
     const [nextCursor, setNextCursor] = useState(null);
@@ -49,7 +76,34 @@ export default function Activity() {
             isActive: false,
         }
     ]);
-    const [afterDate, setAfterDate] = useState(null); //  3days, 7days, 14days, 1month, all
+    
+    const [afterDate, dispatchAfterDate] = useReducer(afterDateReducer, [
+        {
+            name: "See all",
+            unixStamp: null,
+            isActive: true
+        },
+        {
+            name: "3 days",
+            unixStamp: null,
+            isActive: false
+        },
+        {
+           name: "3 days",
+           unixStamp: null,
+           isActive: false 
+        },
+        {
+            name: "3 days",
+            unixStamp: null,
+            isActive: false
+        },
+        {
+            name: "3 days",
+            unixStamp: null,
+            isActive: false
+        },
+    ]); //  3days, 7days, 14days, 1month, all
     // const [beforeDate, setBeforeDate] = useState(null); // (maybe will implement later)
 
     const limit = 50; // add options for user to choose 20, 50, 100 & 200
@@ -62,7 +116,7 @@ export default function Activity() {
     const getEventsData = async (cursor = false) => {
         await axios.get(
             `https://testnets-api.opensea.io/api/v1/events?event_type=${eventType.find(evt => evt.isActive).name}&only_opensea=false&limit=${limit}
-            ${afterDate ? `&occurred_after=${afterDate}` : ""}
+            ${afterDate.find(date => date.isActive) ? `&cursor=${cursor}` : ""}
             ${cursor ? `&cursor=${cursor}` : ""}
             `
         )
@@ -98,17 +152,46 @@ export default function Activity() {
     };
 
     const getAfterDateUnixStamp = (timeAgo) => {
-        console.log(Date.now())
-        switch (timeAgo) {
-            case "3 days":
-                
-                break;
-        
-            default:
-                setAfterDate(null)
-        }
+        // ___ Days in ms ______________________
+        const threeDays = 259200000; //      259.200.000
+        const sevenDays = 604800000; //      604.800.000
+        const fourteenDays = 1209600000; //  1.209.600.000
+        const thirtyDays = 2592000000; //    2.592.000.000
+        const nowDate = Date.now();
+        // switch (timeAgo) {
+        //     case "3 days":
+        //         setAfterDate({
+        //             name: "3 days",
+        //             unixTimeStamp: nowDate-threeDays
+        //         });
+        //         break;
+        //     case "7 days":
+        //         setAfterDate({
+        //             name: "7 days",
+        //             unixTimeStamp: nowDate-sevenDays
+        //         });
+        //         break
+        //     case "14 days":
+        //         setAfterDate({
+        //             name: "14 days",
+        //             unixTimeStamp: nowDate-fourteenDays
+        //         });
+        //         break
+        //     case "30 days":
+        //         setAfterDate({
+        //             name: "30 days",
+        //             unixTimeStamp: nowDate-thirtyDays
+        //         });
+        //         break
+        //     default:
+        //         setAfterDate({
+        //             name: "See all",
+        //             unixTimeStamp: null
+        //         });
+        // };
         toggleShowAfterDateMenu();
-    }
+        toggleRunEffect();
+    };
 
     // 1 sec    =  1.000 ms
     // 1 min    =  60.000 ms
@@ -183,18 +266,19 @@ export default function Activity() {
                 </div>
 
                 <div className="filterDropdownBtn">
-                    <button 
-                    className={`filterBtn ${showAfterDateMenu && "filterBtnActive"}`}
-                    onClick={toggleShowAfterDateMenu}
+                    <button
+                        className={`filterBtn ${showAfterDateMenu && "filterBtnActive"}`}
+                        onClick={toggleShowAfterDateMenu}
                     >
-                        {afterDate? afterDate: "See all"}
-                        </button>
+                        {/* {afterDate ? afterDate : "See all"} */}
+                        hehehe
+                    </button>
                     <div className={`dropdownMenu ${showAfterDateMenu && "showDropdownMenu"}`}>
-                        <button onClick={()=> getAfterDateUnixStamp("3 days")} >Last 3 Days</button>
-                        <button onClick={()=> getAfterDateUnixStamp("7 days")} >Last 7 Days</button>
-                        <button onClick={()=> getAfterDateUnixStamp("14 days")} >Last 14 Days</button>
-                        <button onClick={()=> getAfterDateUnixStamp("30 days")} >Last 30 Days</button>
-                        <button onClick={()=> getAfterDateUnixStamp(null)} >See all</button>
+                        <button onClick={() => dispatchAfterDate({type: "3 days"})} >Last 3 Days</button>
+                        <button onClick={() => dispatchAfterDate({type: "7 days"})} >Last 7 Days</button>
+                        <button onClick={() => dispatchAfterDate({type: "14 days"})} >Last 14 Days</button>
+                        <button onClick={() => dispatchAfterDate({type: "30 days"})} >Last 30 Days</button>
+                        <button onClick={() => dispatchAfterDate({type: "See all"})} >See all</button>
                     </div>
                 </div>
             </div>
@@ -274,7 +358,7 @@ export default function Activity() {
                                         }
                                     </span>
                                     {/* _______ Price symbol of the NFT  ______________________________________________________________ */}
-                                    <img src={event.payment_token?.symbol === "WETH" ? WethIcon : EthIcon} alt="price symbol" id="priceSymbol" />
+                                    <img src={event.payment_token?.symbol === "WETH" ? WethIcon : event.payment_token?.symbol === "SAND"? "Sand": EthIcon} alt="price symbol" id="priceSymbol" />
                                 </div>
                                 <div className="infoRows">
                                     To:
