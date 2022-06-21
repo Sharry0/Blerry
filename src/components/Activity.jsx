@@ -34,7 +34,7 @@ export default function Activity() {
         const nowDate = Date.now();
         switch (action.type) {
             case "3 days":
-                state.map(aftr => {
+                state.forEach(aftr => {
                     if (aftr.name === action.type) {
                         aftr.unixStamp = nowDate - threeDays
                         aftr.isActive = true
@@ -45,7 +45,7 @@ export default function Activity() {
                 });
                 break;
             case "7 days":
-                state.map(aftr => {
+                state.forEach(aftr => {
                     if (aftr.name === action.type) {
                         aftr.unixStamp = nowDate - sevenDays
                         aftr.isActive = true
@@ -56,7 +56,7 @@ export default function Activity() {
                 });
                 break;
             case "14 days":
-                state.map(aftr => {
+                state.forEach(aftr => {
                     if (aftr.name === action.type) {
                         aftr.unixStamp = nowDate - fourteenDays
                         aftr.isActive = true
@@ -67,7 +67,7 @@ export default function Activity() {
                 });
                 break;
             case "30 days":
-                state.map(aftr => {
+                state.forEach(aftr => {
                     if (aftr.name === action.type) {
                         aftr.unixStamp = nowDate - thirtyDays
                         aftr.isActive = true
@@ -78,7 +78,7 @@ export default function Activity() {
                 });
                 break;
             case "See all":
-                state.map(aftr => {
+                state.forEach(aftr => {
                     if (aftr.name === action.type) {
                         aftr.unixStamp = null
                         aftr.isActive = true

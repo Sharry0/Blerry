@@ -1,5 +1,4 @@
 
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import "./styles/navbar.css";
@@ -34,11 +33,11 @@ export default function Navbar() {
                         <span>My Wallet</span>
                     </NavLink>
                     <NavLink
-                    to="/rankings"
+                    to="/collections"
                     className={({isActive})=> isActive ? `navbarBtn activeNavbarBtn`: `navbarBtn`} 
                     >
                         <img src={rankingsIcon} alt="rankings icon" />
-                        <span>Rankings</span>
+                        <span>Collections</span>
                     </NavLink>
                     <NavLink
                     to="/activity"

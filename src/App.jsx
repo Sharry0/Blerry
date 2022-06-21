@@ -9,7 +9,7 @@ import Searchbar from "./components/Searchbar";
 import Dashboard from "./components/Dashboard";
 import Activity from "./components/Activity";
 import MyWallet from "./components/MyWallet";
-import Rankings from "./components/Rankings";
+import Collections from "./components/Collections";
 
 // Add different styles, to choose. (Dark mode, paralex effect mode, 
 // visible borders mode, follow mouse movement mode (three.js ?), 
@@ -27,6 +27,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/wallet" element={<MyWallet />} />
           <Route path="/activity" element={<Activity />} />
+          <Route path="/collections" element={<Collections />} />
           <Route path="/market" element={<Market />} />
           <Route />
         </Routes>
