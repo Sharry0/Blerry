@@ -34,21 +34,65 @@ export default function Activity() {
         const nowDate = Date.now();
         switch (action.type) {
             case "3 days":
-                console.log("3days")
+                state.map(aftr => {
+                    if (aftr.name === action.type) {
+                        aftr.unixStamp = nowDate - threeDays
+                        aftr.isActive = true
+                    } else {
+                        aftr.unixStamp = null
+                        aftr.isActive = false
+                    }
+                });
                 break;
             case "7 days":
-                console.log("7days")
+                state.map(aftr => {
+                    if (aftr.name === action.type) {
+                        aftr.unixStamp = nowDate - sevenDays
+                        aftr.isActive = true
+                    } else {
+                        aftr.unixStamp = null
+                        aftr.isActive = false
+                    }
+                });
                 break;
             case "14 days":
-                console.log("14days")
+                state.map(aftr => {
+                    if (aftr.name === action.type) {
+                        aftr.unixStamp = nowDate - fourteenDays
+                        aftr.isActive = true
+                    } else {
+                        aftr.unixStamp = null
+                        aftr.isActive = false
+                    }
+                });
                 break;
             case "30 days":
-                console.log("30days")
+                state.map(aftr => {
+                    if (aftr.name === action.type) {
+                        aftr.unixStamp = nowDate - thirtyDays
+                        aftr.isActive = true
+                    } else {
+                        aftr.unixStamp = null
+                        aftr.isActive = false
+                    }
+                });
+                break;
+            case "See all":
+                state.map(aftr => {
+                    if (aftr.name === action.type) {
+                        aftr.unixStamp = null
+                        aftr.isActive = true
+                    } else {
+                        aftr.unixStamp = null
+                        aftr.isActive = false
+                    }
+                });
                 break;
             default:
-                console.log("see ale")
                 break;
         }
+        toggleRunEffect();
+        toggleShowAfterDateMenu();
         return state
     };
 
@@ -76,7 +120,6 @@ export default function Activity() {
             isActive: false,
         }
     ]);
-    
     const [afterDate, dispatchAfterDate] = useReducer(afterDateReducer, [
         {
             name: "See all",
@@ -89,24 +132,25 @@ export default function Activity() {
             isActive: false
         },
         {
-           name: "3 days",
-           unixStamp: null,
-           isActive: false 
-        },
-        {
-            name: "3 days",
+            name: "7 days",
             unixStamp: null,
             isActive: false
         },
         {
-            name: "3 days",
+            name: "14 days",
+            unixStamp: null,
+            isActive: false
+        },
+        {
+            name: "30 days",
             unixStamp: null,
             isActive: false
         },
     ]); //  3days, 7days, 14days, 1month, all
     // const [beforeDate, setBeforeDate] = useState(null); // (maybe will implement later)
 
-    const limit = 50; // add options for user to choose 20, 50, 100 & 200
+    // add options for user to choose 20, 50, 100 & 200
+    const limit = 50;
 
     useEffect(() => {
         getEventsData();
@@ -116,7 +160,7 @@ export default function Activity() {
     const getEventsData = async (cursor = false) => {
         await axios.get(
             `https://testnets-api.opensea.io/api/v1/events?event_type=${eventType.find(evt => evt.isActive).name}&only_opensea=false&limit=${limit}
-            ${afterDate.find(date => date.isActive) ? `&cursor=${cursor}` : ""}
+            ${afterDate?.find(date => date.isActive)?.unixStamp ? `&occurred_after=${afterDate?.find(date => date.isActive)?.unixStamp}` : ""}
             ${cursor ? `&cursor=${cursor}` : ""}
             `
         )
@@ -126,8 +170,9 @@ export default function Activity() {
                 setNextCursor(res?.data?.next)
             })
             .catch(err => console.log("ERRORR", err))
-        topActivity?.current?.scrollIntoView()
+        topActivity?.current?.scrollIntoView();
     };
+
 
     const convertToPrice = (decimal = 18, totalPrice) => {
 
@@ -149,48 +194,6 @@ export default function Activity() {
             if (afterDecimalFloat.toString().length > 5) return parseFloat(beforeDecimal + "." + afterDecimal).toPrecision(5)
             return parseFloat(beforeDecimal + "." + afterDecimal);
         };
-    };
-
-    const getAfterDateUnixStamp = (timeAgo) => {
-        // ___ Days in ms ______________________
-        const threeDays = 259200000; //      259.200.000
-        const sevenDays = 604800000; //      604.800.000
-        const fourteenDays = 1209600000; //  1.209.600.000
-        const thirtyDays = 2592000000; //    2.592.000.000
-        const nowDate = Date.now();
-        // switch (timeAgo) {
-        //     case "3 days":
-        //         setAfterDate({
-        //             name: "3 days",
-        //             unixTimeStamp: nowDate-threeDays
-        //         });
-        //         break;
-        //     case "7 days":
-        //         setAfterDate({
-        //             name: "7 days",
-        //             unixTimeStamp: nowDate-sevenDays
-        //         });
-        //         break
-        //     case "14 days":
-        //         setAfterDate({
-        //             name: "14 days",
-        //             unixTimeStamp: nowDate-fourteenDays
-        //         });
-        //         break
-        //     case "30 days":
-        //         setAfterDate({
-        //             name: "30 days",
-        //             unixTimeStamp: nowDate-thirtyDays
-        //         });
-        //         break
-        //     default:
-        //         setAfterDate({
-        //             name: "See all",
-        //             unixTimeStamp: null
-        //         });
-        // };
-        toggleShowAfterDateMenu();
-        toggleRunEffect();
     };
 
     // 1 sec    =  1.000 ms
@@ -239,25 +242,25 @@ export default function Activity() {
                     </button>
                     <div className={`dropdownMenu ${showEventMenu && "showDropdownMenu"}`}>
                         <button
-                            className={`${eventType[0].isActive ? "filterBtnIsActive" : ""}`}
+                            className={eventType[0].isActive ? "filterBtnIsActive" : ""}
                             onClick={() => dispatchEventType({ type: "created" })}
                         >
                             Listings
                         </button>
                         <button
-                            className={`${eventType[1].isActive ? "filterBtnIsActive" : ""}`}
+                            className={eventType[1].isActive ? "filterBtnIsActive" : ""}
                             onClick={() => dispatchEventType({ type: "successful" })}
                         >
                             Sales
                         </button>
                         <button
-                            className={`${eventType[2].isActive ? "filterBtnIsActive" : ""}`}
+                            className={eventType[2].isActive ? "filterBtnIsActive" : ""}
                             onClick={() => dispatchEventType({ type: "cancelled" })}
                         >
                             Cancelled
                         </button>
                         <button
-                            className={`${eventType[3].isActive ? "filterBtnIsActive" : ""}`}
+                            className={eventType[3].isActive ? "filterBtnIsActive" : ""}
                             onClick={() => dispatchEventType({ type: "transfer" })}
                         >
                             Transfers
@@ -270,15 +273,33 @@ export default function Activity() {
                         className={`filterBtn ${showAfterDateMenu && "filterBtnActive"}`}
                         onClick={toggleShowAfterDateMenu}
                     >
-                        {/* {afterDate ? afterDate : "See all"} */}
-                        hehehe
+                        {
+                            afterDate?.find(active => active.isActive)?.isActive ?
+                                afterDate.find(active => active.isActive).name
+                                : "See all"
+                        }
                     </button>
                     <div className={`dropdownMenu ${showAfterDateMenu && "showDropdownMenu"}`}>
-                        <button onClick={() => dispatchAfterDate({type: "3 days"})} >Last 3 Days</button>
-                        <button onClick={() => dispatchAfterDate({type: "7 days"})} >Last 7 Days</button>
-                        <button onClick={() => dispatchAfterDate({type: "14 days"})} >Last 14 Days</button>
-                        <button onClick={() => dispatchAfterDate({type: "30 days"})} >Last 30 Days</button>
-                        <button onClick={() => dispatchAfterDate({type: "See all"})} >See all</button>
+                        <button
+                            onClick={() => dispatchAfterDate({ type: "3 days" })}
+                            className={afterDate[1].isActive ? "filterBtnIsActive" : ""}
+                        >Last 3 Days</button>
+                        <button
+                            onClick={() => dispatchAfterDate({ type: "7 days" })}
+                            className={afterDate[2].isActive ? "filterBtnIsActive" : ""}
+                        >Last 7 Days</button>
+                        <button
+                            onClick={() => dispatchAfterDate({ type: "14 days" })}
+                            className={afterDate[3].isActive ? "filterBtnIsActive" : ""}
+                        >Last 14 Days</button>
+                        <button
+                            onClick={() => dispatchAfterDate({ type: "30 days" })}
+                            className={afterDate[4].isActive ? "filterBtnIsActive" : ""}
+                        >Last 30 Days</button>
+                        <button
+                            onClick={() => dispatchAfterDate({ type: "See all" })}
+                            className={afterDate[0].isActive ? "filterBtnIsActive" : ""}
+                        >See all</button>
                     </div>
                 </div>
             </div>
@@ -358,7 +379,7 @@ export default function Activity() {
                                         }
                                     </span>
                                     {/* _______ Price symbol of the NFT  ______________________________________________________________ */}
-                                    <img src={event.payment_token?.symbol === "WETH" ? WethIcon : event.payment_token?.symbol === "SAND"? "Sand": EthIcon} alt="price symbol" id="priceSymbol" />
+                                    <img src={event.payment_token?.symbol === "WETH" ? WethIcon : event.payment_token?.symbol === "SAND" ? "Sand" : EthIcon} alt="price symbol" id="priceSymbol" />
                                 </div>
                                 <div className="infoRows">
                                     To:
