@@ -146,7 +146,7 @@ export default function Activity() {
             unixStamp: null,
             isActive: false
         },
-    ]); //  3days, 7days, 14days, 1month, all
+    ]); 
     // const [beforeDate, setBeforeDate] = useState(null); // (maybe will implement later)
 
     // add options for user to choose 20, 50, 100 & 200
@@ -154,7 +154,6 @@ export default function Activity() {
 
     useEffect(() => {
         getEventsData();
-        console.log("effect running")
     }, [runEffect]);
 
     const getEventsData = async (cursor = false) => {
@@ -434,7 +433,6 @@ export default function Activity() {
                     next
                 </button>
             </div>
-
         </div>
     )
 };
