@@ -358,7 +358,13 @@ export default function Activity() {
                                     }
                                 </div>
                                 {/* _______ NFT collection name  ______________________________________________________________ */}
-                                <div className="infoRows" id="collectionName">{event?.asset?.collection?.name}</div>
+                                <div className="infoRows" id="collectionName">
+                                    {
+                                        event?.collection_slug.length > 25 ?
+                                        `${event.collection_slug.slice(0, 25)}...`
+                                        : event?.collection_slug
+
+                                    }</div>
                                 {/* _______ From wallet address  ______________________________________________________________ */}
                                 <div className="infoRows">From: {
                                     event.event_type === "transfer" ?
