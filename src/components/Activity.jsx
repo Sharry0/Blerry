@@ -361,8 +361,8 @@ export default function Activity() {
                                 <div className="infoRows" id="collectionName">
                                     {
                                         event?.collection_slug.length > 25 ?
-                                        `${event.collection_slug.slice(0, 25)}...`
-                                        : event?.collection_slug
+                                            `${event.collection_slug.slice(0, 25)}...`
+                                            : event?.collection_slug
 
                                     }</div>
                                 {/* _______ From wallet address  ______________________________________________________________ */}
