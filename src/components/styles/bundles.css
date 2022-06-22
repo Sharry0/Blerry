@@ -1,2 +1,28 @@
 
+#bundlesComponent {
+    display: flex;
+    flex-direction: column;
+}
 
+#bundlesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: scroll;
+    max-height: 80vh;
+}
+
+#bundlesContainer::-webkit-scrollbar {
+    width: 15px;
+    border-radius: 2rem;
+    box-shadow:
+        inset -5px -5px 3px rgba(74, 114, 156, 0.2),
+        inset 5px 5px 5px rgba(74, 114, 156, 0.2);
+}
+
+#bundlesContainer::-webkit-scrollbar-thumb {
+    border-radius: 2rem;
+    box-shadow:
+        inset -5px -5px 5px rgba(74, 114, 156, 0.2),
+        inset 5px 5px 5px rgba(74, 114, 156, 0.2);
+}

@@ -303,7 +303,7 @@ export default function Activity() {
                 </div>
             </div>
             {/* __________ Container of all events ______________________________________________ */}
-            <div id="eventsContainer">
+            <div id="eventsContainer" role="main" >
                 <div ref={topActivity}></div>
                 {
                     activityData && activityData.map(event => (

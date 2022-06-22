@@ -64,7 +64,7 @@
     flex-wrap: wrap;
     justify-content: center;
     overflow-y: scroll;
-    max-height: 80vh;
+    height: 80vh;
 }
 
 #eventsContainer::-webkit-scrollbar {
