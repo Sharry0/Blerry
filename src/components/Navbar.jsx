@@ -33,11 +33,11 @@ export default function Navbar() {
                         <span>My Wallet</span>
                     </NavLink>
                     <NavLink
-                    to="/collections"
+                    to="/bundles"
                     className={({isActive})=> isActive ? `navbarBtn activeNavbarBtn`: `navbarBtn`} 
                     >
                         <img src={rankingsIcon} alt="rankings icon" />
-                        <span>Collections</span>
+                        <span>Bundles</span>
                     </NavLink>
                     <NavLink
                     to="/activity"
