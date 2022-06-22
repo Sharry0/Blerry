@@ -1,4 +1,5 @@
 
+import "./styles/bundles.css"
 import { useState, useEffect } from "react";
 import useToggleState from "../hooks/useToggleState";
 import axios from "axios";
@@ -14,10 +15,10 @@ export default function Bundles() {
     useEffect(() => {
         getBundlesDate();
     }, [runEffect]);
-    
+
     const getBundlesDate = async () => {
         axios.get(`https://testnets-api.opensea.io/api/v1/bundles?limit=${limit}&offset=${offset}`)
-            .then(res => setBundlesData(res.data))
+            .then(res => setBundlesData(res.data.bundles))
             .catch(err => console.log(err));
     };
 
@@ -25,9 +26,23 @@ export default function Bundles() {
         <div id="bundleComponent">
 
             <main id="bundlesContainer">
-                <div>
-                    
-                </div>
+                {
+                    bundlesData && bundlesData.map( bundle => (
+                        <div className="bundle card">
+                                <div id="imagesContainer">
+                                    {
+                                        bundle?.assets?.map(asset=>(
+                                            <img src={asset.image_url} alt="asset" className="assetImg" />
+                                        ))
+                                    }
+                                </div>
+
+
+
+                        </div>
+                    ))
+                   
+                }
 
 
             </main>
