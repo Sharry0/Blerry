@@ -27,21 +27,24 @@ export default function Bundles() {
 
             <main id="bundlesContainer">
                 {
-                    bundlesData && bundlesData.map( bundle => (
-                        <div className="bundle card">
-                                <div id="imagesContainer">
-                                    {
-                                        bundle?.assets?.map(asset=>(
+                    bundlesData && bundlesData.map((bundle, i) => (
+                        <div className="bundle card" key={i}>
+                            <div id="imagesContainer">
+                                {
+                                    bundle?.assets?.map(asset => (
+                                        <div key={asset.id}>
+
                                             <img src={asset.image_url} alt="asset" className="assetImg" />
-                                        ))
-                                    }
-                                </div>
+                                        </div>
+                                    ))
+                                }
+                            </div>
 
 
 
                         </div>
                     ))
-                   
+
                 }
 
 
