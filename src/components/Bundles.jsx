@@ -2,6 +2,7 @@
 import "./styles/bundles.css"
 import { useState, useEffect } from "react";
 import useToggleState from "../hooks/useToggleState";
+import noImage from "../images/no_image.png"
 import axios from "axios";
 
 
@@ -31,15 +32,35 @@ export default function Bundles() {
                         <div className="bundle card" key={i}>
                             <div id="imagesContainer">
                                 {
-                                    bundle?.assets?.map(asset => (
+                                    bundle?.assets?.map((asset, i) => (
                                         <div key={asset.id}>
-
-                                            <img src={asset.image_url} alt="asset" className="assetImg" />
+                                            {
+                                                i <= 1 &&
+                                                <img
+                                                    src={asset.image_url ? asset.image_url : noImage}
+                                                    alt="asset"
+                                                    className="assetImg"
+                                                />
+                                            }
                                         </div>
                                     ))
                                 }
                             </div>
+                            <div id="infoSection">
+                                {/* _______ bundle name ________________________________________ */}
+                                <div className="inforRows">
+                                    {
+                                        bundle?.name.length > 30 ? `${bundle.name.slice(0, 30)}...` : bundle?.name
+                                    }
+                                </div>
+                                {/* _______ collection name ________________________________________ */}
+                                <div>
 
+                                </div>
+                                <div>
+                                    <a href={bundle.permalink}>Opensea link</a>
+                                </div>
+                            </div>
 
 
                         </div>

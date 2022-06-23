@@ -39,8 +39,32 @@
         inset 5px 5px 5px rgba(74, 114, 156, 0.3);
 }
 
+#imagesContainer{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
 .assetImg{
     height: 150px;
     max-width: 150px;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+#infoSection {
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+
+.infoRows {
+    margin-bottom: 0.5rem;
+}
+
+#collectionName {
+    font-size: 0.8rem;
+    color: rgb(74, 114, 156);
 }
