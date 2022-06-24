@@ -1,12 +1,13 @@
 
 import "./styles/bundles.css"
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import useToggleState from "../hooks/useToggleState";
 import noImage from "../images/no_image.png"
 import axios from "axios";
 
 
 export default function Bundles() {
+    const topActivity = useRef(null)
 
     const [bundlesData, setBundlesData] = useState(null);
     const [offset, setOffset] = useState(0);
@@ -27,6 +28,7 @@ export default function Bundles() {
         <div id="bundleComponent">
 
             <main id="bundlesContainer">
+                <div ref={topActivity}></div>
                 {
                     bundlesData && bundlesData.map((bundle, i) => (
                         <div className="bundle card" key={i}>
@@ -57,6 +59,17 @@ export default function Bundles() {
                                 <div>
 
                                 </div>
+                                {/* _______ end of the sale ________________________________________ */}
+                                <div className="inforRows">
+                                    {
+                                        bundle?.sell_orders && <div>
+                                            {/* _______ timeStamp ___________________________ */}
+                                            <div id="saleEndDate">
+                                                {`Sale ends on ${new Date(bundle.sell_orders[0].closing_date).toLocaleString()} UTC`}
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
                                 <div>
                                     <a href={bundle.permalink}>Opensea link</a>
                                 </div>
@@ -70,7 +83,24 @@ export default function Bundles() {
 
 
             </main>
-
+            <div id="pageBtns">
+                {/* __________ Previous button ______________________________________ */}
+                <button
+                    
+                    
+                    className="pageButton "
+                >
+                    prev
+                </button>
+                {/* __________ Next button ______________________________________ */}
+                <button
+                    
+                    
+                    className="pageButton"
+                >
+                    next
+                </button>
+            </div>
         </div>
     )
 }

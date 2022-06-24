@@ -43,6 +43,7 @@
     display: flex;
     justify-content: space-around;
     width: 100%;
+    margin-bottom: 1rem;
 }
 
 .assetImg{
@@ -66,5 +67,11 @@
 
 #collectionName {
     font-size: 0.8rem;
+    color: rgb(74, 114, 156);
+}
+
+
+#saleEndDate{
+    font-size: 0.9rem;
     color: rgb(74, 114, 156);
 }
