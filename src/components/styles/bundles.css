@@ -1,10 +1,12 @@
 
-.bundlesComponent {
+/* duped */
+#bundlesComponent {
     display: flex;
     flex-direction: column;
 }
 
-.bundlesContainer {
+/* duped */
+#bundlesContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -12,7 +14,8 @@
     height: 80vh;
 }
 
-.bundlesContainer::-webkit-scrollbar {
+/* duped */
+#bundlesContainer::-webkit-scrollbar {
     width: 15px;
     border-radius: 2rem;
     box-shadow:
@@ -20,7 +23,8 @@
         inset 5px 5px 5px rgba(74, 114, 156, 0.2);
 }
 
-.bundlesContainer::-webkit-scrollbar-thumb {
+/* duped */
+#bundlesContainer::-webkit-scrollbar-thumb {
     border-radius: 2rem;
     box-shadow:
         inset -5px -5px 5px rgba(74, 114, 156, 0.2),
@@ -40,7 +44,7 @@
         inset 5px 5px 5px rgba(74, 114, 156, 0.3);
 }
 
-.imagesContainer{
+#imagesContainer{
     display: flex;
     justify-content: space-around;
     width: 100%;
@@ -54,7 +58,8 @@
     border-radius: 8px;
 }
 
-.infoSection {
+/* Duped */
+#infoSection {
     padding: 0 1rem;
     padding-bottom: 1rem;
     font-weight: bold;
@@ -62,13 +67,9 @@
     flex-direction: column;
 }
 
+/* duped */
 .infoRows {
     margin-bottom: 0.5rem;
-}
-
-.collectionName {
-    font-size: 0.8rem;
-    color: rgb(74, 114, 156);
 }
 
 
@@ -77,6 +78,7 @@
     color: rgb(74, 114, 156);
 }
 
+/* duped */
 .openseaLink {
     height: 2rem;
 

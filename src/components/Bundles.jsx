@@ -1,5 +1,5 @@
 
-import styles from "./styles/bundles.module.css"
+import "./styles/bundles.css"
 import { useState, useEffect, useRef } from "react";
 import useToggleState from "../hooks/useToggleState";
 import OpenseaImage from "../images/OpenseaDark.svg"
@@ -26,14 +26,14 @@ export default function Bundles() {
     };
 
     return (
-        <div className={styles.bundlesComponent}>
+        <div id="bundleComponent">
 
-            <main className={styles.bundlesContainer}>
+            <main id="bundlesContainer">
                 <div ref={topActivity}></div>
                 {
                     bundlesData && bundlesData.map((bundle, i) => (
-                        <div className={styles.bundle} key={i}>
-                            <div className={styles.imagesContainer}>
+                        <div className="bundle card" key={i}>
+                            <div id="imagesContainer">
                                 {
                                     bundle?.assets?.map((asset, i) => (
                                         <div key={asset.id}>
@@ -42,32 +42,32 @@ export default function Bundles() {
                                                 <img
                                                     src={asset.image_url ? asset.image_url : noImage}
                                                     alt="asset"
-                                                    className={styles.assetImg}
+                                                    className="assetImg"
                                                 />
                                             }
                                         </div>
                                     ))
                                 }
                             </div>
-                            <div className={styles.infoSection}>
+                            <div id="infoSection">
                                 {/* _______ end of the sale ________________________________________ */}
-                                <div className={styles.infoRows}>
+                                <div className="infoRows">
                                     {
                                         bundle?.sell_orders ?
                                         <div>
                                             {/* _______ timeStamp ___________________________ */}
-                                            <div className={styles.saleEndDate}>
+                                            <div className="saleEndDate">
                                                 {`Sale ends on ${new Date(bundle.sell_orders[0].closing_date).toLocaleString().slice(0,16)} UTC`}
                                             </div>
                                         </div>
                                         :
-                                        <div className={styles.saleEndDate}>
-                                            Sale has ende
+                                        <div className="saleEndDate">
+                                            Sale has been cancelled
                                         </div>
                                     }
                                 </div>
                                 {/* _______ bundle name ________________________________________ */}
-                                <div className={styles.infoRows}>
+                                <div className="infoRows">
                                     {
                                         bundle?.name.length > 30 ? `${bundle.name.slice(0, 30)}...` : bundle?.name
                                     }
@@ -75,7 +75,7 @@ export default function Bundles() {
 
                                 <div>
                                     <a href={bundle.permalink} target="_blank" rel="noreferrer">
-                                        <img src={OpenseaImage} alt="Opensea Link" className={styles.openseaLink} />
+                                        <img src={OpenseaImage} alt="Opensea Link" className="openseaLink" />
                                     </a>
                                 </div>
                             </div>

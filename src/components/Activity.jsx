@@ -1,5 +1,5 @@
 
-import "../components/styles/activity.css"
+import "./styles/activity.css"
 import axios from "axios";
 import { useState, useEffect, useRef, useReducer } from "react"
 import WethIcon from "../images/icons/WETH_icon.svg"
@@ -307,7 +307,7 @@ export default function Activity() {
                 <div ref={topActivity}></div>
                 {
                     activityData && activityData.map(event => (
-                        <div className="event card" key={event.id}  >
+                        <div className="event" key={event.id}  >
                             {/* __________ create a div with a ref to scroll to after clicking next / prev btn _____*/}
                             {/* __________ Container of a single event (NFT) ____________________ */}
                             <div id="imgSection">
@@ -318,7 +318,7 @@ export default function Activity() {
                                             <img
                                                 src={event?.asset?.image_preview_url}
                                                 alt="NFT"
-                                                className="img"
+                                                className="eventImg"
                                             />
                                             : event.asset_bundle ?
                                                 <div>

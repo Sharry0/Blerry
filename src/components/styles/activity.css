@@ -1,3 +1,5 @@
+
+/* duped */
 #activityComponent {
     display: flex;
     flex-direction: column;
@@ -59,6 +61,7 @@
     color: rgb(74, 114, 156) !important;
 }
 
+/* duped */
 #eventsContainer {
     display: flex;
     flex-wrap: wrap;
@@ -67,6 +70,7 @@
     height: 80vh;
 }
 
+/* duped */
 #eventsContainer::-webkit-scrollbar {
     width: 15px;
     border-radius: 2rem;
@@ -75,6 +79,7 @@
         inset 5px 5px 5px rgba(74, 114, 156, 0.2);
 }
 
+/* duped */
 #eventsContainer::-webkit-scrollbar-thumb {
     border-radius: 2rem;
     box-shadow:
@@ -87,6 +92,7 @@
     margin: 2rem 1rem;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
     box-shadow:
         10px 10px 40px rgba(74, 113, 156, 0.3),
         inset -5px -5px 5px rgba(74, 114, 156, 0.5),
@@ -110,7 +116,7 @@
     border-radius: 5px;
 }
 
-.img {
+.eventImg {
     max-height: 150px;
     max-width: 150px;
     object-fit: contain;
@@ -154,7 +160,7 @@
     shape-rendering: crispEdges;
 }
 
-#pageBtns {
+.pageBtns {
     margin-top: 1rem;
     padding-right: 1rem;
     display: flex;
