@@ -329,7 +329,7 @@ export default function Activity() {
                                                                 : noImage
                                                         }
                                                         alt="NFT"
-                                                        className="imgBundle"
+                                                        className="eventImgBundle"
                                                     />
                                                     <img
                                                         src={
@@ -338,11 +338,11 @@ export default function Activity() {
                                                                 : noImage
                                                         }
                                                         alt="NFT"
-                                                        className="imgBundle"
+                                                        className="eventImgBundle"
                                                     />
                                                 </div>
                                                 :
-                                                <img src={noImage} alt="No pic available" className="img" />
+                                                <img src={noImage} alt="No pic available" className="eventImg" />
                                     }
                                 </div>
                             </div>
@@ -420,7 +420,7 @@ export default function Activity() {
                 <button
                     disabled={previousCursor === null ? true : false}
                     onClick={() => getEventsData(previousCursor)}
-                    className="pageButton "
+                    className="pageButton"
                 >
                     prev
                 </button>
@@ -428,7 +428,7 @@ export default function Activity() {
                 <button
                     disabled={nextCursor === null ? true : false}
                     onClick={() => getEventsData(nextCursor)}
-                    className="pageButton "
+                    className="pageButton"
                 >
                     next
                 </button>

@@ -7,24 +7,28 @@
 
 #filters {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin-bottom: 0.5rem;
-    width: 50%;
+    width: 100%;
 }
 
 .filterBtn {
+    cursor: pointer;
     font-weight: bold;
     color: #333944;
+    padding: 0.4rem 0.8rem;
     background: none;
     background: none;
     border: none;
     border-radius: 8px;
     box-shadow:
         10px 10px 20px rgba(74, 113, 156, 0.3),
-        inset -5px -5px 5px rgba(74, 114, 156, 0.2),
+        inset -5px -5px 5px rgba(74, 114, 156, 0.3),
         inset 5px 5px 5px rgba(74, 114, 156, 0.2);
     position: relative;
 }
+
+
 
 .filterBtnActive{
     filter: invert(51%) sepia(95%) saturate(0%) hue-rotate(228deg) brightness(112%) contrast(88%);
@@ -42,6 +46,7 @@
 }
 
 .dropdownMenu button{
+    cursor: pointer;
     display: none;
     margin: 0.1rem 0;
     width: 100%;
@@ -89,6 +94,7 @@
 
 .event {
     width: 300px;
+    max-height: 450px;
     margin: 2rem 1rem;
     display: flex;
     flex-direction: column;
@@ -123,7 +129,7 @@
     border-radius: 5px;
 }
 
-.imgBundle {
+.eventImgBundle {
     max-height: 75px;
     max-width: 75px;
 }
@@ -156,19 +162,21 @@
 }
 
 .openseaLink {
-    height: 2rem;
+    height: 1.5rem;
     shape-rendering: crispEdges;
 }
 
-.pageBtns {
+#pageBtns {
     margin-top: 1rem;
     padding-right: 1rem;
     display: flex;
     justify-content: center;
 }
-
+/* maybe make a general btn style for all btns */
 .pageButton {
+    cursor: pointer;
     margin: 0 2rem;
+    padding: 0.4rem 0.8rem;
     font-weight: bold;
     color: #333944;
     background: none;
@@ -176,7 +184,7 @@
     border-radius: 5px;
     box-shadow:
         10px 10px 20px rgba(74, 113, 156, 0.3),
-        inset -5px -5px 5px rgba(74, 114, 156, 0.4),
+        inset -5px -5px 5px rgba(74, 114, 156, 0.3),
         inset 5px 5px 5px rgba(74, 114, 156, 0.2);
 }
 
