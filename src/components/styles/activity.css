@@ -151,7 +151,6 @@
 
 .openseaLink {
     height: 2rem;
-    /* image-rendering: crisp-edges; */
     shape-rendering: crispEdges;
 }
 

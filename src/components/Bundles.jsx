@@ -1,7 +1,8 @@
 
-import "./styles/bundles.css"
+import styles from "./styles/bundles.module.css"
 import { useState, useEffect, useRef } from "react";
 import useToggleState from "../hooks/useToggleState";
+import OpenseaImage from "../images/OpenseaDark.svg"
 import noImage from "../images/no_image.png"
 import axios from "axios";
 
@@ -25,14 +26,14 @@ export default function Bundles() {
     };
 
     return (
-        <div id="bundleComponent">
+        <div className={styles.bundlesComponent}>
 
-            <main id="bundlesContainer">
+            <main className={styles.bundlesContainer}>
                 <div ref={topActivity}></div>
                 {
                     bundlesData && bundlesData.map((bundle, i) => (
-                        <div className="bundle card" key={i}>
-                            <div id="imagesContainer">
+                        <div className={styles.bundle} key={i}>
+                            <div className={styles.imagesContainer}>
                                 {
                                     bundle?.assets?.map((asset, i) => (
                                         <div key={asset.id}>
@@ -41,37 +42,41 @@ export default function Bundles() {
                                                 <img
                                                     src={asset.image_url ? asset.image_url : noImage}
                                                     alt="asset"
-                                                    className="assetImg"
+                                                    className={styles.assetImg}
                                                 />
                                             }
                                         </div>
                                     ))
                                 }
                             </div>
-                            <div id="infoSection">
+                            <div className={styles.infoSection}>
+                                {/* _______ end of the sale ________________________________________ */}
+                                <div className={styles.infoRows}>
+                                    {
+                                        bundle?.sell_orders ?
+                                        <div>
+                                            {/* _______ timeStamp ___________________________ */}
+                                            <div className={styles.saleEndDate}>
+                                                {`Sale ends on ${new Date(bundle.sell_orders[0].closing_date).toLocaleString().slice(0,16)} UTC`}
+                                            </div>
+                                        </div>
+                                        :
+                                        <div className={styles.saleEndDate}>
+                                            Sale has ende
+                                        </div>
+                                    }
+                                </div>
                                 {/* _______ bundle name ________________________________________ */}
-                                <div className="inforRows">
+                                <div className={styles.infoRows}>
                                     {
                                         bundle?.name.length > 30 ? `${bundle.name.slice(0, 30)}...` : bundle?.name
                                     }
                                 </div>
-                                {/* _______ collection name ________________________________________ */}
-                                <div>
 
-                                </div>
-                                {/* _______ end of the sale ________________________________________ */}
-                                <div className="inforRows">
-                                    {
-                                        bundle?.sell_orders && <div>
-                                            {/* _______ timeStamp ___________________________ */}
-                                            <div id="saleEndDate">
-                                                {`Sale ends on ${new Date(bundle.sell_orders[0].closing_date).toLocaleString()} UTC`}
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
                                 <div>
-                                    <a href={bundle.permalink}>Opensea link</a>
+                                    <a href={bundle.permalink} target="_blank" rel="noreferrer">
+                                        <img src={OpenseaImage} alt="Opensea Link" className={styles.openseaLink} />
+                                    </a>
                                 </div>
                             </div>
 
@@ -86,16 +91,16 @@ export default function Bundles() {
             <div id="pageBtns">
                 {/* __________ Previous button ______________________________________ */}
                 <button
-                    
-                    
+
+
                     className="pageButton "
                 >
                     prev
                 </button>
                 {/* __________ Next button ______________________________________ */}
                 <button
-                    
-                    
+
+
                     className="pageButton"
                 >
                     next

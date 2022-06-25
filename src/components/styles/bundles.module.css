@@ -1,10 +1,10 @@
 
-#bundlesComponent {
+.bundlesComponent {
     display: flex;
     flex-direction: column;
 }
 
-#bundlesContainer {
+.bundlesContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -12,7 +12,7 @@
     height: 80vh;
 }
 
-#bundlesContainer::-webkit-scrollbar {
+.bundlesContainer::-webkit-scrollbar {
     width: 15px;
     border-radius: 2rem;
     box-shadow:
@@ -20,7 +20,7 @@
         inset 5px 5px 5px rgba(74, 114, 156, 0.2);
 }
 
-#bundlesContainer::-webkit-scrollbar-thumb {
+.bundlesContainer::-webkit-scrollbar-thumb {
     border-radius: 2rem;
     box-shadow:
         inset -5px -5px 5px rgba(74, 114, 156, 0.2),
@@ -33,13 +33,14 @@
     padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
     box-shadow:
         10px 10px 40px rgba(74, 113, 156, 0.3),
         inset -5px -5px 5px rgba(74, 114, 156, 0.5),
         inset 5px 5px 5px rgba(74, 114, 156, 0.3);
 }
 
-#imagesContainer{
+.imagesContainer{
     display: flex;
     justify-content: space-around;
     width: 100%;
@@ -53,7 +54,7 @@
     border-radius: 8px;
 }
 
-#infoSection {
+.infoSection {
     padding: 0 1rem;
     padding-bottom: 1rem;
     font-weight: bold;
@@ -65,13 +66,20 @@
     margin-bottom: 0.5rem;
 }
 
-#collectionName {
+.collectionName {
     font-size: 0.8rem;
     color: rgb(74, 114, 156);
 }
 
 
-#saleEndDate{
+.saleEndDate{
     font-size: 0.9rem;
     color: rgb(74, 114, 156);
 }
+
+.openseaLink {
+    height: 2rem;
+
+    shape-rendering: crispEdges;
+}
+
