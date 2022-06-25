@@ -78,6 +78,10 @@
     color: rgb(74, 114, 156);
 }
 
+.bundleName{
+    font-size: 1.4rem;
+}
+
 /* duped */
 /* .openseaLink {
     height: 2rem;
