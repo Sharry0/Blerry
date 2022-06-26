@@ -146,7 +146,7 @@ export default function Activity() {
             unixStamp: null,
             isActive: false
         },
-    ]); 
+    ]);
     // const [beforeDate, setBeforeDate] = useState(null); // (maybe will implement later)
 
     // add options for user to choose 20, 50, 100 & 200
@@ -173,7 +173,7 @@ export default function Activity() {
     };
 
 
-    const convertToPrice = (decimal = 18, totalPrice) => {
+    const convertToPrice = (totalPrice, decimal = 18) => {
 
         if (totalPrice === "0") return "0";
 
@@ -376,9 +376,9 @@ export default function Activity() {
                                     <span>
                                         Price: {
                                             event.event_type === "successful" ?
-                                                convertToPrice(event?.payment_token?.decimals, event.total_price)
+                                                convertToPrice(event.total_price, event?.payment_token?.decimals)
                                                 : event.event_type === "created" ?
-                                                    convertToPrice(event?.payment_token?.decimals, event.starting_price)
+                                                    convertToPrice(event.total_price, event?.payment_token?.decimals)
                                                     : "---"
 
                                         }
