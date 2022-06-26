@@ -20,7 +20,6 @@ export default function Bundles() {
 
     useEffect(() => {
         getOdersData()
-        console.log("run effectiong")
     }, [runEffect]);
 
     const getOdersData = async () => {
