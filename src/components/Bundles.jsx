@@ -71,7 +71,7 @@ export default function Bundles() {
                 <div ref={topActivity}></div>
                 {
                     bundlesData && bundlesData.map(bundle => (
-                        <div className="bundle card" key={bundle.id}>
+                        <div className="bundle" key={bundle.id}>
                             {/* _______ bundle images ______________ */}
                             <div id="imagesContainer">
                                 {
