@@ -1,3 +1,28 @@
 
+.myWalletComponent{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid red;
+}
 
+.walletContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: auto;
+    height: 80vh;
+}
 
+.connectWalletSection{
+    height: 95%;
+    width: 95%;
+    border: 2px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.connectWalletSection  button{
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+}
