@@ -3,7 +3,8 @@ import "./myWallet.css"
 import { useEffect, useState } from "react"
 import { injected } from "./wallet/connectors"
 import { useWeb3React } from "@web3-react/core"
-import EthWalletBalance from "./EthWalletBalance"
+import EthBalance from "./EthBalance"
+import TokenBalance from "./TokenBalance"
 
 export default function MyWallet() {
 
@@ -46,10 +47,10 @@ export default function MyWallet() {
 
         {
           active ?
-            <div className="ethWalletBalance">
+            <div className="ethBalance">
               {account} is Connected
-              <EthWalletBalance />
-              
+              <EthBalance />
+
             </div>
             :
             <div className="connectWalletSection">
