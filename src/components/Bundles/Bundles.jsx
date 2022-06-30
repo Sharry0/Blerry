@@ -1,11 +1,11 @@
 
-import "./styles/bundles.css"
+import "./bundles.css"
 import { useState, useEffect, useRef } from "react";
-import useToggleState from "../hooks/useToggleState";
-import OpenseaImage from "../images/OpenseaDark.svg"
-import noImage from "../images/no_image.png"
-import WethIcon from "../images/icons/WETH_icon.svg"
-import EthIcon from "../images/icons/ETH_icon.svg"
+import useToggleState from "../../hooks/useToggleState";
+import OpenseaImage from "../../images/OpenseaDark.svg"
+import noImage from "../../images/no_image.png"
+import WethIcon from "../../images/icons/WETH_icon.svg"
+import EthIcon from "../../images/icons/ETH_icon.svg"
 import axios from "axios";
 
 

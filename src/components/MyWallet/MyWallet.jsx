@@ -1,5 +1,5 @@
 
-import "./styles/myWallet.css"
+import "./myWallet.css"
 import { useEffect, useState } from "react"
 import { injected } from "./wallet/connectors"
 import { useWeb3React } from "@web3-react/core"

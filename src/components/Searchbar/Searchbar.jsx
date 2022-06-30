@@ -1,7 +1,7 @@
 
-import "./styles/searchbar.css";
+import "./searchbar.css";
 import React, { useState } from 'react';
-import searchIcon from "../images/icons/search_icon.svg"
+import searchIcon from "../../images/icons/search_icon.svg"
 
 
 export default function Searchbar() {

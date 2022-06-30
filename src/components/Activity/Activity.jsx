@@ -1,13 +1,12 @@
 
-import "./styles/activity.css"
+import "./activity.css";
 import axios from "axios";
-import { useState, useEffect, useRef, useReducer } from "react"
-import WethIcon from "../images/icons/WETH_icon.svg"
-import EthIcon from "../images/icons/ETH_icon.svg"
-import OpenseaDark from "../images/OpenseaDark.svg"
-import useToggleState from "../hooks/useToggleState"
-
-import noImage from "../images/no_image.png"
+import { useState, useEffect, useRef, useReducer } from "react";
+import useToggleState from "../../hooks/useToggleState";
+import WethIcon from "../../images/icons/WETH_icon.svg";
+import EthIcon from "../../images/icons/ETH_icon.svg";
+import OpenseaDark from "../../images/OpenseaDark.svg";
+import noImage from "../../images/no_image.png";
 
 export default function Activity() {
 
