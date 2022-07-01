@@ -1,14 +1,14 @@
 
 import "./myWallet.css"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { injected } from "./wallet/connectors"
 import { useWeb3React } from "@web3-react/core"
 import EthBalance from "./EthBalance"
-import TokenBalance from "./TokenBalance"
+import TokenList from "./TokenList"
 
 export default function MyWallet() {
 
-  const { active, account, library, connector, activate, deactivate } = useWeb3React();
+  const { active, account, library, connector, activate, deactivate, chainId } = useWeb3React();
 
   // ___ check if MM has been connected to this site before if so, reconnect them ____
   const checkIsConnected = async () => {
@@ -17,7 +17,7 @@ export default function MyWallet() {
       .catch(err => console.log(err))
   }
 
-  console.log(useWeb3React())
+  // console.log(connector)
   useEffect(() => {
     if (typeof window.ethereum !== 'undefined') checkIsConnected();
     console.log("effect runninfrs")
@@ -48,9 +48,11 @@ export default function MyWallet() {
         {
           active ?
             <div className="ethBalance">
-              {account} is Connected
+              {account} is Connected <br />
+              ChainId: {chainId}
               <EthBalance />
-
+              <TokenList  chainId={chainId} />
+          
             </div>
             :
             <div className="connectWalletSection">

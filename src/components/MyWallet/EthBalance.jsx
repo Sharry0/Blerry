@@ -24,9 +24,9 @@ export default function WalletBalance() {
         if (!library) return
 
         // listen for changes on an Ethereum address
-        console.log(`listening for blocks...`)
+        // console.log(`listening for blocks...`)
         library.on('block', () => {
-            console.log('update balance...')
+            // console.log('update balance...')
             mutate(undefined, true)
         })
         // remove listener when the component is unmounted

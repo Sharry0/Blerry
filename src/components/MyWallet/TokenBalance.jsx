@@ -4,8 +4,8 @@ import { useWeb3React } from "@web3-react/core"
 import {formatUnits } from "@ethersproject/units"
 import {isAddress} from "@ethersproject/address"
 import {Contract} from "@ethersproject/contracts"
+import ERC20ABI from "./abi/erc20Abi.json"
 import useSWR from "swr"
-
 
 
 const fetcher = (library, abi) => (...args) => {
@@ -24,7 +24,7 @@ const fetcher = (library, abi) => (...args) => {
 
 
 
-export const TokenBalance = ({ symbol, address, decimals }) => {
+export default function TokenBalance  ({ symbol, address, decimals }) {
   const { account, library } = useWeb3React()
   const { data: balance, mutate } = useSWR([address, 'balanceOf', account], {
     fetcher: fetcher(library, ERC20ABI),
