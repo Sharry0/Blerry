@@ -1,7 +1,7 @@
 
 
 import TokenBalance from "./TokenBalance"
-import { TOKENS_BY_NETWORK } from "./wallet/tokenBalance"
+import { TOKENS_BY_NETWORK } from "./utils/index"
 
 export default function TokenList({ chainId }) {
 

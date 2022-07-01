@@ -1,25 +1,18 @@
 
-
 import { useEffect } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { formatEther } from "@ethersproject/units"
 import useSWR from 'swr'
 
-// dont understand this fetcher interaction with blockchain diff than api
-const fetcher = (library) => (...args) => {
-    const [method, ...params] = args
-    return library[method](...params)
-}
 
 export default function WalletBalance() {
 
     const { account, active, library, chainId } = useWeb3React()
 
-    const { data: balance, mutate } = useSWR(['getBalance', account, 'latest'], {
-        fetcher: fetcher(library),
-    })
+    const { data: balance, mutate } = useSWR(['getBalance', account, 'latest'])
     // console.log("ETHBalanceSWR", balance)
     // console.log(library.on)
+
     useEffect(() => {
         if (!library) return
 

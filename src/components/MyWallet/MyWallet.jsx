@@ -3,8 +3,11 @@ import "./myWallet.css"
 import { useEffect } from "react"
 import { injected } from "./wallet/connectors"
 import { useWeb3React } from "@web3-react/core"
+import ERC20ABI from "./abi/erc20Abi.json"
 import EthBalance from "./EthBalance"
 import TokenList from "./TokenList"
+import { SWRConfig } from "swr"
+import { fetcher } from "./utils/index"
 
 export default function MyWallet() {
 
@@ -50,9 +53,11 @@ export default function MyWallet() {
             <div className="ethBalance">
               {account} is Connected <br />
               ChainId: {chainId}
-              <EthBalance />
-              <TokenList  chainId={chainId} />
-          
+              <SWRConfig value={{ fetcher: fetcher(library, ERC20ABI) }}>
+                <EthBalance />
+                <TokenList chainId={chainId} />
+              </SWRConfig>
+
             </div>
             :
             <div className="connectWalletSection">
