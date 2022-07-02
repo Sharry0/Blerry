@@ -37,6 +37,12 @@ export const TOKENS_BY_NETWORK = {
             name: "Wrapped Ether",
             decimals: 18,
         },
+        {
+            address: "0xf5de760f2e916647fd766B4AD9E85ff943cE3A2b",
+            symbol: "MFNFT",
+            name: "MultiFaucet NFT",
+            decimals: 0,
+        }
     ],
 }
 
