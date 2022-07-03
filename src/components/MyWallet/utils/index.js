@@ -37,12 +37,12 @@ export const TOKENS_BY_NETWORK = {
             name: "Wrapped Ether",
             decimals: 18,
         },
-        {
-            address: "0xf5de760f2e916647fd766B4AD9E85ff943cE3A2b",
-            symbol: "MFNFT",
-            name: "MultiFaucet NFT",
-            decimals: 0,
-        }
+        // {
+        //     address: "0xf5de760f2e916647fd766B4AD9E85ff943cE3A2b",
+        //     symbol: "MFNFT",
+        //     name: "MultiFaucet NFT",
+        //     decimals: 0,
+        // }
     ],
 }
 
@@ -53,6 +53,7 @@ export const fetcher = (library, abi) => (...args) => {
       const address = arg1
       const method = arg2
       const contract = new Contract(address, abi, library.getSigner())
+    //   console.log(library)
       return contract[method](...params)
     }
     // it's a eth call

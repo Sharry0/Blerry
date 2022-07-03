@@ -6,8 +6,10 @@ import { useWeb3React } from "@web3-react/core"
 import ERC20ABI from "./abi/erc20Abi.json"
 import EthBalance from "./EthBalance"
 import TokenList from "./TokenList"
+import NftBalance from "./nftBalance/NftBalance"
 import { SWRConfig } from "swr"
 import { fetcher } from "./utils/index"
+import {BigNumber} from "ethers"
 
 export default function MyWallet() {
 
@@ -43,6 +45,8 @@ export default function MyWallet() {
     }
   }
 
+const tokenId = BigNumber.from(1)
+  // console.log(BigNumber.from(1))
 
   return (
     <div className="myWalletComponent">
@@ -56,6 +60,7 @@ export default function MyWallet() {
               <SWRConfig value={{ fetcher: fetcher(library, ERC20ABI) }}>
                 <EthBalance />
                 <TokenList chainId={chainId} />
+                <NftBalance tokenId={tokenId} />
               </SWRConfig>
 
             </div>

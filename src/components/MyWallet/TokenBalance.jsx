@@ -16,7 +16,8 @@ export default function TokenBalance  ({ symbol, address, decimals }) {
     console.log(`listening for Transfer...`)
     const contract = new Contract(address, ERC20ABI, library.getSigner())
     const fromMe = contract.filters.Transfer(account, null)
-    console.log(contract.filters)
+    console.log()
+    // console.log(contract)
     library.on(fromMe, (from, to, amount, event) => {
       console.log('Transfer|sent', { from, to, amount, event })
       mutate(undefined, true)
