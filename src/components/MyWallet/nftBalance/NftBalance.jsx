@@ -2,64 +2,54 @@
 
 import { useState, useEffect } from 'react'
 import { useWeb3React } from '@web3-react/core';
-import { Contract } from "@ethersproject/contracts"
-// import {formatUnits } from "@ethersproject/units"
 import MFAbi from "../abi/MFAbi.json"
-import ERC20ABI from "../abi/erc20Abi.json"
 import { fetcher } from '../utils';
 import useSWR from 'swr';
+import { base64 } from 'ethers/lib/utils';
 
 
 export default function NftBalance({ tokenId }) {
 
     const addressContract = "0xf5de760f2e916647fd766B4AD9E85ff943cE3A2b";
-    // console.log(tokenId)
+
 
     const { account, active, library } = useWeb3React()
-    const [itemInfo, setItemInfo] = useState()
+    const [itemInfo, setItemInfo] = useState(null)
 
-    // const { data: nftURI } = useSWR([addressContract, 'tokenURI', 1449261])
-    const { data, error } = useSWR([addressContract, 'tokenURI', 1449261], {
+    const { data: nftURI } = useSWR([addressContract, 'tokenURI', 1449261], {
         fetcher: fetcher(library, MFAbi)
     });
-    const contract = new Contract(addressContract, MFAbi, library)
 
-    console.log(data)
-    
-
-    // console.log(await contract.tokenURI(tokenId))
+    // console.log(nftURI)
 
     useEffect(() => {
-        // if (!nftURI) return
-        if (!data) return
-        const contract = new Contract(addressContract, MFAbi, library)
-        const fromMe = contract.filters.Transfer(account, null)
+        if (!nftURI) return
+        
+        
 
-        // console.log(contract)
-        // library.on(fromMe, (from, to, amount, event) => {
-        //     console.log('Transfer|sent', { from, to, amount, event })
-        //     mutate(undefined, true)
-        // })
+        const data = base64.decode(nftURI.slice(21))
 
-        // const toMe = contract.filters.Transfer(null, account)
-        // library.on(toMe, (from, to, amount, event) => {
-        //     console.log('Transfer|received', { from, to, amount, event })
-        //     mutate(undefined, true)
-        // })
+        console.log(data)
+        // console.log(`https://${nftURI.slice(21)}.ipfs.dweb.link`)
 
-        // remove listener when the component is unmounted
-        return () => {
-            // library.removeAllListeners(toMe)
-            // library.removeAllListeners(fromMe)
-        }
+        fetch(`https://${nftURI.slice(21)}.ipfs.dweb.link`)
+        .then(res=>console.log(res))
+        // const itemInfo = JSON.parse(data)
+        // const svg = base64.decode(itemInfo.image.slice(26))
+        // setItemInfo({
+        //   "name":itemInfo.name,
+        //   "description":itemInfo.description,
+        //   "svg":svg})
+
         // some()
-    }, [])
+    }, [nftURI])
 
 
     return (
         <div>
-            
-            {error && console.log(error)}
+
+            nft palance
+            {/* <img src={itemInfo?.image} alt="" /> */}
         </div>
     )
 }
