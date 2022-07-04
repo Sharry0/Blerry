@@ -3,20 +3,23 @@ import { useEffect } from "react"
 import { useWeb3React } from "@web3-react/core"
 import {formatUnits } from "@ethersproject/units"
 import {Contract} from "@ethersproject/contracts"
+import { fetcher } from "./utils"
 import ERC20ABI from "./abi/erc20Abi.json"
 import useSWR from "swr"
 
 
 export default function TokenBalance  ({ symbol, address, decimals }) {
   const { account, library } = useWeb3React()
-  const { data: balance, mutate } = useSWR([address, 'balanceOf', account])
+  const { data: balance, mutate } = useSWR([address, 'balanceOf', account], {
+    fetcher: fetcher(library, ERC20ABI)
+  })
 
   useEffect(() => {
     // listen for changes on an Ethereum address
-    console.log(`listening for Transfer...`)
+    // console.log(`listening for Transfer...`)
     const contract = new Contract(address, ERC20ABI, library.getSigner())
     const fromMe = contract.filters.Transfer(account, null)
-    console.log()
+
     // console.log(contract)
     library.on(fromMe, (from, to, amount, event) => {
       console.log('Transfer|sent', { from, to, amount, event })

@@ -52,11 +52,12 @@ export const fetcher = (library, abi) => (...args) => {
     if (isAddress(arg1)) {
       const address = arg1
       const method = arg2
-      const contract = new Contract(address, abi, library.getSigner())
-    //   console.log(library)
+      const contract = new Contract(address, abi, library)
+    //   console.log(...params)
       return contract[method](...params)
     }
     // it's a eth call
     const method = arg1
+    // console.log("eth call")
     return library[method](arg2, ...params)
   }

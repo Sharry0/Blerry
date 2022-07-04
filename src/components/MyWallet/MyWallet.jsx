@@ -45,7 +45,7 @@ export default function MyWallet() {
     }
   }
 
-const tokenId = BigNumber.from(1)
+const tokenId = BigNumber.from(1449261)
   // console.log(BigNumber.from(1))
 
   return (
@@ -57,7 +57,7 @@ const tokenId = BigNumber.from(1)
             <div className="ethBalance">
               {account} is Connected <br />
               ChainId: {chainId}
-              <SWRConfig value={{ fetcher: fetcher(library, ERC20ABI) }}>
+              <SWRConfig>
                 <EthBalance />
                 <TokenList chainId={chainId} />
                 <NftBalance tokenId={tokenId} />
