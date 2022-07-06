@@ -52,7 +52,7 @@ export const fetcher = (library, abi) => (...args) => {
     if (isAddress(arg1)) {
       const address = arg1
       const method = arg2
-      const contract = new Contract(address, abi, library)
+      const contract = new Contract(address, abi, library.getSigner())
     //   console.log(...params)
       return contract[method](...params)
     }

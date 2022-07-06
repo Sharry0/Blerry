@@ -1,19 +1,16 @@
 
-import "./myWallet.css"
-import { useEffect } from "react"
-import { injected } from "./wallet/connectors"
-import { useWeb3React } from "@web3-react/core"
-import ERC20ABI from "./abi/erc20Abi.json"
-import EthBalance from "./EthBalance"
-import TokenList from "./TokenList"
-import NftBalance from "./nftBalance/NftBalance"
-import { SWRConfig } from "swr"
-import { fetcher } from "./utils/index"
-import {BigNumber} from "ethers"
+import "./myWallet.css";
+import { useEffect } from "react";
+import { injected } from "./wallet/connectors";
+import { useWeb3React } from "@web3-react/core";
+import { SWRConfig } from "swr";
+import EthBalance from "./EthBalance";
+import TokenList from "./TokenList";
+import NftList from "./nftBalance/NftList";
 
 export default function MyWallet() {
 
-  const { active, account, library, connector, activate, deactivate, chainId } = useWeb3React();
+  const { active, account, activate, deactivate, chainId } = useWeb3React();
 
   // ___ check if MM has been connected to this site before if so, reconnect them ____
   const checkIsConnected = async () => {
@@ -22,7 +19,6 @@ export default function MyWallet() {
       .catch(err => console.log(err))
   }
 
-  // console.log(connector)
   useEffect(() => {
     if (typeof window.ethereum !== 'undefined') checkIsConnected();
     console.log("effect runninfrs")
@@ -45,9 +41,6 @@ export default function MyWallet() {
     }
   }
 
-const tokenId = BigNumber.from(1449261)
-  // console.log(BigNumber.from(1))
-
   return (
     <div className="myWalletComponent">
       <div className="walletContainer">
@@ -60,7 +53,7 @@ const tokenId = BigNumber.from(1449261)
               <SWRConfig>
                 <EthBalance />
                 <TokenList chainId={chainId} />
-                <NftBalance tokenId={tokenId} />
+                <NftList chainId={chainId} />
               </SWRConfig>
 
             </div>
