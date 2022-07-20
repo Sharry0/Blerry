@@ -3,10 +3,11 @@ import "./nftBalance.css"
 import { useState } from "react";
 import NftBalance from "./NftBalance"
 import { useWeb3React } from "@web3-react/core";
-import { Contract } from "@ethersproject/contracts";
-import { formatUnits } from "@ethersproject/units";
 import axios from "axios";
-import MFAbi from "../abi/MFAbi.json";
+
+// import { Contract } from "@ethersproject/contracts";
+// import { formatUnits } from "@ethersproject/units";
+// import MFAbi from "../abi/MFAbi.json";
 
 
 export default function NftList({ chainId }) {
@@ -43,6 +44,7 @@ export default function NftList({ chainId }) {
                 {
                     myNfts && myNfts.map(nft => (
                         <div key={nft.id}>
+                            {console.log(nft.collection.name.length)}
                             <div className="imageBorder">
                                 <img src={nft.image_url} alt="nft" className="nftImage" />
                                 <div> {nft.collection.name} </div>
