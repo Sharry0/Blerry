@@ -38,10 +38,10 @@ export default function WalletBalance() {
             <div>
                 {active && balance ? (
                     <div fontSize="md" w='100%' my='2' align='left'>
-                         {parseFloat(formatEther(balance)).toFixed(3)} {chainId === 31337 ? 'Test' : ' '} ETH
+                        | {parseFloat(formatEther(balance)).toFixed(3)} {chainId === 31337 ? 'Test' : ' '} ETH |
                     </div>
                 ) : (
-                    <div fontSize="md" w='100%' my='2' align='left'>ETH in account:</div>
+                    <div fontSize="md" w='100%' my='2' align='left'>| - |</div>
                 )}
             </div>
 

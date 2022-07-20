@@ -47,16 +47,20 @@ export default function MyWallet() {
 
         {
           active ?
-            <div className="tokenBalance">
-              <span id="connectedWallet">
-                {account} is Connected <br />
-              </span>
-              <span id="chainId">
-                ChainId: {chainId}
-              </span>
+            <div>
+              <div className="topWalletInfo">
+                  <span id="connectedWallet">
+                    {` | ${account.slice(0, 5)}...${account.slice(38)} |`}
+                  </span>
+                  <span id="chainId">
+                  | ChainId: {chainId} |
+                  </span>
+                <SWRConfig>
+                  <EthBalance />
+                  <TokenList chainId={chainId} />
+                </SWRConfig>
+              </div>
               <SWRConfig>
-                <EthBalance />
-                <TokenList chainId={chainId} />
                 <NftList chainId={chainId} />
               </SWRConfig>
 

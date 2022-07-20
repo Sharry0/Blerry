@@ -45,7 +45,7 @@ export default function TokenBalance  ({ symbol, address, decimals }) {
   }
   return (
     <div>
-      {parseFloat(formatUnits(balance, decimals)).toPrecision(4)} {symbol}
+      | {parseFloat(formatUnits(balance, decimals)).toPrecision(4)} {symbol} |
     </div>
   )
 }

@@ -38,6 +38,8 @@ export default function NftList({ chainId }) {
 
     fetchMyNfts()
 
+    // add opensea links to the nfts in your wallet
+
     return (
         <div>
             <div className="nftsContainer">
@@ -55,7 +57,7 @@ export default function NftList({ chainId }) {
             </div>
 
 
-            {chainId === 42 && <NftBalance tokenId={1449261} />}
+            {/* {chainId === 42 && <NftBalance tokenId={1449261} />}   */}
         </div>
     )
 }
