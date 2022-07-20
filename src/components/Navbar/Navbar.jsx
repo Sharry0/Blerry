@@ -48,9 +48,9 @@ export default function Navbar() {
                     </NavLink>
                     <NavLink 
                     to="/market"
-                    className={({isActive})=> isActive ? `navbarBtn activeNavbarBtn`: `navbarBtn`} 
+                    className={({isActive})=> isActive ? `navbarBtn activeNavbarBtn disable`: `navbarBtn disable`} 
                     >
-                        <img src={marketIcon} alt="market Icon" />
+                        <img src={marketIcon} id="disable" alt="market Icon" />
                         <span className="marketBtn">Market<br /><span className="marketSoon">coming soon</span></span>
                     </NavLink>
                 </nav>

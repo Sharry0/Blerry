@@ -1,11 +1,15 @@
-
-.myWalletComponent{
+.myWalletComponent {
     display: flex;
     flex-direction: column;
-    border: 2px solid red;
+    padding: 1.5rem;
+    border-radius: 20px;
+    box-shadow:
+        10px 10px 40px rgba(74, 113, 156, 0.3),
+        inset -5px -5px 5px rgba(74, 114, 156, 0.5),
+        inset 5px 5px 5px rgba(74, 114, 156, 0.3);
 }
 
-.walletContainer{
+.walletContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -13,15 +17,37 @@
     height: 80vh;
 }
 
-.connectWalletSection{
+.connectWalletSection {
     height: 95%;
     width: 95%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.connectWalletSection  button{
+
+.connectWalletSection button {
     font-size: 1.5rem;
     padding: 1rem 2rem;
     border-radius: 10px;
+}
+
+/* duped */
+.walletContainer::-webkit-scrollbar {
+    width: 15px;
+    border-radius: 2rem;
+    box-shadow:
+        inset -5px -5px 3px rgba(74, 114, 156, 0.2),
+        inset 5px 5px 5px rgba(74, 114, 156, 0.2);
+}
+
+/* duped */
+.walletContainer::-webkit-scrollbar-thumb {
+    border-radius: 2rem;
+    box-shadow:
+        inset -5px -5px 5px rgba(74, 114, 156, 0.2),
+        inset 5px 5px 5px rgba(74, 114, 156, 0.2);
+}
+
+.tokenBalance{
+    font-weight: bold;
 }

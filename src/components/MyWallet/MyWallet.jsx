@@ -47,9 +47,13 @@ export default function MyWallet() {
 
         {
           active ?
-            <div className="ethBalance">
-              {account} is Connected <br />
-              ChainId: {chainId}
+            <div className="tokenBalance">
+              <span id="connectedWallet">
+                {account} is Connected <br />
+              </span>
+              <span id="chainId">
+                ChainId: {chainId}
+              </span>
               <SWRConfig>
                 <EthBalance />
                 <TokenList chainId={chainId} />
