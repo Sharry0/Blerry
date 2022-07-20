@@ -51,7 +51,7 @@ export default function Navbar() {
                     className={({isActive})=> isActive ? `navbarBtn activeNavbarBtn`: `navbarBtn`} 
                     >
                         <img src={marketIcon} alt="market Icon" />
-                        <span>Market</span>
+                        <span className="marketBtn">Market<br /><span className="marketSoon">coming soon</span></span>
                     </NavLink>
                 </nav>
                 {/* ______ lower half buttons & logo on the navbar ________________________ */}

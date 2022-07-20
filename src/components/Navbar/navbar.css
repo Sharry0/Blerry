@@ -74,3 +74,12 @@
     height: 100px;
     margin-bottom: 20px;
 }
+
+.marketSoon{
+    position: absolute;
+    font-size: 0.8rem;
+    color: gray;
+}
+.marketBtn{
+    color: gray;
+}
