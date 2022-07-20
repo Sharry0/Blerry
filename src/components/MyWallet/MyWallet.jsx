@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import { injected } from "./wallet/connectors";
 import { useWeb3React } from "@web3-react/core";
 import { SWRConfig } from "swr";
-import EthBalance from "./EthBalance";
-import TokenList from "./TokenList";
+import EthBalance from "./tokenBalance/EthBalance";
+import TokenList from "./tokenBalance/TokenList";
 import NftList from "./nftBalance/NftList";
 
 export default function MyWallet() {

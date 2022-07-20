@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { useWeb3React } from "@web3-react/core";
 import {formatUnits } from "@ethersproject/units";
 import {Contract} from "@ethersproject/contracts";
-import { fetcher } from "./utils";
-import ERC20ABI from "./abi/erc20Abi.json";
+import { fetcher } from "../utils";
+import ERC20ABI from "../abi/erc20Abi.json";
 import useSWR from "swr";
 
 
