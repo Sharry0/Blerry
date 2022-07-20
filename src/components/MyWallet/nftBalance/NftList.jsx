@@ -44,10 +44,9 @@ export default function NftList({ chainId }) {
                 {
                     myNfts && myNfts.map(nft => (
                         <div key={nft.id}>
-                            {console.log(nft.collection.name.length)}
                             <div className="imageBorder">
                                 <img src={nft.image_url} alt="nft" className="nftImage" />
-                                <div> {nft.collection.name} </div>
+                                <div> {nft.collection.name.length > 15 ? `${nft.collection.name.slice(0,15)}...` : nft.collection.name} </div>
                                 <div> {nft.token_id} </div>
                             </div>
                         </div>
