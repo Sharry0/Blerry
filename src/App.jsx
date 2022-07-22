@@ -27,7 +27,7 @@ function App() {
     <div id="appComponent">
       <Navbar />
       <main id="main">
-        <Searchbar />
+        {/* <Searchbar /> */}
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/wallet" element={<Web3ReactProvider getLibrary={getLibrary}> <MyWallet /></Web3ReactProvider>} />

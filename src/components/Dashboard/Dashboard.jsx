@@ -8,7 +8,7 @@ export default function Dashboard() {
   const [top, setTop] = useState();
 
   const get = async()=>{
-    await axios.get("https://api.cryptoslam.io/v1/collections/top-100?timeRange=week")
+    await axios.get("https://api.cryptoslam.io/v1/collections/top-100?timeRange=day")
       .then(res=> setTop(res.data))
       .catch(err=> console.log(err))
   }
@@ -18,7 +18,7 @@ export default function Dashboard() {
   },[])
 
   return (
-    <div>
+    <div className="dashboardComponent">
       <h1 style={{color: "#aaa"}}>Dashboard on the way...</h1>
     </div>
   )
