@@ -47,7 +47,7 @@ export default function MyWallet() {
 
         {
           active ?
-            <div>
+            <div className="balances">
               <div className="topWalletInfo">
                   <span id="connectedWallet">
                     {` | ${account.slice(0, 5)}...${account.slice(38)} |`}

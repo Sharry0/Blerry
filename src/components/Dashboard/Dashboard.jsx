@@ -17,7 +17,7 @@ export default function Dashboard() {
 
   const [top, setTop] = useState();
   const [timeRange, setTimeRange] = useState("week")
-  const dataShown = 20
+  const dataShown = 10
 
   const get = async () => {
     await axios.get(`https://api.cryptoslam.io/v1/collections/top-100?timeRange=${timeRange}`)
@@ -69,12 +69,12 @@ export default function Dashboard() {
           font: {
             family: 'Quicksand',
             size: 30,
-            weight: 'bold',
+            weight: 'normal',
             lineHeight: 1.2,
           },
-          padding: {top: 5, left: 0, right: 0, bottom: 0}
+          padding: { top: 5, left: 0, right: 0, bottom: 0 }
         },
-        
+
       },
       y: {
         display: true,
@@ -88,7 +88,7 @@ export default function Dashboard() {
             style: 'normal',
             lineHeight: 1.2
           },
-          padding: {top: 30, left: 0, right: 0, bottom: 0}
+          padding: { top: 0, left: 0, right: 0, bottom: 0 }
         },
         grid: {
           display: true,
@@ -107,11 +107,12 @@ export default function Dashboard() {
         label: 'Sales USD',
         data: top?.filter((collection, i) => i < dataShown && collection),
         // data: top?.filter((collection, i) =>  i<= dataShown && collection)?.map(collection=> collection.valueUSD),
-        backgroundColor: ["#a9d6e5", "#89c2d9", "#61a5c2", "#468faf", "#2c7da0", "#2a6f97", "#014f86", "#01497c", "#013a63", "#012a4a", "#143642"]
+        backgroundColor: ["#a9d6e5", "#89c2d9", "#61a5c2"]
       },
 
     ],
   };
+  // , "#468faf", "#2c7da0", "#2a6f97", "#014f86", "#01497c", "#013a63", "#012a4a", "#143642"
 
   useEffect(() => {
     get();
@@ -121,8 +122,12 @@ export default function Dashboard() {
     <div className="dashboardComponent">
 
       <div className="chart">
+        <div className="topSalesBtns">
+          <button></button>
+        </div>
 
         <Bar options={options} data={data} />
+
       </div>
 
 

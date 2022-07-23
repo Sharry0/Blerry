@@ -49,6 +49,10 @@
         inset 5px 5px 5px rgba(74, 114, 156, 0.2);
 }
 
+.balances{
+    width: 100%;
+}
+
 .topWalletInfo{
     display: flex;
     justify-content: space-between;
