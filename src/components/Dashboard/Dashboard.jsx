@@ -16,8 +16,8 @@ import { Bar } from 'react-chartjs-2';
 export default function Dashboard() {
 
   const [top, setTop] = useState();
-  const [timeRange, setTimeRange] = useState("week")
-  const dataShown = 10
+  const [timeRange, setTimeRange] = useState("week");
+  const dataShown = 15;
 
   const get = async () => {
     await axios.get(`https://api.cryptoslam.io/v1/collections/top-100?timeRange=${timeRange}`)
@@ -25,7 +25,7 @@ export default function Dashboard() {
         setTop(res.data)
       })
       .catch(err => console.log(err))
-  }
+  };
 
   ChartJS.register(
     CategoryScale,
@@ -35,6 +35,21 @@ export default function Dashboard() {
     Tooltip,
     Legend
   );
+    // _____ custom tooltip info function ____________________
+  const footer = (tooltipItems) => {
+    let sum = [];
+  
+    tooltipItems.forEach(function(tooltipItem) {
+      const item = tooltipItem?.raw
+      return sum = [
+        `Sales:  ${item?.value.toLocaleString()} ${item.baseCurrency}`,
+        `Transactions:  ${item?.transactions.toLocaleString()}`,
+        `Buyers:  ${item?.buyers.toLocaleString()}`,
+        `Sellers:  ${item?.sellers.toLocaleString()}`
+      ]
+    });
+    return sum;
+  };
 
   const options = {
     responsive: true,
@@ -45,15 +60,24 @@ export default function Dashboard() {
           boxWidth: 0,
           boxHeight: 0
         },
-
       },
       tooltip: {
-        backgroundColor: "rgba(51, 57, 68, 0.8)"
+        backgroundColor: "rgba(51, 57, 68, 0.8)",
+        bodyFont:{
+          weight: "bold"
+        },
+        callbacks:{
+          footer
+        }
       },
       title: {
         display: true,
         text: `Top ${dataShown} NFT sales of the last ${timeRange}`,
       },
+    },
+    interaction:{
+      intersect: false,
+      mode: "index"
     },
     parsing: {
       xAxisKey: "contractName",
@@ -98,16 +122,18 @@ export default function Dashboard() {
     }
   };
 
-
+  
 
   const data = {
-    // labels: top?.filter((collection, i) => i< dataShown &&  collection).map(collection=> collection.contractName),
+
     datasets: [
       {
         label: 'Sales USD',
         data: top?.filter((collection, i) => i < dataShown && collection),
-        // data: top?.filter((collection, i) =>  i<= dataShown && collection)?.map(collection=> collection.valueUSD),
-        backgroundColor: ["#a9d6e5", "#89c2d9", "#61a5c2"]
+        backgroundColor: ["#a9d6e5", "#89c2d9", "#61a5c2"],
+        borderRadius: 5,
+        borderWidth: 2,
+        borderColor: "#014f86"
       },
 
     ],
@@ -116,7 +142,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     get();
-  }, [])
+  }, []);
 
   return (
     <div className="dashboardComponent">
