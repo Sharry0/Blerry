@@ -16,7 +16,7 @@ import { Bar } from 'react-chartjs-2';
 export default function Dashboard() {
 
   const [top, setTop] = useState();
-  const [timeRange, setTimeRange] = useState("week");
+  const [timeRange, setTimeRange] = useState("month");
   const dataShown = 15;
 
   const get = async () => {
@@ -35,11 +35,10 @@ export default function Dashboard() {
     Tooltip,
     Legend
   );
-    // _____ custom tooltip info function ____________________
+  // _____ custom tooltip info function ____________________
   const footer = (tooltipItems) => {
     let sum = [];
-  
-    tooltipItems.forEach(function(tooltipItem) {
+    tooltipItems.forEach(function (tooltipItem) {
       const item = tooltipItem?.raw
       return sum = [
         `Sales:  ${item?.value.toLocaleString()} ${item.baseCurrency}`,
@@ -63,19 +62,19 @@ export default function Dashboard() {
       },
       tooltip: {
         backgroundColor: "rgba(51, 57, 68, 0.8)",
-        bodyFont:{
+        bodyFont: {
           weight: "bold"
         },
-        callbacks:{
+        callbacks: {
           footer
         }
       },
       title: {
         display: true,
-        text: `Top ${dataShown} NFT sales of the last ${timeRange}`,
+        text: `Top ${dataShown} NFT sales ${timeRange === "all" ? `overall` : `of the last ${timeRange}`}`,
       },
     },
-    interaction:{
+    interaction: {
       intersect: false,
       mode: "index"
     },
@@ -122,10 +121,7 @@ export default function Dashboard() {
     }
   };
 
-  
-
   const data = {
-
     datasets: [
       {
         label: 'Sales USD',
@@ -140,16 +136,44 @@ export default function Dashboard() {
   };
   // , "#468faf", "#2c7da0", "#2a6f97", "#014f86", "#01497c", "#013a63", "#012a4a", "#143642"
 
+  const handleTimeBtnClick = (time) => {
+    setTimeRange(time)
+  }
+
+
+
   useEffect(() => {
     get();
-  }, []);
+  }, [timeRange]);
 
   return (
     <div className="dashboardComponent">
-
       <div className="chart">
-        <div className="topSalesBtns">
-          <button></button>
+        <div>
+          <button
+            className={`chartBtn ${timeRange === "day" && "activeBtn"}`}
+            onClick={() => handleTimeBtnClick("day")}
+          >
+            Day
+          </button>
+          <button
+            className={`chartBtn ${timeRange === "week" && "activeBtn"}`}
+            onClick={() => handleTimeBtnClick("week")}
+          >
+            Week
+          </button>
+          <button
+            className={`chartBtn ${timeRange === "month" && "activeBtn"}`}
+            onClick={() => handleTimeBtnClick("month")}
+          >
+            Month
+          </button>
+          <button
+            className={`chartBtn ${timeRange === "all" && "activeBtn"}`}
+            onClick={() => handleTimeBtnClick("all")}
+          >
+            All
+          </button>
         </div>
 
         <Bar options={options} data={data} />
