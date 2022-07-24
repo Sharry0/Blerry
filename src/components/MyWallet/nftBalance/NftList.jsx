@@ -44,15 +44,21 @@ export default function NftList({ chainId }) {
         <div>
             <div className="nftsContainer">
                 {
-                    myNfts && myNfts.map(nft => (
+                    myNfts?.length ? myNfts.map(nft => (
                         <div key={nft.id}>
                             <div className="imageBorder">
                                 <img src={nft.image_url} alt="nft" className="nftImage" />
-                                <div> {nft.collection.name.length > 15 ? `${nft.collection.name.slice(0,15)}...` : nft.collection.name} </div>
+                                <div> {nft.collection.name.length > 15 ? `${nft.collection.name.slice(0, 15)}...` : nft.collection.name} </div>
                                 <div> {nft.token_id} </div>
                             </div>
                         </div>
                     ))
+                        :
+                        <div>
+                            <h2>
+                                No NFTs found in this wallet
+                            </h2>
+                        </div>
                 }
             </div>
 
