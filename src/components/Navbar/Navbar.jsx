@@ -1,5 +1,6 @@
 
 import { NavLink } from "react-router-dom";
+import Settings from "./Settings/Settings";
 
 import "./navbar.css";
 // _____ Images & Icons __________________________________________
@@ -59,10 +60,11 @@ export default function Navbar() {
                     <div>
                         <img src={blerryLogo} alt="blerry logo" id="blerryLogo" />
                     </div>
-                    <button className="navbarBtn">
+                    <Settings />
+                    {/* <button className="navbarBtn">
                         <img src={settingsIcon} alt="settings icon" />
                         <span>Settings</span>
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div>

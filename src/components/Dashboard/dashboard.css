@@ -1,14 +1,16 @@
 
 .dashboardComponent{
     height: 90vh;
+    max-width: 80vw;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .chart{
-    width: 85vw;
-    height: 45vw;
+    max-width: 85vw;
+    min-width: 60vw;
+    max-height: 45vw;
     padding: 1rem 2rem;
     justify-self: center;
     border-radius: 10px;

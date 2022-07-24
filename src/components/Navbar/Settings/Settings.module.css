@@ -1,0 +1,40 @@
+
+.settings{
+    position: relative;
+    height: 55px;
+}
+
+.settingsMenu{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    background: white;
+    top: -75px;
+    border-radius: 10px;
+    padding: 5px 0;
+    box-shadow: 
+    10px 10px 40px rgba(74, 113, 156, 0.5), 
+    inset -5px -5px 5px rgba(74, 114, 156, 0.4),
+    inset 5px 5px 5px rgba(74, 114, 156, 0.2);
+}
+
+.settingsMenuActive{
+    display: flex;
+}
+
+.settingsBtn:hover{
+    cursor: pointer;
+}
+
+.menuBtn{
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+}
+.menuTitle{
+    font-weight: bold;
+}
