@@ -24,10 +24,11 @@
 
 .activeBtn{
     color: rgb(74, 114, 156);
+    background-color: rgba(0, 149, 255, 0.15);
 }
 
 .chart{
-    width: 50vw;
+    width: 55vw;
     padding: 1rem 2rem;
     justify-self: center;
     border-radius: 10px;

@@ -17,7 +17,7 @@ export default function Dashboard() {
 
   const [top, setTop] = useState();
   const [timeRange, setTimeRange] = useState("month");
-  const dataShown = 15;
+  const dataShown = 20;
 
   const get = async () => {
     await axios.get(`https://api.cryptoslam.io/v1/collections/top-100?timeRange=${timeRange}`)
