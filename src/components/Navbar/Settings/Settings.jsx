@@ -16,7 +16,7 @@ const handleSettingsClick=()=>{
       <div className={`${css.settingsMenu} ${showSettings && css.settingsMenuActive}`}>
         <div className={css.menuTitle}>Theme</div>
         <button className={css.menuBtn}>Light</button>
-        <button className={css.menuBtn}>Dark</button>
+        <button className={css.menuBtn}><span className={css.disabled}>Dark <br />(disabled)</span></button>
       </div>
       <button className={`navbarBtn ${css.settingsBtn}`} onClick={handleSettingsClick} >
         <img src={settingsIcon} alt="settings icon" />
