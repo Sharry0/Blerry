@@ -38,8 +38,10 @@ export default function TotalMarket() {
     }
 
     return (
-        <div className={css.chart}>
-            <Pie data={data} />
+        <div  >
+            <div className={css.chart}>
+                <Pie data={data} width={250} height={250} />
+            </div>
         </div>
     )
 }
