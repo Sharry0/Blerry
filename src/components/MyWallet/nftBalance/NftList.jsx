@@ -1,6 +1,6 @@
 
 import "./nftBalance.css"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NftBalance from "./NftBalance"
 import { useWeb3React } from "@web3-react/core";
 import axios from "axios";
@@ -36,7 +36,9 @@ export default function NftList({ chainId }) {
             .catch(err => console.log(err))
     }
 
-    fetchMyNfts()
+    useEffect(() => {
+        fetchMyNfts()
+    }, [account])
 
     // add opensea links to the nfts in your wallet
 

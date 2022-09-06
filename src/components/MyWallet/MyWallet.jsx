@@ -21,7 +21,6 @@ export default function MyWallet() {
 
   useEffect(() => {
     if (typeof window.ethereum !== 'undefined') checkIsConnected();
-    console.log("effect runninfrs")
   }, [])
 
   // _____ connect website to wallet ______________
