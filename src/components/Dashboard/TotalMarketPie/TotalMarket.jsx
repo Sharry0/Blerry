@@ -1,5 +1,4 @@
 
-import css from "./TotalMarket.module.css"
 import { useState, useEffect } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
@@ -52,8 +51,8 @@ export default function TotalMarket() {
 
 
     return (
-        <div  >
-            <div className={css.chart}>
+        <div>
+            <div className="chart">
                 <Doughnut data={data} options={options} />
             </div>
         </div>
