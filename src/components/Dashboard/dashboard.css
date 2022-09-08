@@ -3,8 +3,8 @@
     height: 90vh;
     max-width: 80vw;
     display: flex;
-    /* align-items: center;
-    justify-content: center; */
+    /* align-items: center; */
+    /* justify-content: center; */
     border: 2px solid red;
 }
 
@@ -17,19 +17,6 @@
         inset -5px -5px 5px rgba(74, 114, 156, 0.5),
         inset 5px 5px 5px rgba(74, 114, 156, 0.3);
 }
-
-/* .chart{
-    max-width: 85vw;
-    min-width: 60vw;
-    max-height: 45vw;
-    padding: 1rem 2rem;
-    justify-self: center;
-    border-radius: 10px;
-    box-shadow:
-        10px 10px 40px rgba(74, 113, 156, 0.3),
-        inset -5px -5px 5px rgba(74, 114, 156, 0.5),
-        inset 5px 5px 5px rgba(74, 114, 156, 0.3);
-} */
 
 .chartBtn {
     cursor: pointer;
@@ -46,6 +33,13 @@
     position: relative;
     margin-right: 1rem;
 }
+
+.btcHistoryComponent{
+    height: 500px;
+    width: 100%;
+
+}
+
 
 .activeBtn{
     color: rgb(74, 114, 156);
