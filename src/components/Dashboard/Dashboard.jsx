@@ -124,7 +124,7 @@ export default function Dashboard() {
     return (
         <div className="dashboardComponent">
 
-            <TotalMarket/>
+            <TotalMarket />
             {/* <div className="chart"> */}
                 {/* <div>
           <button
