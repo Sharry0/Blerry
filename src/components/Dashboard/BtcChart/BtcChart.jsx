@@ -37,20 +37,29 @@ export default function BtcChart() {
         LineElement,
         Title,
         Tooltip,
-        Legend
+        Legend,
     );
 
     const options = {
+        scales: {
+            x: {
+                ticks: {
+                    maxTicksLimit: 15
+                }
+            }
+        },
         plugins: {
             title: {
                 display: true,
-                text: `Bitcoin (${currency})`
+                text: `Bitcoin chart (${currency}) of the last ${days} days`
+            },
+            legend: {
+                display: false,
             },
             tooltip: {
                 interaction: false,
                 callbacks: {
                     label: function (context) {
-                        // console.log(context)
                         return ` ${context.formattedValue} ${currency}`;
                     },
                 }
@@ -58,11 +67,24 @@ export default function BtcChart() {
         },
     };
 
+    const checkLengthOfInt = (hour, min) => {
+        if (hour || hour === 0) {
+            if (hour.toString().length <= 1) return `0${hour}`
+            return hour
+        }
+        if (min || min === 0) {
+            if (min.toString().length <= 1) return `${min}0`
+            return min
+        }
+    }
+
     const unixTimeToDateTime = (unixTime) => {
-        const s = new Date(unixTime)
-        const month = s.getMonth()
-        const day = s.getDate()
-        return `${day}. ${months[month]}`
+        const s = new Date(unixTime);
+        const month = s.getMonth();
+        const day = s.getDate();
+        const hour = checkLengthOfInt(s.getHours());
+        const min = checkLengthOfInt(false, s.getMinutes());
+        return `${day}. ${months[month]} ${hour}:${min}`
     };
 
     const data = {
@@ -70,8 +92,10 @@ export default function BtcChart() {
         datasets: [
             {
                 data: btcHistory && btcHistory.prices.map(unix => unix[1]),
-                backgroundColor: "#4A719CDD",
-                borderWidth: 2,
+                borderColor: "#4A719CAA",
+                borderWidth: 4,
+                pointRadius: 0.1,
+                pointHitRadius: 10,
             }
         ]
     };

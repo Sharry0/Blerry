@@ -51,7 +51,7 @@ export default function TotalMarket() {
 
 
     return (
-        <div>
+        <div className="totalMarketComponent">
             <div className="chart">
                 <Doughnut data={data} options={options} />
             </div>

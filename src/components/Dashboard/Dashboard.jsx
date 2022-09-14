@@ -8,11 +8,10 @@ export default function Dashboard() {
 
     return (
         <div className="dashboardComponent">
-
-            <TotalMarket />
-            <BtcChart />
-        
-
+            <div>
+                <TotalMarket />
+            </div>
+                <BtcChart />
         </div>
     )
 }
