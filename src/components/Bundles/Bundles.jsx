@@ -62,7 +62,11 @@ export default function Bundles() {
         setOffset(offset + limit);
         toggleRunEffect();
     }
-
+    return (
+        <div>
+            {"API for orders is deprecated"}
+        </div>
+    )
     return (
         <div id="bundleComponent">
 
