@@ -44,7 +44,9 @@ export default function BtcChart() {
         scales: {
             x: {
                 ticks: {
-                    maxTicksLimit: 15
+                    maxTicksLimit: 8,
+                    maxRotation: 0,
+                    minRotation: 0
                 }
             }
         },

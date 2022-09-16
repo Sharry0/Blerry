@@ -27,13 +27,17 @@ export default function TotalMarket() {
                 display: true,
                 text: 'Total Crypto Marketcap (%)'
             },
-            tooltip:{
+            tooltip: {
                 interaction: false,
                 callbacks: {
-                    label: function(context) {
+                    label: function (context) {
                         return ` ${context.label} ${context.formattedValue} %`;
                     }
                 }
+            },
+            legend: {
+                // display: false,
+                position: "left"
             }
         },
     }

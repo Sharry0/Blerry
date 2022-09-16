@@ -15,7 +15,7 @@ export default function TopTenList() {
     };
 
     useEffect(() => {
-        getTopTen
+        getTopTen();
     }, [])
 
     return (
