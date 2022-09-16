@@ -11,9 +11,11 @@ export default function Dashboard() {
         <div className="dashboardComponent">
             <div className="topRowCharts">
                 <TotalMarket />
-                <TopTenList />
-            </div>
                 <BtcChart />
+            </div>
+            {/* <div className="botRowCharts"> */}
+                <TopTenList />
+            {/* </div> */}
         </div>
     )
 }

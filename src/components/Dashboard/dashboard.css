@@ -5,9 +5,10 @@
     flex-direction: column;
     /* align-items: center; */
     /* justify-content: center; */
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     padding-bottom: 2rem ;
+    position: relative;
     /* border: 2px solid red; */
 }
 
@@ -27,6 +28,7 @@
 }
 
 .chart {
+    width: 100%;
     margin: 1rem;
     padding: 1rem;
     border-radius: 10px;
@@ -54,11 +56,13 @@
 
 .topRowCharts{
     display: flex;
+    align-items: flex-start;
 }
 
 .topTenComponent{
+    display: flex;
     width: 100%;
-    margin-right: 1rem;
+    /* margin-right: 1rem; */
 }
 
 .totalMarketComponent {
@@ -67,7 +71,6 @@
 
 .btcHistoryComponent {
     display: flex;
-
     width: 100%;
 }
 

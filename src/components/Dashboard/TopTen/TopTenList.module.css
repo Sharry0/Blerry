@@ -8,35 +8,58 @@
     margin: 0.5rem 0.25rem;
 }
 
-.catRow {
-    width: 100%;
+.start {
+    width: 30%;
+    min-width: 200px;
+    display: flex;
+    padding-left: 0.2rem;
+    /* border: 2px solid red; */
 }
 
-.catRank {
-    width: 25%;
+.mid {
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    /* border: 2px solid green; */
+}
+
+.end {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 0.2rem;
+    /* border: 2px solid blue; */
+}
+
+.catRow {
+    width: 100%;
+    display: flex;
+    font-weight: bold;
 }
 
 .rank {
     width: 30px;
 }
 
+.icon{
+    width: 20px;
+    height: 20px;
+}
+
 .name {
     display: flex;
     align-items: center;
-    width: 30%;
 }
 
 .price {
-    width: 20%;
     text-align: end;
 }
 
 .priceChange {
-    width: 20%;
     text-align: end;
 }
 
 .marketCap {
-    width: 30%;
+    /* width: 300px; */
     text-align: end;
 }

@@ -53,7 +53,6 @@ export default function TotalMarket() {
         ]
     };
 
-
     return (
         <div className="totalMarketComponent">
             <div className="chart">

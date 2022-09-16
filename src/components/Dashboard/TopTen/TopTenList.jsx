@@ -23,25 +23,35 @@ export default function TopTenList() {
         <div className="topTenComponent">
             <div className="chart">
                 <div className={css.catRow}>
-                    <span className={css.catRank}>{"#"}</span>
-                    <span className={css.catName}>Coin</span>
-                    <span className={css.catPrice}>Price</span>
-                    <span className={css.catChange}>24h</span>
-                    <span className={css.catCap}>Market Cap</span>
+                    <div className={css.start}>
+                        <span className={css.rank}>{"#"}</span>
+                        <span className={css.catName}>Coin</span>
+                    </div>
+                    <div className={css.mid}>
+                        <span className={css.catPrice}>Price</span>
+                    </div>
+                    <div className={css.end}>
+                        <span className={css.catChange}>24h</span>
+                        <span className={css.catCap}>Market Cap</span>
+                    </div>
                 </div>
                 {
                     topTenData && topTenData?.map((data, i) => (
                         <div key={data.id} className={i < 9 ? css.borderBottom : css}>
                             <div className={css.coin}>
-                                <span className={css.rank}>{`${data.market_cap_rank}.`}</span>
-                                <span className={css.name}>
-                                    <img src={data.image} alt="coin / token" style={{ heigh: "20px", width: "20px" }} />
+                                <div className={css.start}>
+                                    <span className={css.rank}>{`${data.market_cap_rank}.`}</span>
+                                    <img className={css.icon} src={data.image} alt="coin / token" />
                                     <span className={css.name}>{data.name}</span>
-                                    <span className={css.symbol}>{data.symbol}</span>
-                                </span>
-                                <span className={css.price}>{`${data.current_price}$`}</span>
-                                <span className={css.priceChange}>{`${data.price_change_percentage_24h.toFixed(2)}%`}</span>
-                                <span className={css.marketCap}>{`${data.market_cap}$`}</span>
+                                    <span className={css.symbol}>{`(${data.symbol})`}</span>
+                                </div>
+                                <div className={css.mid}>
+                                    <span className={css.price}>{`${data.current_price}$`}</span>
+                                </div>
+                                <div className={css.end}>
+                                    <span className={css.priceChange}>{`${data.price_change_percentage_24h.toFixed(2)}%`}</span>
+                                    <span className={css.marketCap}>{`${data.market_cap}$`}</span>
+                                </div>
                             </div>
                         </div>
                     ))
