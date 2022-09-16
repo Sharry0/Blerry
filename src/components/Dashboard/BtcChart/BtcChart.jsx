@@ -96,7 +96,7 @@ export default function BtcChart() {
                 data: btcHistory && btcHistory.prices.map(unix => unix[1]),
                 borderColor: "#4A719CAA",
                 borderWidth: 4,
-                pointRadius: 0.1,
+                pointRadius: 1.5,
                 pointHitRadius: 10,
             }
         ]

@@ -1,0 +1,42 @@
+.borderBottom {
+    border-bottom: 2px solid rgba(74, 114, 156, 0.5);
+}
+
+.coin {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0.25rem;
+}
+
+.catRow {
+    width: 100%;
+}
+
+.catRank {
+    width: 25%;
+}
+
+.rank {
+    width: 30px;
+}
+
+.name {
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+
+.price {
+    width: 20%;
+    text-align: end;
+}
+
+.priceChange {
+    width: 20%;
+    text-align: end;
+}
+
+.marketCap {
+    width: 30%;
+    text-align: end;
+}
