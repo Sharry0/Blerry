@@ -18,7 +18,7 @@ export default function TopTenList() {
     useEffect(() => {
         getTopTen();
     }, [])
-    console.log(topTenData)
+
     return (
         <div className="topTenComponent">
             <div className="chart">
