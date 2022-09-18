@@ -41,13 +41,19 @@ export default function BtcChart() {
     );
 
     const options = {
+        maintainAspectRatio: false,
         scales: {
             x: {
                 ticks: {
-                    maxTicksLimit: 8,
+                    maxTicksLimit: days,
                     maxRotation: 0,
-                    minRotation: 0
-                }
+                    minRotation: 0,
+                    autoSkipPadding: 10,
+
+                },
+                grid: {
+                    drawOnChartArea: false
+                },
             }
         },
         plugins: {
@@ -68,25 +74,27 @@ export default function BtcChart() {
             }
         },
     };
-
-    const checkLengthOfInt = (hour, min) => {
-        if (hour || hour === 0) {
-            if (hour.toString().length <= 1) return `0${hour}`
-            return hour
-        }
-        if (min || min === 0) {
-            if (min.toString().length <= 1) return `${min}0`
-            return min
-        }
-    }
+    // ________if you want to add the time to xAxis ticks_______
+    // const checkLengthOfInt = (hour, min) => {
+    //     if (hour || hour === 0) {
+    //         if (hour.toString().length <= 1) return `0${hour}`
+    //         return hour
+    //     }
+    //     if (min || min === 0) {
+    //         if (min.toString().length <= 1) return `${min}0`
+    //         return min
+    //     }
+    // }
 
     const unixTimeToDateTime = (unixTime) => {
         const s = new Date(unixTime);
         const month = s.getMonth();
         const day = s.getDate();
-        const hour = checkLengthOfInt(s.getHours());
-        const min = checkLengthOfInt(false, s.getMinutes());
-        return `${day}. ${months[month]} ${hour}:${min}`
+        // ________if you want to add the time to xAxis ticks_______
+        // const hour = checkLengthOfInt(s.getHours()); 
+        // const min = checkLengthOfInt(false, s.getMinutes());
+        return `${day}. ${months[month]}`
+        // return `${day}. ${months[month]} ${hour}:${min}`
     };
 
     const data = {
