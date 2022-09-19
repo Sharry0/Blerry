@@ -59,6 +59,10 @@ export default function BtcChart() {
         plugins: {
             title: {
                 display: true,
+                font:{
+                    family: "Quicksand",
+                    size: 17.5
+                },
                 text: `Bitcoin chart (${currency}) of the last ${days} days`
             },
             legend: {
