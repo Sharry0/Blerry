@@ -46,11 +46,11 @@ export default function TopTenList() {
                                     <span className={css.symbol}>{`(${data.symbol})`}</span>
                                 </div>
                                 <div className={css.mid}>
-                                    <span className={css.price}>{`${data.current_price}$`}</span>
+                                    <span className={css.price}>{`${data.current_price.toLocaleString()}$`}</span>
                                 </div>
                                 <div className={css.end}>
                                     <span className={css.priceChange}>{`${data.price_change_percentage_24h.toFixed(2)}%`}</span>
-                                    <span className={css.marketCap}>{`${data.market_cap}$`}</span>
+                                    <span className={css.marketCap}>{`${data.market_cap.toLocaleString()}$`}</span>
                                 </div>
                             </div>
                         </div>
