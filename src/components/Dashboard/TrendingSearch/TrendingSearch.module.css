@@ -1,9 +1,16 @@
 
 .title{
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     text-decoration: underline 2px solid;
+    margin-bottom: 1rem;
+}
 
+.catRow{
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    border-bottom: 4px solid rgba(74, 114, 156, 0.7);
 }
 
 .underline{
@@ -12,7 +19,17 @@
 
 .trend{
     display: flex;
+    justify-content: space-between;
     margin: 0.3rem 0;
+}
+.name{
+    display: flex;
+    align-items: center;
+}
+
+.symbol{
+    font-size: 0.8rem;
+    margin-left: 0.4rem;
 }
 
 .image{
@@ -22,8 +39,12 @@
 }
 
 .footer{
-    display: flex;
-    align-items: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.footer p{
+    margin: 0;
 }
 
 .coinGeckoLogo{

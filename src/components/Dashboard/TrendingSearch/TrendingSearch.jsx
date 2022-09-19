@@ -21,32 +21,39 @@ export default function TrendingSearch() {
     return (
         <div className="trendingComponent">
             <div className="chart">
-                <div >
-                    <span className={css.title}>{`Top trending coins on Coingecko search by users`}</span>
+                <div className={css.title}>
+                    {`Trending coins search by users on Coingecko (24h)`}
+                </div>
+                <div className={css.catRow}>
+                    <div className={css.name}>
+                        <div>{`#`}</div>
+                        <div>Name</div>
+                    </div>
+                    <div>Mkt Cap Rank</div>
                 </div>
                 {
                     trending && trending.map((trend, i) => (
                         <div className={i < trending.length - 1 ? css.underline : css} key={i}>
                             <div className={css.trend}>
+                                <div className={css.name}>
+                                    <div><b>{`${i + 1}.`}</b></div>
 
-                                <div><b>{`${i + 1}.`}</b></div>
+                                    <img src={trend.item.small} alt="coin icon" className={css.image} />
 
-                                <img src={trend.item.small} alt="coin icon" className={css.image} />
-
-                                <div><b>{trend.item.name}</b></div>
-                                <div>{`(${trend.item.symbol})`}</div>
+                                    <div><b>{trend.item.name}</b></div>
+                                    <div className={css.symbol}>{`(${trend.item.symbol})`}</div>
+                                </div>
 
                                 <div><b>{trend.item.market_cap_rank}</b></div>
-
                             </div>
                         </div>
                     ))
                 }
                 <div className={css.footer}>
+                    <p>Data provided by:</p>
                     <a href="https://www.coingecko.com/" target="_blank" rel="noreferrer">
                         <img src="/Coingecko_logo_sm.png" alt="" className={css.coinGeckoLogo} />
                     </a>
-                    <p>Data provided by</p>
                 </div>
             </div>
         </div>
