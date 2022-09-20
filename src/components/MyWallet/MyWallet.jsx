@@ -10,7 +10,7 @@ import NftList from "./nftBalance/NftList";
 
 export default function MyWallet() {
 
-  const { active, account, activate, deactivate, chainId } = useWeb3React();
+  const { active, account, activate, chainId } = useWeb3React();
 
   // ___ check if MM has been connected to this site before if so, reconnect them ____
   const checkIsConnected = async () => {
