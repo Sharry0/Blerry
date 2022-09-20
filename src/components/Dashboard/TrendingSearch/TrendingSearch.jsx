@@ -17,7 +17,7 @@ export default function TrendingSearch() {
     useEffect(() => {
         getTrendingData();
     }, []);
-    console.log(trending)
+
     return (
         <div className="trendingComponent">
             <div className="chart">
