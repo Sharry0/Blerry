@@ -16,8 +16,10 @@ import axios from "axios"
 export default function BtcChart() {
 
     const [btcHistory, setBtcHistory] = useState(false);
-    const [currency, setCurrency] = useState("usd");
-    const [days, setDays] = useState("3");
+    // const [currency, setCurrency] = useState("usd");
+    const currency = "usd";
+    // const [days, setDays] = useState("3");
+    const days = "3";
     const months = ["Jan", "Feb", "Mar", "Apr", 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
     const getBtcHistory = () => {

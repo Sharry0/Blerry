@@ -7,7 +7,8 @@ import axios from "axios";
 export default function TopTenList() {
 
     const [topTenData, setTopTenData] = useState(false);
-    const [currency, setCurrency] = useState("usd");
+    // const [currency, setCurrency] = useState("usd");
+    const currency = "usd";
 
     const getTopTen = () => {
         axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=10&page=1&sparkline=false`)

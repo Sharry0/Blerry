@@ -7,10 +7,10 @@ import "./navbar.css";
 import blerryLogo from "../../images/blerry_logo.svg";
 import dashboardIcon from "../../images/icons/dashboard_icon.svg";
 import walletIcon from "../../images/icons/wallet_icon.svg";
-import rankingsIcon from "../../images/icons/rankings_icon.svg";
+// import rankingsIcon from "../../images/icons/rankings_icon.svg";
 import activityIcon from "../../images/icons/activity_icon.svg";
 import marketIcon from "../../images/icons/market_icon.svg"
-import settingsIcon from "../../images/icons/settings_icon.svg"
+// import settingsIcon from "../../images/icons/settings_icon.svg";
 
 export default function Navbar() {
 

@@ -1,7 +1,7 @@
 
 import "./nftBalance.css"
 import { useState, useEffect } from "react";
-import NftBalance from "./NftBalance"
+// import NftBalance from "./NftBalance"
 import { useWeb3React } from "@web3-react/core";
 import axios from "axios";
 

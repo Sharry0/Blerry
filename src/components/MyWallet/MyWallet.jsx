@@ -32,13 +32,13 @@ export default function MyWallet() {
     }
   }
   // _____ disconnect website to wallet ____________
-  const disconnect = async () => {
-    try {
-      await deactivate(injected)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+//   const disconnect = async () => {
+//     try {
+//       await deactivate(injected)
+//     } catch (error) {
+//       console.log(error)
+//     }
+//   }
 
   return (
     <div className="myWalletComponent">

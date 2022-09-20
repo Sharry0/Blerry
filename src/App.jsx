@@ -7,11 +7,11 @@ import { Web3Provider } from "@ethersproject/providers"
 // _____ Components ___________________________
 import Navbar from "./components/Navbar/Navbar";
 import Market from "./components/Market/Market";
-import Searchbar from "./components/Searchbar/Searchbar";
+// import Searchbar from "./components/Searchbar/Searchbar";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Activity from "./components/Activity/Activity";
 import MyWallet from "./components/MyWallet/MyWallet";
-import Bundles from "./components/Bundles/Bundles";
+// import Bundles from "./components/Bundles/Bundles";
 // Add different styles, to choose. (Dark mode, paralex effect mode, 
 // visible borders mode, follow mouse movement mode (three.js ?), 
 // maybe something with haptic feedback, scrolling sideways?, 
@@ -32,7 +32,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/wallet" element={<Web3ReactProvider getLibrary={getLibrary}> <MyWallet /></Web3ReactProvider>} />
           <Route path="/activity" element={<Activity />} />
-          <Route path="/bundles" element={<Bundles />} />
+          {/* <Route path="/bundles" element={<Bundles />} /> */}
           <Route path="/market" element={<Market />} />
           <Route />
         </Routes>
