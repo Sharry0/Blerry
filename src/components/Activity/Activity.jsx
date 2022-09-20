@@ -306,7 +306,7 @@ export default function Activity() {
                 <div ref={topActivity}></div>
                 {
                     activityData && activityData.map(event => (
-                        <div className="event" key={event.id}  >
+                        <div className="event" key={event?.id}  >
                             {/* __________ create a div with a ref to scroll to after clicking next / prev btn _____*/}
                             {/* __________ Container of a single event (NFT) ____________________ */}
                             <div id="imgSection">
@@ -323,8 +323,8 @@ export default function Activity() {
                                                 <div>
                                                     <img
                                                         src={
-                                                            event.asset_bundle.assets[0].image_preview_url ?
-                                                                event.asset_bundle.assets[0].image_preview_url
+                                                            event.asset_bundle.assets[0]?.image_preview_url ?
+                                                                event.asset_bundle.assets[0]?.image_preview_url
                                                                 : noImage
                                                         }
                                                         alt="NFT"
@@ -332,8 +332,8 @@ export default function Activity() {
                                                     />
                                                     <img
                                                         src={
-                                                            event.asset_bundle.assets[1].image_preview_url ?
-                                                                event.asset_bundle.assets[0].image_preview_url
+                                                            event.asset_bundle.assets[1]?.image_preview_url ?
+                                                                event.asset_bundle.assets[0]?.image_preview_url
                                                                 : noImage
                                                         }
                                                         alt="NFT"
@@ -350,16 +350,16 @@ export default function Activity() {
                                 <div>
                                     {
                                         event?.asset?.name ?
-                                            (event.asset.name.length > 20 ? `${event.asset.name.slice(0, 20)}...` : event.asset.name)
-                                            : event?.asset?.token_id ? (event?.asset?.token_id.length > 20 ? `#${event.asset.token_id.slice(0, 20)}...` : `#${event?.asset?.token_id}`)
-                                                : event.asset_bundle.name && `${event.asset_bundle.name}`
+                                            (event?.asset?.name.length > 20 ? `${event?.asset?.name.slice(0, 20)}...` : event?.asset.name)
+                                            : event?.asset?.token_id ? (event?.asset?.token_id.length > 20 ? `#${event?.asset?.token_id.slice(0, 20)}...` : `#${event?.asset?.token_id}`)
+                                                : event?.asset_bundle?.name && `${event?.asset_bundle.name}`
                                     }
                                 </div>
                                 {/* _______ NFT collection name  ______________________________________________________________ */}
                                 <div className="infoRows" id="collectionName">
                                     {
                                         event?.collection_slug.length > 25 ?
-                                            `${event.collection_slug.slice(0, 25)}...`
+                                            `${event?.collection_slug.slice(0, 25)}...`
                                             : event?.collection_slug
 
                                     }</div>
@@ -375,9 +375,9 @@ export default function Activity() {
                                     <span>
                                         Price: {
                                             event.event_type === "successful" ?
-                                                convertToPrice(event.total_price, event?.payment_token?.decimals)
+                                                convertToPrice(event?.total_price, event?.payment_token?.decimals)
                                                 : event.event_type === "created" ?
-                                                    convertToPrice(event.total_price, event?.payment_token?.decimals)
+                                                    convertToPrice(event?.total_price, event?.payment_token?.decimals)
                                                     : "---"
 
                                         }
