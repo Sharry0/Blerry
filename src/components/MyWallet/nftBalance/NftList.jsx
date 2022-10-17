@@ -36,7 +36,7 @@ export default function NftList({ chainId }) {
             .then(res => setMyNfts(res.data.assets))
             .catch(err => console.log(err))
     }
-    console.log(myNfts)
+
     useEffect(() => {
         fetchMyNfts()
     }, [account])

@@ -33,7 +33,8 @@ export default function Navbar() {
                         <img src={walletIcon} alt="wallet icon" />
                         <span>My Wallet</span>
                     </NavLink>
-                    {/* _______ Bundles route has been removed from Opensea API ________ */}
+                    {/* _______ Oders route  has been removed from Opensea API ________ */}
+                    {/* _______ & Bundles route doesn't work ________ */}
                     {/* <NavLink
                     to="/bundles"
                     className={({isActive})=> isActive ? `navbarBtn activeNavbarBtn`: `navbarBtn`} 
