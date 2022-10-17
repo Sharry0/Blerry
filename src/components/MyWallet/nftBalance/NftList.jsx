@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 // import NftBalance from "./NftBalance"
 import { useWeb3React } from "@web3-react/core";
 import axios from "axios";
+import noImage from "../../../images/no_image.png"
 
 // import { Contract } from "@ethersproject/contracts";
 // import { formatUnits } from "@ethersproject/units";
@@ -35,7 +36,7 @@ export default function NftList({ chainId }) {
             .then(res => setMyNfts(res.data.assets))
             .catch(err => console.log(err))
     }
-
+    console.log(myNfts)
     useEffect(() => {
         fetchMyNfts()
     }, [account])
@@ -49,7 +50,7 @@ export default function NftList({ chainId }) {
                     myNfts?.length ? myNfts.map(nft => (
                         <div key={nft.id}>
                             <div className="imageBorder">
-                                <img src={nft.image_url} alt="nft" className="nftImage" />
+                                <img src={nft.image_url? nft.image_url : noImage} alt="nft" className="nftImage" />
                                 <div> {nft.collection.name.length > 15 ? `${nft.collection.name.slice(0, 15)}...` : nft.collection.name} </div>
                                 <div> {nft.token_id} </div>
                             </div>

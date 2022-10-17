@@ -28,7 +28,9 @@
     position: relative;
 }
 
-
+.filterBtn:disabled {
+  filter: invert(51%) sepia(95%) saturate(0%) hue-rotate(228deg) brightness(112%) contrast(88%);
+}
 
 .filterBtnActive{
     filter: invert(51%) sepia(95%) saturate(0%) hue-rotate(228deg) brightness(112%) contrast(88%);

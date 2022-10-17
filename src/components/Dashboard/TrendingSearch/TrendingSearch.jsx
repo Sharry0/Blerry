@@ -22,7 +22,7 @@ export default function TrendingSearch() {
         <div className="trendingComponent">
             <div className="chart">
                 <div className={css.title}>
-                    {`Trending coins search by users on Coingecko (24h)`}
+                    {`Trending search on Coingecko (24h)`}
                 </div>
                 <div className={css.catRow}>
                     <div className={css.name}>
