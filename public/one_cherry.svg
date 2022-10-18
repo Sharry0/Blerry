@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 97 157" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-2881.47,-2613.28)">
+        <g transform="matrix(5,0,0,5,1952.35,1484.68)">
+            <g id="Small-Cherry" serif:id="Small Cherry" transform="matrix(0.0947072,0,0,0.0947072,146.687,211.291)">
+                <g id="Kirsche" transform="matrix(1,0,0,1,0.100062,0.386195)">
+                    <path d="M506.572,309.482C495.052,308.521 463.829,298.448 448.692,307.158C423.592,321.6 413.654,351.723 413.32,378.786C413.088,397.663 419.059,414.051 428.66,430.113C445.109,457.634 467.846,480.056 501.51,482.982C515.805,484.224 523.594,481.909 537.468,479.235C547.821,477.24 550.47,477.318 560.182,471.867C575.825,463.088 583.017,450.103 590.76,434.454C601.111,413.536 600.797,413.432 605.844,390.728C609.272,375.302 606.87,360.685 603.37,345.484C602.251,340.62 599.895,333.101 596.537,329.165C586.708,317.645 567.876,303.928 551.53,306.634C542.268,308.168 537.821,308.719 528.326,309.571C522.515,310.093 515.701,310.583 510.058,310.103L506.572,309.482Z" style="fill:url(#_Radial1);stroke:rgb(232,236,239);stroke-width:0.32px;"/>
+                </g>
+                <g id="Ende-Stiehl" serif:id="Ende Stiehl" transform="matrix(1,0,0,1,-38.3972,86.1006)">
+                    <path d="M613.5,94.065C618.81,99.591 627.402,102.227 634.706,99.587C639.353,97.908 644.322,94.095 647.693,90.579C649.073,89.14 650.272,87.528 651.378,85.869C653.883,82.114 658.753,73.733 653.4,69.718C652.039,68.698 650.541,67.807 648.932,67.255C647.202,66.661 645.345,66.491 643.523,66.331C640.228,66.041 634.878,66.533 631.819,67.025C627.666,67.692 624.076,68.301 620.652,70.866C616.636,73.876 613.606,79.903 611.589,83.863L610.946,89.03L613.5,94.065Z" style="fill:rgb(179,182,199);"/>
+                </g>
+                <g transform="matrix(0.743014,0,0,0.919333,292.398,30.7956)">
+                    <ellipse cx="293.55" cy="321.246" rx="17.446" ry="6.811" style="fill:url(#_Radial2);"/>
+                </g>
+                <g id="Stiehl" transform="matrix(0.68572,0,0,0.637674,160.346,118.467)">
+                    <clipPath id="_clip3">
+                        <path d="M520.471,311.698C519.637,288.44 524.067,265.923 528.367,243.171C535.324,206.363 544.678,170.962 565.796,139.551C575.617,124.943 576.741,126.067 589.036,113.417C597.429,104.781 595.766,103.084 605.39,97.629C610.737,94.597 618.869,89.444 624.813,87.822C628.879,86.713 630.933,88.139 631.128,83.035C631.638,69.667 615.339,81.104 611.589,83.863C595.072,96.017 581.058,104.816 569.373,121.079C557.386,137.762 558.186,138.096 548.569,156.377C544.495,164.122 536.801,177.39 533.933,185.741C527.964,203.125 526.07,216.84 522.6,234.804C517.737,259.983 507.96,310.332 507.86,310.108C507.736,310.597 505.199,319.83 503.332,321.98C501.768,323.78 498.407,324.689 498.307,327.071C498.243,328.601 502.494,329.403 503.835,329.458C506.56,329.569 518.042,331.697 522.364,327.954C523.557,326.922 521.367,324.938 521.183,323.371C520.742,319.608 520.493,315.813 520.493,312.024L520.471,311.698Z"/>
+                    </clipPath>
+                    <g clip-path="url(#_clip3)">
+                        <g transform="matrix(3.07964,-0,-0,3.31168,368.823,53.1269)">
+                            <use xlink:href="#_Image4" x="42.89" y="7.154" width="43.133px" height="76.542px" transform="matrix(0.980288,0,0,0.99405,0,0)"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+    <defs>
+        <radialGradient id="_Radial1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-5.19394,121.355,-121.355,-5.19394,508.009,332.983)"><stop offset="0" style="stop-color:rgb(165,212,223);stop-opacity:1"/><stop offset="0.48" style="stop-color:rgb(141,186,205);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(74,113,156);stop-opacity:1"/></radialGradient>
+        <radialGradient id="_Radial2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(16.0106,-0.543855,0.325072,6.25105,293.045,321.151)"><stop offset="0" style="stop-color:black;stop-opacity:0.54"/><stop offset="0.56" style="stop-color:black;stop-opacity:0.43"/><stop offset="1" style="stop-color:black;stop-opacity:0"/></radialGradient>
+        <image id="_Image4" width="44px" height="77px" xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCABNACwDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABAf/xAAcEAADAQEBAQEBAAAAAAAAAAAAAwRhAiExARH/xAAXAQEBAQEAAAAAAAAAAAAAAAAAAQID/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAMAwEAAhEDEQA/ALcqnTq5mKp0BaqdAWqnQFqp0ik80fn89IJgqnTSFqp0BaqdAWqnQGKp0BPNPn0CXqp0qGKp0KWqnQFqp0gWqnQFc0+fQJeqnSoWqnQFqp0BiqdClqp0BPNPn0gl6qdNIYqnQFqp0gWqnQFqp0BXNPn0CXqp00Fqp0BaqdAWqnSBiqdATzT59IJgqnTaFqp0ilqp0BaqdAWqnQFc0+fSQS9NOm0MVToC1U6QLVTpAtVOhSeafPoEvVTppDE06AtVOgLVToDFU6QJ5p8+iKmnPfXPz9NIQp3QDFN6IFqb0AxTegE8u6/gH//Z"/>
+    </defs>
+</svg>
