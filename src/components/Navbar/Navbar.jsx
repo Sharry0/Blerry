@@ -7,7 +7,7 @@ import "./navbar.css";
 import blerryLogo from "../../images/blerry_logo.svg";
 import dashboardIcon from "../../images/icons/dashboard_icon.svg";
 import walletIcon from "../../images/icons/wallet_icon.svg";
-// import rankingsIcon from "../../images/icons/rankings_icon.svg";
+import rankingsIcon from "../../images/icons/rankings_icon.svg";
 import activityIcon from "../../images/icons/activity_icon.svg";
 import marketIcon from "../../images/icons/market_icon.svg"
 // import settingsIcon from "../../images/icons/settings_icon.svg";
@@ -33,15 +33,13 @@ export default function Navbar() {
                         <img src={walletIcon} alt="wallet icon" />
                         <span>My Wallet</span>
                     </NavLink>
-                    {/* _______ Oders route  has been removed from Opensea API ________ */}
-                    {/* _______ & Bundles route doesn't work ________ */}
-                    {/* <NavLink
+                    <NavLink
                     to="/bundles"
                     className={({isActive})=> isActive ? `navbarBtn activeNavbarBtn`: `navbarBtn`} 
                     >
                         <img src={rankingsIcon} alt="rankings icon" />
                         <span>Bundles</span>
-                    </NavLink> */}
+                    </NavLink>
                     <NavLink
                     to="/activity"
                     className={({isActive})=> isActive ? `navbarBtn activeNavbarBtn`: `navbarBtn`} 

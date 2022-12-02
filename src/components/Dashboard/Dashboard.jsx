@@ -7,15 +7,16 @@ import TrendingSearch from "./TrendingSearch/TrendingSearch";
 
 export default function Dashboard() {
 
-    return (
-        <div className="dashboardComponent">
-            <div className="topRowCharts">
-                <TotalMarket />
-                <BtcChart />
-                <TrendingSearch />
-            </div>
-                <TopTenList />
-        </div>
-    )
+  return (
+    <div className="dashboardComponent">
+
+      <TopTenList />
+      <BtcChart />
+      <div className="bottomRowCharts" >
+        <TrendingSearch />
+        <TotalMarket />
+      </div>
+    </div>
+  )
 }
 

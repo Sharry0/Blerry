@@ -1,82 +1,88 @@
 .dashboardComponent {
-    height: 90vh;
-    max-width: 90vw;
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    /* justify-content: center; */
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 1rem 2rem 2rem 1rem;
-    position: relative;
-    /* border: 2px solid red; */
+  height: 90vh;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1rem 2rem 2rem 1rem;
 }
 
 .dashboardComponent::-webkit-scrollbar {
-    width: 15px;
-    border-radius: 2rem;
-    box-shadow:
-        inset -5px -5px 3px rgba(74, 114, 156, 0.2),
-        inset 5px 5px 5px rgba(74, 114, 156, 0.2);
+  width: 15px;
+  border-radius: 2rem;
+  box-shadow:
+    inset -5px -5px 3px rgba(74, 114, 156, 0.2),
+    inset 5px 5px 5px rgba(74, 114, 156, 0.2);
 }
 
 .dashboardComponent::-webkit-scrollbar-thumb {
-    border-radius: 2rem;
-    box-shadow:
-        inset -5px -5px 5px rgba(74, 114, 156, 0.2),
-        inset 5px 5px 5px rgba(74, 114, 156, 0.2);
+  border-radius: 2rem;
+  box-shadow:
+    inset -5px -5px 5px rgba(74, 114, 156, 0.2),
+    inset 5px 5px 5px rgba(74, 114, 156, 0.2);
 }
 
 .chart {
-    width: 100%;
-    margin: 1rem;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow:
-        10px 10px 40px rgba(74, 113, 156, 0.3),
-        inset -5px -5px 5px rgba(74, 114, 156, 0.5),
-        inset 5px 5px 5px rgba(74, 114, 156, 0.3);
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow:
+    10px 10px 40px rgba(74, 113, 156, 0.3),
+    inset -5px -5px 5px rgba(74, 114, 156, 0.5),
+    inset 5px 5px 5px rgba(74, 114, 156, 0.3);
 }
 
 .chartBtn {
-    cursor: pointer;
-    font-weight: bold;
-    color: #333944;
-    padding: 0.4rem 0.8rem;
-    background: none;
-    border: none;
-    border-radius: 8px;
-    box-shadow:
-        10px 10px 20px rgba(74, 113, 156, 0.3),
-        inset -5px -5px 5px rgba(74, 114, 156, 0.3),
-        inset 5px 5px 5px rgba(74, 114, 156, 0.2);
-    position: relative;
-    margin-right: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: #333944;
+  padding: 0.4rem 0.8rem;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  box-shadow:
+    10px 10px 20px rgba(74, 113, 156, 0.3),
+    inset -5px -5px 5px rgba(74, 114, 156, 0.3),
+    inset 5px 5px 5px rgba(74, 114, 156, 0.2);
+  position: relative;
+  margin-right: 1rem;
 }
 
-.topRowCharts{
-    display: flex;
-    align-items: flex-start;
-}
-
-.topTenComponent{
-    display: flex;
-    width: 100%;
-    /* margin-right: 1rem; */
+.topTenComponent {
+  width: 60vw;
 }
 
 .btcHistoryComponent {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    max-width: 700px;
+  display: flex;
+  width: 60vw;
+  height: 35vh;
 }
 
 .totalMarketComponent {
-    display: flex;
+  display: flex;
+  max-width: 400px;
 }
 
 .activeBtn {
-    color: rgb(74, 114, 156);
-    background-color: rgba(0, 149, 255, 0.15);
+  color: rgb(74, 114, 156);
+  background-color: rgba(0, 149, 255, 0.15);
+}
+
+.bottomRowCharts {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1300px) {
+  .btcHistoryComponent{
+    height: 25vh;
+  }
+}
+@media (max-width: 800px) {
+  .btcHistoryComponent{
+    height: 20vh;
+  }
 }

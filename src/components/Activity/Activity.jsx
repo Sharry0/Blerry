@@ -160,7 +160,15 @@ export default function Activity() {
       `https://testnets-api.opensea.io/api/v1/events?event_type=${eventType.find(evt => evt.isActive).name}&only_opensea=false&limit=${limit}
             ${afterDate?.find(date => date.isActive)?.unixStamp ? `&occurred_after=${afterDate?.find(date => date.isActive)?.unixStamp}` : ""}
             ${cursor ? `&cursor=${cursor}` : ""}
-            `
+            `,
+      {
+        headers: { 
+          "Access-Control-Allow-Origin": true,
+          accept: 'application/json'
+      },
+        // withCredentials: false
+      },
+
     )
       .then(res => {
         setActivityData(res?.data?.asset_events)
